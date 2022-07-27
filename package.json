@@ -1,0 +1,29 @@
+{
+	"name": "portfolio-website",
+	"version": "1.0.0",
+	"description": "Muhammad Akmal's Porftolio Website",
+	"main": "index.js",
+	"scripts": {
+		"build": "webpack -p --progress --config webpack.config.build.js",
+		"development": "webpack-dev-server --progress --config webpack.config.development.js",
+		"start": "npm run development"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/akmalamka/portfolio-website.git"
+	},
+	"author": "Muhammad Akmal",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/akmalamka/portfolio-website/issues"
+	},
+	"homepage": "https://github.com/akmalamka/portfolio-website#readme",
+	"devDependencies": {
+		"copy-webpack-plugin": "^11.0.0",
+		"mini-css-extract-plugin": "^2.6.1",
+		"webpack": "^5.74.0",
+		"webpack-cli": "^4.10.0",
+		"webpack-dev-server": "^4.9.3",
+		"webpack-merge": "^5.8.0"
+	}
+}
