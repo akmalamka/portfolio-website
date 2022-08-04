@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const IS_DEVELOPMENT = process.env.NODE_ENV === 'dev'
 
-const dirApp = path.join(__dirname, 'app')
+const dirApp = path.join(__dirname, 'src')
 const dirAssets = path.join(__dirname, 'assets')
 const dirStyles = path.join(__dirname, 'styles')
 
