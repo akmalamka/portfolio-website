@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
@@ -33,17 +34,7 @@ module.exports = {
 			filename: '[name].css',
 			chunkFilename: '[id].css',
 		}),
-		new ImageMinimizerPlugin({
-			minimizer: {
-				options: {
-					plugins: [
-						['gifsicle', { interlaced: true }],
-						['jpegtran', { progressive: true }],
-						['optipng', { optimizationLevel: 8 }],
-					],
-				},
-			},
-		}),
+		new CleanWebpackPlugin(),
 	],
 	module: {
 		rules: [
@@ -104,7 +95,7 @@ module.exports = {
 							implementation: ImageMinimizerPlugin.imageminGenerate,
 							options: {
 								// Please specify only one plugin here, multiple plugins will not work
-								plugins: ['imagemin-optipng'],
+								plugins: ['imagemin-optipng', { optimizationLevel: 8 }],
 							},
 						},
 						{
@@ -113,7 +104,7 @@ module.exports = {
 							implementation: ImageMinimizerPlugin.imageminGenerate,
 							options: {
 								// Please specify only one plugin here, multiple plugins will not work
-								plugins: ['imagemin-gifsicle'],
+								plugins: ['imagemin-gifsicle', { interlaced: true }],
 							},
 						},
 						{
@@ -122,7 +113,7 @@ module.exports = {
 							implementation: ImageMinimizerPlugin.imageminGenerate,
 							options: {
 								// Please specify only one plugin here, multiple plugins will not work
-								plugins: ['imagemin-jpegtran'],
+								plugins: ['imagemin-jpegtran', { progressive: true }],
 							},
 						},
 					],
@@ -140,5 +131,9 @@ module.exports = {
 				exclude: /node_modules/,
 			},
 		],
+	},
+	optimization: {
+		minimize: true,
+		minimizer: [new TerserPlugin()],
 	},
 }
