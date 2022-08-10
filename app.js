@@ -63,13 +63,23 @@ app.get('/', async (req, res) => {
 	res.render('pages/home')
 })
 
-app.get('/about', (req, res) => {
-	client
-		.get(prismic.predicate.at('document.type', ['about', 'meta']))
-		.then((response) => {
-			console.log('Response', response)
-			res.render('pages/about')
-		})
+app.get('/about', async (req, res) => {
+	const meta = await client.getSingle('meta')
+	const about = await client.getSingle('about')
+	// const { data: meta } = metaDocument
+	// const { data: about } = aboutDocument
+	console.log('meta', meta.data.title)
+	console.log('about', about)
+	res.render('pages/about', {
+		about,
+		meta,
+	})
+	// client
+	// 	.get(prismic.predicate.at('document.type', ['about', 'meta']))
+	// 	.then((response) => {
+	// 		console.log('Response', response)
+	// 		res.render('pages/about')
+	// 	})
 })
 
 app.get('/works', (req, res) => {
