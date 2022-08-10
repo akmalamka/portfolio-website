@@ -1,7 +1,21 @@
 extends ../base.pug
 
 block variables 
-  - var template = 'home'
+	- var template = 'home'
 
 block content
-  h1.home__title Home
+	.home
+		.home__wrapper 
+			h1.home__title!=prismicDOM.RichText.asHtml(home.data.title)
+			section.home__personalities 
+				each personality in home.data.personalities 
+					.home__personalities__text!=prismicDOM.RichText.asHtml(personality.personalities_title)
+			section.home__story 
+				.home__story__text!=prismicDOM.RichText.asHtml(home.data.story)
+				each media in home.data.story_images 
+					figure.home__story__media 
+						img.home__story__media__image(alt=media.story_images_image.alt src=media.story_images_image.url)
+			section.home__welcoming	
+				.home__welcoming__text!=prismicDOM.RichText.asHtml(home.data.welcoming)
+				
+				

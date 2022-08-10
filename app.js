@@ -48,6 +48,16 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
 app.get('/', async (req, res) => {
+	const home = await client.getSingle('home')
+	const meta = await client.getSingle('meta')
+	const preloader = await client.getSingle('preloader')
+
+	console.log(home.data)
+	res.render('pages/home', {
+		home,
+		meta,
+		preloader,
+	})
 	// client
 	// 	.get(prismic.predicate.at('document.type', 'about'))
 	// 	.then((response) => {
@@ -60,17 +70,13 @@ app.get('/', async (req, res) => {
 	// })
 	// const document = await client.getSingle('home')
 	// console.log(document)
-	res.render('pages/home')
 })
 
 app.get('/about', async (req, res) => {
 	const about = await client.getSingle('about')
 	const meta = await client.getSingle('meta')
 	const preloader = await client.getSingle('preloader')
-	// const { data: meta } = metaDocument
-	// const { data: about } = aboutDocument
-	// console.log('meta', meta.data.title)
-	// console.log('about', about.data.socials[0])
+
 	res.render('pages/about', {
 		about,
 		meta,
