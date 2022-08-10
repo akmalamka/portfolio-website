@@ -4,4 +4,17 @@ block variables
   - var template = 'about'
 
 block content
-  h1.about__title About
+  .about
+  .about__wrapper
+    h1.about__title About
+    section.about__content
+      each section in about.data.section 
+        h2.about__content__title=section.section_title
+        .about__content__description!=prismicDOM.RichText.asHtml(section.section_description)
+        figure.about__content__media 
+          img.about__content__media__image(alt=section.section_image.alt src=section.section_image.url)
+    section.about__social 
+      each social in about.data.socials 
+        a.about__social__title(href=social.socials_link.url)=social.socials_title
+    section.about__credit 
+      .about__credit__text!=prismicDOM.RichText.asHtml(about.data.credit)

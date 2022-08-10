@@ -16,7 +16,7 @@ app.use((req, res, next) => {
 	res.locals.ctx = {
 		prismicH,
 	}
-	// res.locals.prismicDOM = prismicDOM
+	res.locals.prismicDOM = prismicDOM
 	next()
 })
 
@@ -64,15 +64,17 @@ app.get('/', async (req, res) => {
 })
 
 app.get('/about', async (req, res) => {
-	const meta = await client.getSingle('meta')
 	const about = await client.getSingle('about')
+	const meta = await client.getSingle('meta')
+	const preloader = await client.getSingle('preloader')
 	// const { data: meta } = metaDocument
 	// const { data: about } = aboutDocument
-	console.log('meta', meta.data.title)
-	console.log('about', about)
+	// console.log('meta', meta.data.title)
+	// console.log('about', about.data.socials[0])
 	res.render('pages/about', {
 		about,
 		meta,
+		preloader,
 	})
 	// client
 	// 	.get(prismic.predicate.at('document.type', ['about', 'meta']))
