@@ -3,7 +3,6 @@
 	"version": "1.0.0",
 	"description": "Muhammad Akmal's Porftolio Website",
 	"main": "index.js",
-	"type": "module",
 	"scripts": {
 		"backend:build": "node app.js",
 		"backend:development": "nodemon app.js",
