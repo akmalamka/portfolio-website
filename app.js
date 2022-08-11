@@ -36,6 +36,10 @@ const routes = [
 		type: 'work',
 		path: '/works',
 	},
+	{
+		type: 'blog',
+		path: '/works/:uid',
+	},
 ]
 
 const client = prismic.createClient(repoName, {
@@ -109,28 +113,22 @@ app.get('/works/:uid', async (req, res) => {
 	const preloader = await client.getSingle('preloader')
 
 	const blog = await client.getByUID('blog', req.params.uid, {
-		fetchLinks: ['work.title', 'work.image'],
+		fetchLinks: ['work.title', 'work.image', 'work.category'],
 	})
-	const {
-		data: {
-			work: { id: workId },
-		},
-	} = blog
 
-	const {
-		data: {
-			category: {
-				data: { type: workType },
-			},
-		},
-	} = await client.getByID(workId, {
-		fetchLinks: 'category.type',
+	const { id: blogId } = blog
+
+	const allBlogs = await client.getAllByType('blog', {
+		fetchLinks: 'work.title',
 	})
+
+	const blogIndex = allBlogs.findIndex((blog) => blog.id === blogId)
+
 	res.render('pages/blog', {
 		blog,
 		meta,
+		next: allBlogs[(blogIndex + 1) % allBlogs.length].data.work,
 		preloader,
-		workType,
 	})
 })
 
