@@ -52,7 +52,6 @@ app.get('/', async (req, res) => {
 	const meta = await client.getSingle('meta')
 	const preloader = await client.getSingle('preloader')
 
-	console.log(home.data)
 	res.render('pages/home', {
 		home,
 		meta,
@@ -90,8 +89,19 @@ app.get('/about', async (req, res) => {
 	// 	})
 })
 
-app.get('/works', (req, res) => {
-	res.render('pages/works')
+app.get('/works', async (req, res) => {
+	const meta = await client.getSingle('meta')
+	const preloader = await client.getSingle('preloader')
+
+	const categories = await client.getAllByType('category')
+	const works = await client.getAllByType('work')
+
+	res.render('pages/works', {
+		categories,
+		meta,
+		preloader,
+		works,
+	})
 })
 
 app.get('/works/:uid', (req, res) => {

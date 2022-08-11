@@ -15,7 +15,7 @@ block content
 				each media in home.data.story_images 
 					figure.home__story__media 
 						img.home__story__media__image(alt=media.story_images_image.alt src=media.story_images_image.url)
-			section.home__welcoming	
+			section.home__welcoming 
 				.home__welcoming__text!=prismicDOM.RichText.asHtml(home.data.welcoming)
 				
 				
