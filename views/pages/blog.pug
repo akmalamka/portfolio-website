@@ -4,4 +4,37 @@ block variables
   - var template = 'blog'
 
 block content
-  h1.blog__title Blog
+  .blog 
+    .blog__wrapper 
+      section.blog__header
+        figure.blog__header__media 
+          img.blog__header__media__image(alt=blog.data.work.data.image.alt src=blog.data.work.data.image.url)
+        h1.blog__title=blog.data.work.data.title
+      section.blog__summary 
+        .blog__summary_text!=prismicDOM.RichText.asHtml(blog.data.summary)
+
+      each section, index in blog.data.body
+        if section.slice_type == 'text_section'
+          section.blog__paragraph 
+            .blog__paragraph__wrapper
+              figure.blog__paragraph__media 
+                img.blog__paragraphy__media__image(alt=section.primary.section_image.alt src=section.primary.section_image.url)
+              .blog__paragraph__title=section.primary.section_title
+              //- if (section.primary.section_alignment) for alignment handler
+              .blog__paragraph__text!=prismicDOM.RichText.asHtml(section.primary.section_paragraph)
+
+        if section.slice_type == 'gallery'
+          section.blog__gallery 
+            .blog_gallery_wrapper 
+              each media, mediaIndex in section.items
+                figure.blog__paragraph__media 
+                  img.blog__paragraphy__media__image(alt=media.gallery_image.alt src=media.gallery_image.url)
+
+
+        if section.slice_type == 'quotes'
+          section.blog__quotes 
+            .blog__quotes__wrapper 
+              h3.blog__quotes__text!=prismicDOM.RichText.asHtml(section.primary.quotes_quote)
+      section.blog__next 
+        .blog__next__title Next 
+        //- .blog__next__text 

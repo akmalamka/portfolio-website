@@ -5,7 +5,7 @@ const path = require('path')
 const prismic = require('@prismicio/client')
 const prismicDOM = require('prismic-dom')
 const prismicH = require('@prismicio/helpers')
-// const { default: fetch } = require('node-fetch')
+
 const fetch = (...args) =>
 	import('node-fetch').then(({ default: fetch }) => fetch(...args))
 
@@ -104,8 +104,34 @@ app.get('/works', async (req, res) => {
 	})
 })
 
-app.get('/works/:uid', (req, res) => {
-	res.render('pages/blog')
+app.get('/works/:uid', async (req, res) => {
+	const meta = await client.getSingle('meta')
+	const preloader = await client.getSingle('preloader')
+
+	const blog = await client.getByUID('blog', req.params.uid, {
+		fetchLinks: ['work.title', 'work.image'],
+	})
+	const {
+		data: {
+			work: { id: workId },
+		},
+	} = blog
+
+	const {
+		data: {
+			category: {
+				data: { type: workType },
+			},
+		},
+	} = await client.getByID(workId, {
+		fetchLinks: 'category.type',
+	})
+	res.render('pages/blog', {
+		blog,
+		meta,
+		preloader,
+		workType,
+	})
 })
 
 app.listen(port, () => {
