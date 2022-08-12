@@ -38,6 +38,6 @@ block content
               h3.blog__quotes__text!=prismicDOM.RichText.asHtml(section.primary.quotes_quote)
       section.blog__next 
         .blog__next__wrapper
-          button.blog__next__title
+          .blog__next__title
             span Next 
-          a.blog__next__text(href=next.data.uid)=next.data.title
+          a.blog__next__text(href=`/works/${next.uid}`)=next.data.title

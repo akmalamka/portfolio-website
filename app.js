@@ -1,7 +1,10 @@
 require('dotenv').config()
 
+const bodyParser = require('body-parser')
 const errorHandler = require('errorhandler')
 const express = require('express')
+const logger = require('morgan')
+const methodOverride = require('method-override')
 const path = require('path')
 const prismic = require('@prismicio/client')
 const prismicDOM = require('prismic-dom')
@@ -13,13 +16,45 @@ const fetch = (...args) =>
 const app = express()
 const port = 3000
 
+app.use(logger('dev'))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(methodOverride())
 app.use(errorHandler())
 
+// const handleLinkResolver = (doc) => {
+// 	if (doc.type === 'blog') {
+// 		return `/works/${doc.uid}`
+// 	}
+
+// 	if (doc.type === 'works') {
+// 		return '/works'
+// 	}
+
+// 	if (doc.type === 'about') {
+// 		return '/about'
+// 	}
+
+// 	return '/'
+// }
+
+const handleRequest = async () => {
+	const meta = await client.getSingle('meta')
+	const navbar = await client.getSingle('navbar')
+	const preloader = await client.getSingle('preloader')
+
+	return {
+		meta,
+		navbar,
+		preloader,
+	}
+}
 app.use((req, res, next) => {
 	res.locals.ctx = {
 		prismicH,
 	}
 	res.locals.prismicDOM = prismicDOM
+	// res.locals.Link = handleLinkResolver if needed
 	next()
 })
 
@@ -55,69 +90,42 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
 app.get('/', async (req, res) => {
+	const defaults = await handleRequest()
 	const home = await client.getSingle('home')
-	const meta = await client.getSingle('meta')
-	const preloader = await client.getSingle('preloader')
 
 	res.render('pages/home', {
+		...defaults,
 		home,
-		meta,
-		preloader,
 	})
-	// client
-	// 	.get(prismic.predicate.at('document.type', 'about'))
-	// 	.then((response) => {
-	// 		console.log(response.results)
-	// 		res.render('pages/home')
-	// 	})
-	// client.getSingle('home').then((response) => {
-	// 	console.log(response.data)
-	// 	res.render('pages/home')
-	// })
-	// const document = await client.getSingle('home')
-	// console.log(document)
 })
 
 app.get('/about', async (req, res) => {
 	const about = await client.getSingle('about')
-	const meta = await client.getSingle('meta')
-	const preloader = await client.getSingle('preloader')
+	const defaults = await handleRequest()
 
 	res.render('pages/about', {
+		...defaults,
 		about,
-		meta,
-		preloader,
 	})
-	// client
-	// 	.get(prismic.predicate.at('document.type', ['about', 'meta']))
-	// 	.then((response) => {
-	// 		console.log('Response', response)
-	// 		res.render('pages/about')
-	// 	})
 })
 
 app.get('/works', async (req, res) => {
-	const meta = await client.getSingle('meta')
-	const preloader = await client.getSingle('preloader')
-
 	const categories = await client.getAllByType('category')
+	const defaults = await handleRequest()
 	const works = await client.getAllByType('work')
 
 	res.render('pages/works', {
+		...defaults,
 		categories,
-		meta,
-		preloader,
 		works,
 	})
 })
 
 app.get('/works/:uid', async (req, res) => {
-	const meta = await client.getSingle('meta')
-	const preloader = await client.getSingle('preloader')
-
 	const blog = await client.getByUID('blog', req.params.uid, {
 		fetchLinks: ['work.title', 'work.image', 'work.category'],
 	})
+	const defaults = await handleRequest()
 
 	const { id: blogId } = blog
 
@@ -128,10 +136,9 @@ app.get('/works/:uid', async (req, res) => {
 	const blogIndex = allBlogs.findIndex((blog) => blog.id === blogId)
 
 	res.render('pages/blog', {
+		...defaults,
 		blog,
-		meta,
 		next: allBlogs[(blogIndex + 1) % allBlogs.length].data.work,
-		preloader,
 	})
 })
 
