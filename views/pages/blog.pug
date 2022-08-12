@@ -7,9 +7,10 @@ block content
   .blog 
     .blog__wrapper 
       section.blog__header
-        figure.blog__header__media 
-          img.blog__header__media__image(alt=blog.data.work.data.image.alt src=blog.data.work.data.image.url)
-        h1.blog__title=blog.data.work.data.title
+        .blog__header__wrapper
+          figure.blog__header__media 
+            img.blog__header__media__image(alt=blog.data.work.data.image.alt src=blog.data.work.data.image.url)
+          h1.blog__title=blog.data.work.data.title
       section.blog__summary 
         .blog__summary_text!=prismicDOM.RichText.asHtml(blog.data.summary)
 
@@ -36,5 +37,7 @@ block content
             .blog__quotes__wrapper 
               h3.blog__quotes__text!=prismicDOM.RichText.asHtml(section.primary.quotes_quote)
       section.blog__next 
-        .blog__next__title Next 
-        a.blog__next__text(href=next.data.uid)=next.data.title
+        .blog__next__wrapper
+          button.blog__next__title
+            span Next 
+          a.blog__next__text(href=next.data.uid)=next.data.title

@@ -1,5 +1,6 @@
 require('dotenv').config()
 
+const errorHandler = require('errorhandler')
 const express = require('express')
 const path = require('path')
 const prismic = require('@prismicio/client')
@@ -11,6 +12,8 @@ const fetch = (...args) =>
 
 const app = express()
 const port = 3000
+
+app.use(errorHandler())
 
 app.use((req, res, next) => {
 	res.locals.ctx = {
