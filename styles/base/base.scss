@@ -1,0 +1,8 @@
+body {
+	@extend %title-40;
+	font-family: $font-graphik;
+
+	@include media('<phone') {
+		font-size: 150px;
+	}
+}
