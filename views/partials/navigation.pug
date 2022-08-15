@@ -1,0 +1,16 @@
+nav.navigation
+	.navigation_wrapper
+		a.navigation__link(href='/')
+			|	Muhammad Akmal 
+		svg.navigation_link_icon 
+
+	.current__job__wrapper
+		p.current__job__text=navbar.data.current_job
+
+	ul.navigation__list
+		li.navigation__list__item 
+			a.navigation__list__link(href='/works') Works
+		li.navigation__list__item 
+			a.navigation__list__link(href='/about') About
+		li.navigation__list__item 
+			a.navigation__list__link(href=`mailto:${navbar.data.email}`) Say Hello
