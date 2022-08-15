@@ -12,7 +12,7 @@ block content
           .works__category__title=category.data.type
           a.works__category__link__text(href=category.data.link_url.url target="_blank")=category.data.link_text
     section.works__list 
-      .work__list__wrapper
+      .works__list__wrapper
         each work in works 
           .works__list__title=work.data.title
           a.works__list__media__wrapper(href=work.data.url.url ? work.data.url.url : `/works/${work.uid}` target=work.data.url.url ? '_blank' : '')
