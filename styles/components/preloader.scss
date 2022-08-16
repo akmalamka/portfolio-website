@@ -1,8 +1,38 @@
 .preloader {
+	@extend %cover;
+
+	background: $color-spring-wood;
 }
 
-.preloader__text {
+.preloader__title__first__name {
+	@extend %title-490;
+
+	left: 0;
+	margin-left: 22rem;
+	text-transform: uppercase;
+	top: 50%;
+	transform: rotate(-90deg) translateX(-50%);
+	transform-origin: top left;
+}
+
+.preloader__title__last__name {
+	@extend %title-490;
+
+	margin-right: 22rem;
+	right: 0;
+	text-align: center;
+	text-transform: uppercase;
+	top: 50%;
+	transform: rotate(90deg) translateX(50%);
+	transform-origin: top right;
 }
 
 .preloader__number {
+	@extend %description-36;
+
+	bottom: 10.2rem;
+	left: 50%;
+	overflow: hidden;
+	position: absolute;
+	transform: translateX(-50%);
 }

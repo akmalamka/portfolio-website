@@ -1,8 +1,24 @@
-body {
-	@extend %title-40;
-	font-family: $font-graphik;
+*,
+*:after,
+*:before {
+	box-sizing: border-box;
+	user-select: none;
+}
+
+html {
+	@extend %cover;
+
+	background: $color-spring-wood;
+	color: $color-black;
+	font-size: calc(100vw / 1440 * 10);
+	line-height: 1;
+	overflow: hidden;
+	position: fixed;
 
 	@include media('<phone') {
-		font-size: 150px;
+		font-size: calc(100vw / 640 * 10);
 	}
+}
+
+body {
 }
