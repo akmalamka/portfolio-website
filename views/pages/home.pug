@@ -10,6 +10,11 @@ block content
 			section.home__personalities 
 				each personality in home.data.personalities 
 					.home__personalities__text!=prismicDOM.RichText.asHtml(personality.personalities_title)
+				.home__personalities__images__wrapper
+					each work in works 
+						a.home__personalities__images__media__wrapper(href=work.data.url.url ? work.data.url.url : `/works/${work.uid}` target=work.data.url.url ? '_blank' : '')
+							figure.home__personalities__images__media 
+								img.home__personalities__images__media__image(alt=work.data.image.alt src=work.data.image.url) 
 			section.home__story 
 				.home__story__text!=prismicDOM.RichText.asHtml(home.data.story)
 				each media in home.data.story_images 

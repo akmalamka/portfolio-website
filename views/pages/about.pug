@@ -9,11 +9,12 @@ block content
       h1.about__title=about.data.title
       section.about__content
         .about__content__wrapper
-          each section in about.data.section 
-            h2.about__content__title=section.section_title
-            .about__content__description!=prismicDOM.RichText.asHtml(section.section_description)
-            figure.about__content__media 
-              img.about__content__media__image(alt=section.section_image.alt src=section.section_image.url)
+          each section in about.data.section
+            .about__content__box 
+              h2.about__content__title=section.section_title
+              .about__content__description!=prismicDOM.RichText.asHtml(section.section_description)
+              figure.about__content__media 
+                img.about__content__media__image(alt=section.section_image.alt src=section.section_image.url)
       section.about__social 
         each social in about.data.socials 
           a.about__social__title(href=social.socials_link.url target="_blank")=social.socials_title

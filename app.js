@@ -93,10 +93,12 @@ app.set('view engine', 'pug')
 app.get('/', async (req, res) => {
 	const defaults = await handleRequest()
 	const home = await client.getSingle('home')
+	const works = await client.getAllByType('work')
 
 	res.render('pages/home', {
 		...defaults,
 		home,
+		works,
 	})
 })
 

@@ -1,8 +1,22 @@
 .about {
+	@extend %cover;
+
+	background: $color-spring-wood;
 }
 
 .about__wrapper {
+	@extend %cover;
+	display: flex;
+	flex-direction: column;
+
+	padding-top: 11rem;
 }
 
 .about__title {
+	@extend %title-64;
+
+	font-style: normal;
+	font-weight: 700;
+	line-height: 120%;
+	margin-left: 22rem;
 }
