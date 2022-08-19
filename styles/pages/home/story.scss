@@ -1,10 +1,88 @@
 .home__story {
+	@extend %cover;
+
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-top: 88.7rem;
 }
 
 .home__story__text {
+	@extend %title-40;
+
+	font-weight: 300;
+	line-height: 7.02rem;
+	z-index: 2;
+
+	span {
+		@extend %title-52;
+
+		font-style: italic;
+		font-weight: 700;
+	}
+	span:nth-of-type(1) {
+		color: $color-grenadier;
+	}
+
+	span:nth-of-type(2),
+	span:nth-of-type(5) {
+		color: $color-science-blue;
+	}
+
+	span:nth-of-type(3) {
+		color: $color-la-palma;
+	}
+
+	span:nth-of-type(4) {
+		color: $color-corn;
+	}
 }
 
 .home__story__media {
+	position: absolute;
+
+	&--cook {
+		right: 0;
+		margin-right: 7rem;
+		margin-top: 10.8rem;
+		top: 0;
+	}
+
+	&--studio {
+		left: 0;
+		margin-left: 7.2rem;
+		margin-top: 26.6rem;
+		top: 0;
+	}
+
+	&--pics {
+		right: 0;
+		margin-right: 44.8rem;
+		margin-top: 26.6rem;
+		top: 0;
+	}
+
+	&--books {
+		left: 0;
+		margin-left: 50.2rem;
+		margin-top: 16.9rem;
+		top: 0;
+	}
+
+	&--cat {
+		bottom: 0;
+		right: 0;
+		margin-right: 17.8rem;
+		margin-bottom: 11.8rem;
+	}
+
+	&--laptop {
+		bottom: 0;
+		left: 0;
+		margin-bottom: 10.7rem;
+		margin-left: 53.8rem;
+	}
 }
 
 .home__story__media__image {

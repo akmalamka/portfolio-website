@@ -23,13 +23,37 @@ app.use(methodOverride())
 app.use(errorHandler())
 app.use(express.static(path.join(__dirname, 'public')))
 
-const addSpanInsideEachLetter = (word) => {
-	console.log(word)
+const addSpan = (word) => {
+	return `<span>${word}</span>`
+}
+const addSpanHandler = (word, category) => {
 	let newWord = ''
-	for (i = 0; i < word.length; i++) {
-		newWord += `<span>${word[i]}</span>`
+	if (category === 'letter') {
+		for (i = 0; i < word.length; i++) {
+			newWord += addSpan(word[i])
+		}
+		return newWord
+	} else if (category === 'word') {
+		const category = [
+			'kitchen',
+			'music',
+			'pics',
+			'boooks',
+			'cat',
+			'laptop',
+			'enjoy',
+		]
+		let splittedWord = word.split(' ')
+
+		const result = splittedWord.map((word, index) => {
+			if (category.includes(word)) {
+				return addSpan(splittedWord[index])
+			} else {
+				return splittedWord[index]
+			}
+		})
+		return result.join(' ').replace(/\n /g, '<br>').replace(/\n/g, '<br>')
 	}
-	return newWord
 }
 
 const handleRequest = async () => {
@@ -88,7 +112,7 @@ app.get('/', async (req, res) => {
 	const home = await client.getSingle('home')
 	const works = await client.getAllByType('work')
 
-	res.locals.addSpan = addSpanInsideEachLetter
+	res.locals.addSpanHandler = addSpanHandler
 
 	let number
 	let workImages = []
@@ -97,9 +121,6 @@ app.get('/', async (req, res) => {
 		number = Math.floor(Math.random() * works.length)
 		workImages.push(works[number].data.image)
 	}
-
-	console.log(home.data.personalities[0])
-	// console.log(addSpanInsideEachLetter('wildcard'))
 
 	res.render('pages/home', {
 		...defaults,
