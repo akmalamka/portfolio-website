@@ -23,21 +23,14 @@ app.use(methodOverride())
 app.use(errorHandler())
 app.use(express.static(path.join(__dirname, 'public')))
 
-// const handleLinkResolver = (doc) => {
-// 	if (doc.type === 'blog') {
-// 		return `/works/${doc.uid}`
-// 	}
-
-// 	if (doc.type === 'works') {
-// 		return '/works'
-// 	}
-
-// 	if (doc.type === 'about') {
-// 		return '/about'
-// 	}
-
-// 	return '/'
-// }
+const addSpanInsideEachLetter = (word) => {
+	console.log(word)
+	let newWord = ''
+	for (i = 0; i < word.length; i++) {
+		newWord += `<span>${word[i]}</span>`
+	}
+	return newWord
+}
 
 const handleRequest = async () => {
 	const meta = await client.getSingle('meta')
@@ -55,7 +48,7 @@ app.use((req, res, next) => {
 		prismicH,
 	}
 	res.locals.prismicDOM = prismicDOM
-	// res.locals.Link = handleLinkResolver if needed
+
 	next()
 })
 
@@ -95,10 +88,23 @@ app.get('/', async (req, res) => {
 	const home = await client.getSingle('home')
 	const works = await client.getAllByType('work')
 
+	res.locals.addSpan = addSpanInsideEachLetter
+
+	let number
+	let workImages = []
+
+	for (let i = 0; i < home.data.personalities.length; i++) {
+		number = Math.floor(Math.random() * works.length)
+		workImages.push(works[number].data.image)
+	}
+
+	console.log(home.data.personalities[0])
+	// console.log(addSpanInsideEachLetter('wildcard'))
+
 	res.render('pages/home', {
 		...defaults,
 		home,
-		works,
+		workImages,
 	})
 })
 

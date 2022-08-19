@@ -6,15 +6,14 @@ block variables
 block content
 	.home
 		.home__wrapper 
-			h1.home__title!=prismicDOM.RichText.asHtml(home.data.title)
+			.home__title!=prismicDOM.RichText.asHtml(home.data.title)
 			section.home__personalities 
-				each personality in home.data.personalities 
-					.home__personalities__text!=prismicDOM.RichText.asHtml(personality.personalities_title)
-				.home__personalities__images__wrapper
-					each work in works 
-						a.home__personalities__images__media__wrapper(href=work.data.url.url ? work.data.url.url : `/works/${work.uid}` target=work.data.url.url ? '_blank' : '')
-							figure.home__personalities__images__media 
-								img.home__personalities__images__media__image(alt=work.data.image.alt src=work.data.image.url) 
+				each personality, index in home.data.personalities 
+					.home__personalities__text__wrapper
+						p.home__personalities__text(class=`home__personalities__text--${personality.personalities_category.toLowerCase()}`)!=personality.personalities_title_1 === 'Wildcard' ? addSpan(personality.personalities_title_1) : personality.personalities_title_1
+						p.home__personalities__text!=personality.personalities_title_2
+					figure.home__personalities__images__media 
+						img.home__personalities__images__media__image(alt=workImages[index].alt src=workImages[index].url) 
 			section.home__story 
 				.home__story__text!=prismicDOM.RichText.asHtml(home.data.story)
 				each media in home.data.story_images 

@@ -1,8 +1,32 @@
 .home {
+	@extend %cover;
+
+	background: $color-spring-wood;
 }
 
 .home__wrapper {
+	position: relative;
+	height: 100%;
+	width: 100%;
 }
 
 .home__title {
+	@extend %description-44;
+
+	> :first-child {
+		left: 0;
+		margin-left: 22rem;
+		margin-top: 17.7rem;
+		position: absolute;
+		top: 0;
+		width: fit-content;
+	}
+	> :last-child {
+		bottom: 0;
+		margin-bottom: 17.7rem;
+		margin-right: 22rem;
+		position: absolute;
+		right: 0;
+		width: fit-content;
+	}
 }
