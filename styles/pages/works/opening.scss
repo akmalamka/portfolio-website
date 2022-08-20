@@ -1,0 +1,40 @@
+.works__opening {
+	@extend %cover;
+}
+.works__opening__wrapper {
+	@extend %cover;
+	display: flex;
+	flex-direction: row;
+}
+.works__opening__title__wrapper {
+	height: 100%;
+	width: 20%;
+	// display: flex;
+
+	&:nth-child(1) {
+		background-color: $color-grenadier;
+	}
+	&:nth-child(2) {
+		background-color: $color-science-blue;
+	}
+	&:nth-child(3) {
+		background-color: $color-la-palma;
+	}
+	&:nth-child(4) {
+		background-color: $color-corn;
+	}
+	&:nth-child(5) {
+		background-color: $color-black;
+	}
+}
+
+.works__opening__title {
+	@extend %title-104;
+
+	color: $color-white;
+	text-align: start;
+	// align-items: flex-end;
+	// transform: rotate(-90deg);
+	transform: rotate(-90deg) translateY(-200%);
+	width: 72rem;
+}

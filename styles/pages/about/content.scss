@@ -2,15 +2,25 @@
 }
 
 .about__content__wrapper {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	row-gap: 72rem;
+
+	div {
+		position: relative;
+	}
 	div:nth-child(1) {
 		figure {
 			img {
-				@extend %cover;
+				// @extend %cover;
 
 				height: 43.1rem;
-				margin-left: 80.4rem;
-				margin-top: 11.1rem;
+				margin-right: 22.5rem;
+				margin-top: -15.6rem;
 				position: absolute;
+				right: 0;
+				top: 0;
 				width: 32.8rem;
 			}
 		}
@@ -19,12 +29,14 @@
 	div:nth-child(2) {
 		figure {
 			img {
-				@extend %cover;
+				// @extend %cover;
 
 				height: 47.5rem;
-				margin-left: 18.3rem;
-				margin-top: 86.5rem;
+				left: 0;
+				margin-left: 23.7rem;
+				margin-top: 8.5rem;
 				position: absolute;
+				top: 0;
 				width: 45.6rem;
 			}
 		}
@@ -33,34 +45,38 @@
 	div:nth-child(3) {
 		figure {
 			img {
-				@extend %cover;
+				// @extend %cover;
 
 				height: 35.8rem;
-				margin-left: 83.4rem;
-				margin-top: 176.9rem;
+				margin-right: 20rem;
+				margin-top: 5.7rem;
 				position: absolute;
+				right: 0;
+				top: 0;
 				width: 32.3rem;
 			}
 		}
 	}
+
 	:nth-child(2n) {
 		flex-direction: row-reverse;
-		margin-right: 8.3rem;
+		// margin-right: 8.3rem;
 	}
 }
 
 .about__content__box {
 	display: flex;
 	flex-direction: row;
-	margin-left: 8.3rem;
+	column-gap: 6rem;
+	// margin-left: 8.3rem;
 
 	&:nth-child(1) {
 		margin-top: 7.8rem;
 	}
 
-	&:not(:nth-child(1)) {
-		margin-top: 50rem;
-	}
+	// &:not(:nth-child(1)) {
+	// 	margin-top: 50rem;
+	// }
 }
 
 .about__content__title {
@@ -78,7 +94,7 @@
 	font-weight: 300;
 	line-height: 130%;
 	letter-spacing: 0.025rem;
-	margin-left: 6rem;
+	// margin-left: 6rem;
 	z-index: 2;
 }
 
@@ -86,6 +102,6 @@
 }
 
 .about__content__media__image {
-	@extend %cover;
+	// @extend %cover;
 	object-fit: cover;
 }
