@@ -1,11 +1,26 @@
 .home {
-	@extend %cover;
+	// @extend %cover;
 
+	// align-items: center;
 	background: $color-spring-wood;
+	// display: flex;
 }
 
 .home__wrapper {
-	position: relative;
+	// @extend %cover;
+	// position: relative;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+	row-gap: 36rem;
+}
+
+.home__title__wrapper {
+	display: flex;
+	flex-direction: column;
 	height: 100%;
 	width: 100%;
 }
@@ -13,20 +28,39 @@
 .home__title {
 	@extend %description-44;
 
-	> :first-child {
-		left: 0;
-		margin-left: 22rem;
-		margin-top: 17.7rem;
-		position: absolute;
-		top: 0;
-		width: fit-content;
+	padding-left: 22rem;
+	padding-right: 22rem;
+	// height: 100%;
+
+	&--1 {
+		margin-bottom: 4rem;
+		text-align: start;
 	}
-	> :last-child {
-		bottom: 0;
-		margin-bottom: 17.7rem;
-		margin-right: 22rem;
-		position: absolute;
-		right: 0;
-		width: fit-content;
+
+	&--2 {
+		margin-top: 4rem;
+		text-align: end;
 	}
+	// &:nth-child(1) {
+	// 	text-align: start;
+	// }
+	// &:nth-child(2) {
+	// 	text-align: end;
+	// }
+	// > :first-child {
+	// 	left: 0;
+	// 	margin-left: 22rem;
+	// 	margin-top: 17.7rem;
+	// 	position: absolute;
+	// 	top: 0;
+	// 	width: fit-content;
+	// }
+	// > :last-child {
+	// 	bottom: 0;
+	// 	margin-bottom: 17.7rem;
+	// 	margin-right: 22rem;
+	// 	position: absolute;
+	// 	right: 0;
+	// 	width: fit-content;
+	// }
 }

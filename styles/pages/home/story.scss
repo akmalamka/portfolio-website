@@ -1,11 +1,12 @@
 .home__story {
-	@extend %cover;
+	// @extend %cover;
 
-	align-items: center;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	margin-top: 88.7rem;
+	position: relative;
+	// align-items: center;
+	// display: flex;
+	// flex-direction: column;
+	// justify-content: center;
+	// margin-top: 88.7rem;
 }
 
 .home__story__text {
@@ -13,6 +14,7 @@
 
 	font-weight: 300;
 	line-height: 7.02rem;
+	position: relative;
 	z-index: 2;
 
 	span {
@@ -44,44 +46,43 @@
 
 	&--cook {
 		right: 0;
-		margin-right: 7rem;
-		margin-top: 10.8rem;
+		margin-right: -10.4rem;
+		margin-top: -6.1rem;
 		top: 0;
 	}
 
 	&--studio {
 		left: 0;
-		margin-left: 7.2rem;
-		margin-top: 26.6rem;
+		margin-left: -16.8rem;
+		margin-top: 9.7rem;
 		top: 0;
 	}
 
 	&--pics {
 		right: 0;
-		margin-right: 44.8rem;
-		margin-top: 26.6rem;
+		margin-right: 21rem;
+		margin-top: 11.5rem;
 		top: 0;
 	}
 
 	&--books {
 		left: 0;
-		margin-left: 50.2rem;
-		margin-top: 16.9rem;
+		margin-left: 28.3rem;
 		top: 0;
 	}
 
 	&--cat {
 		bottom: 0;
 		right: 0;
-		margin-right: 17.8rem;
-		margin-bottom: 11.8rem;
+		margin-right: 0.4rem;
+		margin-bottom: -9rem;
 	}
 
 	&--laptop {
 		bottom: 0;
 		left: 0;
-		margin-bottom: 10.7rem;
-		margin-left: 53.8rem;
+		margin-bottom: -8.1rem;
+		margin-left: 31.9rem;
 	}
 }
 
