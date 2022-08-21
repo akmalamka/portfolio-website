@@ -7,9 +7,11 @@
 	flex-direction: row;
 }
 .works__opening__title__wrapper {
+	align-items: flex-end;
+	display: flex;
 	height: 100%;
+	justify-content: center;
 	width: 20%;
-	// display: flex;
 
 	&:nth-child(1) {
 		background-color: $color-grenadier;
@@ -33,8 +35,6 @@
 
 	color: $color-white;
 	text-align: start;
-	// align-items: flex-end;
-	// transform: rotate(-90deg);
-	transform: rotate(-90deg) translateY(-200%);
-	width: 72rem;
+	transform: rotate(-90deg) translateX(50%);
+	width: fit-content;
 }

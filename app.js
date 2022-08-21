@@ -140,7 +140,12 @@ app.get('/about', async (req, res) => {
 })
 
 app.get('/works', async (req, res) => {
-	const categories = await client.getAllByType('category')
+	const categories = await client.getAllByType('category', {
+		orderings: {
+			field: 'my.category.order',
+			direction: 'asc',
+		},
+	})
 	const defaults = await handleRequest()
 	const works = await client.getAllByType('work')
 
