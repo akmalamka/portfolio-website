@@ -1,9 +1,18 @@
 .blog__gallery {
+	height: 65.6rem;
+	position: relative;
+	width: 100%;
 }
 
 .blog_gallery_wrapper {
-	display: flex;
+	// display: flex;
+	// column-gap: 8rem;
+	align-items: center;
 	column-gap: 8rem;
+	display: flex;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
 }
 
 .blog__gallery__media {
@@ -16,5 +25,4 @@
 	@extend %cover;
 
 	object-fit: cover;
-	position: relative;
 }
