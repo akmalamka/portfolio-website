@@ -10,6 +10,8 @@ const prismic = require('@prismicio/client')
 const prismicDOM = require('prismic-dom')
 const prismicH = require('@prismicio/helpers')
 
+const isEmpty = require('lodash/isEmpty')
+
 const fetch = (...args) =>
 	import('node-fetch').then(({ default: fetch }) => fetch(...args))
 
@@ -56,6 +58,33 @@ const addSpanHandler = (word, category) => {
 	}
 }
 
+const parseDate = (startDate, endDate) => {
+	const monthNames = [
+		'January',
+		'February',
+		'March',
+		'April',
+		'May',
+		'June',
+		'July',
+		'August',
+		'September',
+		'October',
+		'November',
+		'December',
+	]
+	const startDateMonth = monthNames[prismicH.asDate(startDate).getMonth()]
+	const startDateYear = prismicH.asDate(startDate).getFullYear()
+	const endDateMonth = monthNames[prismicH.asDate(endDate).getMonth()]
+	const endDateYear = prismicH.asDate(endDate).getFullYear()
+	if (startDateYear === endDateYear) {
+		if (startDateMonth === endDateMonth) {
+			return `${endDateMonth} ${endDateYear}`
+		}
+		return `${startDateMonth} - ${endDateMonth} ${endDateYear}`
+	}
+	return `${startDateMonth} ${startDateYear} - ${endDateMonth} ${endDateYear}`
+}
 const handleRequest = async () => {
 	const meta = await client.getSingle('meta')
 	const navbar = await client.getSingle('navbar')
@@ -162,18 +191,23 @@ app.get('/works/:uid', async (req, res) => {
 	})
 	const defaults = await handleRequest()
 
+	res.locals.parseDate = parseDate
+	res.locals.isEmpty = isEmpty
+
 	const { id: blogId } = blog
 
 	const allBlogs = await client.getAllByType('blog', {
-		fetchLinks: 'work.title',
+		fetchLinks: ['work.title', 'work.category'],
 	})
 
 	const blogIndex = allBlogs.findIndex((blog) => blog.id === blogId)
 
+	const next = allBlogs[(blogIndex + 1) % allBlogs.length].data.work
+
 	res.render('pages/blog', {
 		...defaults,
 		blog,
-		next: allBlogs[(blogIndex + 1) % allBlogs.length].data.work,
+		next,
 	})
 })
 

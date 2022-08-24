@@ -1,5 +1,12 @@
 .blog {
+	@extend %cover;
+
+	background: $color-spring-wood;
 }
 
 .blog__wrapper {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	row-gap: 12rem;
 }

@@ -1,5 +1,10 @@
 .blog__summary {
+	max-width: 120rem;
 }
 
 .blog__summary_text {
+	@extend %description-24;
+
+	font-weight: 400;
+	line-height: 3rem;
 }

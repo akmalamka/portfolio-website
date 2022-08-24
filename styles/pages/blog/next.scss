@@ -4,11 +4,50 @@
 .blog__next__wrapper {
 }
 
-.blog__next__title {
+.blog__next__header {
+	@extend %title-canela-40;
+	font-weight: 300;
+
+	text-align: center;
+	text-transform: uppercase;
 }
 
-.blog__next__title__text {
+.blog__next__description__wrapper {
+	align-items: center;
+	column-gap: 3.4rem;
+	display: flex;
+	margin-bottom: 10rem;
+	margin-top: 2.4rem;
+	width: max-content;
 }
 
-.blog__next__link {
+.blog__next__description__title {
+	@extend %title-80;
+
+	font-weight: 400;
+}
+
+.blog__next__description__circle {
+	border-radius: 50%;
+	height: 4.6rem;
+	width: 4.6rem;
+	&--cook {
+		background: $color-grenadier;
+	}
+
+	&--music {
+		background: $color-science-blue;
+	}
+
+	&--ui-ux {
+		background: $color-la-palma;
+	}
+
+	&--webdev {
+		background: $color-corn;
+	}
+
+	&--miscellaneous {
+		background: $color-black;
+	}
 }

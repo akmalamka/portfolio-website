@@ -2,13 +2,81 @@
 }
 
 .blog__header__wrapper {
+	display: flex;
 }
 
 .blog__header__media {
+	height: 72rem;
+	position: relative;
+	width: 72rem;
 }
 
 .blog__header__media__image {
+	@extend %cover;
+
+	object-fit: cover;
 }
 
-.blog__title {
+.blog__header__title__wrapper {
+	color: $color-white;
+	display: flex;
+	flex-direction: column;
+	height: 72rem;
+	justify-content: center;
+	padding-left: 6rem;
+	width: 72rem;
+	&--cook {
+		background: $color-grenadier;
+	}
+
+	&--music {
+		background: $color-science-blue;
+	}
+
+	&--ui-ux {
+		background: $color-la-palma;
+	}
+
+	&--webdev {
+		background: $color-corn;
+	}
+
+	&--miscellaneous {
+		background: $color-black;
+	}
+}
+
+.blog__header__title {
+	@extend %title-72;
+
+	font-weight: 400;
+	margin-top: auto;
+	text-align: start;
+	padding-bottom: 3rem;
+	width: 100%;
+}
+
+.blog__header__description {
+	@extend %description-24;
+	font-weight: 300;
+	max-width: 58.1rem;
+	text-align: start;
+	width: 100%;
+}
+
+.blog__header__label {
+	margin-top: auto;
+
+	margin-bottom: 2.8rem;
+
+	// position: absolute;
+}
+.blog__header__label__type {
+	@extend %description-16;
+	font-weight: 500;
+	padding-bottom: 1.6rem;
+}
+.blog__header__label__date {
+	@extend %description-16;
+	font-weight: 400;
 }

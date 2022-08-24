@@ -2,10 +2,19 @@
 }
 
 .blog_gallery_wrapper {
+	display: flex;
+	column-gap: 8rem;
 }
 
-.blog__paragraph__media {
+.blog__gallery__media {
+	height: 50.5rem;
+	position: relative;
+	width: 34rem;
 }
 
-.blog__paragraphy__media__image {
+.blog__gallery__media__image {
+	@extend %cover;
+
+	object-fit: cover;
+	position: relative;
 }
