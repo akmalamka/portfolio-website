@@ -3,6 +3,7 @@
 
 	background: $color-spring-wood;
 	display: none;
+	z-index: z('preloader');
 }
 
 .preloader__title__first__name {

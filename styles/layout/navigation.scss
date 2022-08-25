@@ -1,10 +1,21 @@
 .navigation {
-}
+	@extend %cover;
 
-.navigation_wrapper {
+	z-index: z('navigation');
 }
-
+.navigation__link__wrapper {
+	align-items: flex-end;
+	column-gap: 3.2rem;
+	display: flex;
+	left: 3.2rem;
+	position: absolute;
+	top: 2.4rem;
+}
 .navigation__link {
+	@extend %title-20;
+
+	color: $color-black;
+	text-decoration: none;
 }
 
 .navigation_link_icon {
@@ -14,6 +25,9 @@
 }
 
 .navigation__current__job__text {
+	@extend %description-12;
+
+	font-weight: 300;
 }
 
 .navigation__list {
@@ -23,4 +37,19 @@
 }
 
 .navigation__list__link {
+	@extend %title-20;
+
+	color: $color-black;
+	position: absolute;
+	text-decoration: none;
+
+	.navigation__list__item:not(:last-child) & {
+		right: 3.2rem;
+		top: 2.4rem;
+	}
+
+	.navigation__list__item:last-child & {
+		bottom: 2.4rem;
+		right: 3.2rem;
+	}
 }
