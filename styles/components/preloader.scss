@@ -7,7 +7,7 @@
 }
 
 .preloader__title__first__name {
-	@extend %title-490;
+	@extend %title-440;
 
 	left: 0;
 	margin-left: 22rem;
@@ -15,10 +15,14 @@
 	top: 50%;
 	transform: rotate(-90deg) translateX(-50%);
 	transform-origin: top left;
+
+	@include media('<phone') {
+		margin-left: 6rem;
+	}
 }
 
 .preloader__title__last__name {
-	@extend %title-490;
+	@extend %title-440;
 
 	margin-right: 22rem;
 	right: 0;
@@ -27,6 +31,10 @@
 	top: 50%;
 	transform: rotate(90deg) translateX(50%);
 	transform-origin: top right;
+
+	@include media('<phone') {
+		margin-right: 6rem;
+	}
 }
 
 .preloader__number {
@@ -37,4 +45,10 @@
 	overflow: hidden;
 	position: absolute;
 	transform: translateX(-50%);
+
+	@include media('<phone') {
+		bottom: auto;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
 }

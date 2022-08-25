@@ -32,7 +32,10 @@
 	font-family: $font-graphik;
 	font-size: 3.6rem;
 	font-weight: 300;
-	// line-height: 3.6rem;
+
+	@include media('<phone') {
+		font-size: 1.4rem;
+	}
 }
 
 %description-44 {

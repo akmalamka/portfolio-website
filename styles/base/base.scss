@@ -16,7 +16,7 @@ html {
 	// position: fixed;
 
 	@include media('<phone') {
-		font-size: calc(100vw / 640 * 10);
+		font-size: calc(100vw / 360 * 10);
 	}
 }
 
