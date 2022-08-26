@@ -9,4 +9,8 @@
 	display: flex;
 	flex-direction: column;
 	row-gap: 12rem;
+
+	@include media('<phone') {
+		row-gap: 6rem;
+	}
 }

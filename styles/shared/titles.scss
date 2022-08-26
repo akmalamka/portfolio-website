@@ -22,6 +22,11 @@
 %title-canela-40 {
 	font-family: $font-canela;
 	font-size: 4rem;
+	font-weight: 300;
+
+	@include media('<phone') {
+		font-size: 2rem;
+	}
 }
 
 %title-52 {
@@ -51,11 +56,11 @@
 	font-weight: 700;
 
 	@include media('<phone') {
-		font-size: 4.4rem;
+		font-size: 3rem;
 	}
 }
 
-%title-72 {
+%title-home-72 {
 	font-family: $font-canela;
 	font-size: 7.2rem;
 
@@ -64,9 +69,22 @@
 	}
 }
 
+%title-blog-72 {
+	font-family: $font-canela;
+	font-size: 7.2rem;
+
+	@include media('<phone') {
+		font-size: 3rem;
+	}
+}
+
 %title-80 {
 	font-family: $font-canela;
 	font-size: 8rem;
+
+	@include media('<phone') {
+		font-size: 5.2rem;
+	}
 }
 
 %title-96 {
@@ -81,6 +99,12 @@
 %title-104 {
 	font-family: $font-canela;
 	font-size: 10.4rem;
+	font-weight: 700;
+	text-transform: uppercase;
+
+	@include media('<phone') {
+		font-size: 3rem;
+	}
 }
 
 %title-440 {

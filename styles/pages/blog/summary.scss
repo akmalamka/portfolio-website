@@ -1,10 +1,11 @@
 .blog__summary {
 	max-width: 120rem;
+
+	@include media('<phone') {
+		max-width: 32.8rem;
+	}
 }
 
 .blog__summary_text {
 	@extend %description-blog-summary-24;
-
-	font-weight: 400;
-	line-height: 3rem;
 }

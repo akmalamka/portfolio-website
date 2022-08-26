@@ -2,6 +2,10 @@
 	height: 65.6rem;
 	position: relative;
 	width: 100%;
+
+	@include media('<phone') {
+		height: 32.7rem;
+	}
 }
 
 .blog_gallery_wrapper {
@@ -19,6 +23,11 @@
 	height: 50.5rem;
 	position: relative;
 	width: 34rem;
+
+	@include media('<phone') {
+		height: 28rem;
+		width: 19rem;
+	}
 }
 
 .blog__gallery__media__image {

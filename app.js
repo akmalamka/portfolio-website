@@ -60,18 +60,18 @@ const addSpanHandler = (word, category) => {
 
 const parseDate = (startDate, endDate) => {
 	const monthNames = [
-		'January',
-		'February',
-		'March',
-		'April',
+		'Jan',
+		'Feb',
+		'Mar',
+		'Apr',
 		'May',
-		'June',
-		'July',
-		'August',
-		'September',
-		'October',
-		'November',
-		'December',
+		'Jun',
+		'Jul',
+		'Aug',
+		'Sep',
+		'Oct',
+		'Nov',
+		'Dec',
 	]
 	const startDateMonth = monthNames[prismicH.asDate(startDate).getMonth()]
 	const startDateYear = prismicH.asDate(startDate).getFullYear()

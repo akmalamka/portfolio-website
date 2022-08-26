@@ -10,6 +10,11 @@
 	left: 3.2rem;
 	position: absolute;
 	top: 2.4rem;
+
+	@include media('<phone') {
+		left: 1.6rem;
+		top: 0.8rem;
+	}
 }
 .navigation__link {
 	@extend %title-20;
@@ -49,10 +54,20 @@
 	.navigation__list__item:not(:last-child) & {
 		right: 3.2rem;
 		top: 2.4rem;
+
+		@include media('<phone') {
+			right: 1.6rem;
+			top: 0.8rem;
+		}
 	}
 
 	.navigation__list__item:last-child & {
 		bottom: 2.4rem;
 		right: 3.2rem;
+
+		@include media('<phone') {
+			bottom: 1.6rem;
+			right: 0.8rem;
+		}
 	}
 }

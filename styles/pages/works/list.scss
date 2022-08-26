@@ -24,8 +24,6 @@
 .works__header__title__title {
 	@extend %title-80;
 
-	font-weight: 400;
-
 	display: none;
 	// opacity: 0;
 	&--active {
@@ -66,12 +64,21 @@
 	&--active {
 		display: block;
 	}
+
+	@include media('<phone') {
+		height: 2.4rem;
+		width: 2.4rem;
+	}
 }
 
 .works__gallery {
 	height: 65.6rem;
 	position: relative;
 	z-index: 2;
+
+	@include media('<phone') {
+		height: 37.1rem;
+	}
 }
 .works__gallery__wrapper {
 	// @extend %cover;
@@ -82,6 +89,10 @@
 	position: absolute;
 	top: 29%;
 	transform: translateY(-50%);
+
+	@include media('<phone') {
+		top: 50%;
+	}
 }
 .works__gallery__media__wrapper {
 }
@@ -90,6 +101,11 @@
 	height: 50.5rem;
 	position: relative;
 	width: 34rem;
+
+	@include media('<phone') {
+		height: 27.7rem;
+		width: 18.7rem;
+	}
 }
 
 .works__gallery__media__image {

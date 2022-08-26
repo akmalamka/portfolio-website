@@ -6,7 +6,6 @@
 
 .blog__next__header {
 	@extend %title-canela-40;
-	font-weight: 300;
 
 	text-align: center;
 	text-transform: uppercase;
@@ -23,8 +22,6 @@
 
 .blog__next__description__title {
 	@extend %title-80;
-
-	font-weight: 400;
 }
 
 .blog__next__description__circle {
@@ -49,5 +46,10 @@
 
 	&--miscellaneous {
 		background: $color-black;
+	}
+
+	@include media('<phone') {
+		height: 2.4rem;
+		width: 2.4rem;
 	}
 }
