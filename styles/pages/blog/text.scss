@@ -47,7 +47,7 @@
 }
 
 .blog__paragraph__title {
-	@extend %description-20;
+	@extend %description-blog-20;
 	font-weight: 500;
 	&--right {
 		text-align: end;

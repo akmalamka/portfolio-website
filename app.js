@@ -141,6 +141,11 @@ app.get('/', async (req, res) => {
 	const home = await client.getSingle('home')
 	const works = await client.getAllByType('work')
 
+	// const mediaQuery = window.matchMedia('(min-width: 768px)')
+	// if (mediaQuery) {
+	// 	console.log('aaa')
+	// }
+
 	res.locals.addSpanHandler = addSpanHandler
 
 	let number

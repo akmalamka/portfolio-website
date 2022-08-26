@@ -14,11 +14,8 @@
 }
 
 .about__title {
-	@extend %title-64;
+	@extend %title-about-64;
 
-	font-style: normal;
-	font-weight: 700;
-	line-height: 120%;
 	margin-left: 13.7rem;
 	margin-top: 11.1rem;
 }

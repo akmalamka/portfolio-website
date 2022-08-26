@@ -9,19 +9,21 @@
 	// justify-content: center;
 	// margin-top: 163rem;
 	margin-bottom: 33.9rem;
+
+	@include media('<phone') {
+		margin: 0 4.3rem 21rem 4.3rem;
+		div br {
+			display: none;
+		}
+	}
 }
 
 .home__welcoming__text {
 	@extend %title-graphik-40;
 
-	font-weight: 300;
-	line-height: 7.02rem;
-
 	span {
 		@extend %title-52;
 
 		color: $color-grenadier;
-		font-style: italic;
-		font-weight: 700;
 	}
 }

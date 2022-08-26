@@ -13,14 +13,58 @@
 	font-size: 1.8rem;
 }
 
-%description-20 {
+%description-about-20 {
 	font-family: $font-graphik;
 	font-size: 2rem;
+
+	@include media('<phone') {
+		font-size: 1.4rem;
+	}
 }
 
-%description-24 {
+%description-category-20 {
+	font-family: $font-graphik;
+	font-size: 2rem;
+
+	@include media('<phone') {
+		font-size: 1.2rem;
+	}
+}
+
+%description-blog-20 {
+	font-family: $font-graphik;
+	font-size: 2rem;
+
+	@include media('<phone') {
+		font-size: 1.6rem;
+	}
+}
+
+%description-about-24 {
 	font-family: $font-graphik;
 	font-size: 2.4rem;
+
+	@include media('<phone') {
+		font-size: 1.4rem;
+	}
+}
+
+%description-blog-header-24 {
+	font-family: $font-graphik;
+	font-size: 2.4rem;
+
+	@include media('<phone') {
+		font-size: 1.6rem;
+	}
+}
+
+%description-blog-summary-24 {
+	font-family: $font-graphik;
+	font-size: 2.4rem;
+
+	@include media('<phone') {
+		font-size: 1.8rem;
+	}
 }
 
 %description-28 {
@@ -41,6 +85,9 @@
 %description-44 {
 	font-family: $font-graphik;
 	font-size: 4.4rem;
-	font-style: normal;
 	font-weight: 300;
+
+	@include media('<phone') {
+		font-size: 2.4rem;
+	}
 }

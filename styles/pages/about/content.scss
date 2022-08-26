@@ -7,21 +7,39 @@
 	position: relative;
 	row-gap: 72rem;
 
-	div {
+	div figure {
 		position: relative;
 	}
 	div:nth-child(1) {
+		// @include media('<phone') {
+		// 	height: 29.3rem;
+		// 	width: 22.3rem;
+		// }
 		figure {
-			img {
-				// @extend %cover;
+			height: 43.1rem;
+			// margin-right: 22.5rem;
+			// margin-top: -15.6rem;
+			// position: absolute;
+			// right: 0;
+			// top: 0;
+			width: 32.8rem;
 
-				height: 43.1rem;
-				margin-right: 22.5rem;
-				margin-top: -15.6rem;
-				position: absolute;
-				right: 0;
-				top: 0;
-				width: 32.8rem;
+			@include media('<phone') {
+				height: 29.3rem;
+				width: 22.3rem;
+			}
+			img {
+				@extend %cover;
+
+				object-fit: cover;
+
+				// height: 43.1rem;
+				// margin-right: 22.5rem;
+				// margin-top: -15.6rem;
+				// position: absolute;
+				// right: 0;
+				// top: 0;
+				// width: 32.8rem;
 			}
 		}
 	}
@@ -38,6 +56,11 @@
 				position: absolute;
 				top: 0;
 				width: 45.6rem;
+
+				@include media('<phone') {
+					height: 24.7rem;
+					width: 23.7rem;
+				}
 			}
 		}
 	}
@@ -54,6 +77,11 @@
 				right: 0;
 				top: 0;
 				width: 32.3rem;
+
+				@include media('<phone') {
+					height: 20.1rem;
+					width: 21.2rem;
+				}
 			}
 		}
 	}
@@ -80,7 +108,7 @@
 }
 
 .about__content__title {
-	@extend %description-20;
+	@extend %description-about-20;
 
 	font-style: normal;
 	font-weight: 600;
@@ -88,13 +116,12 @@
 }
 
 .about__content__description {
-	@extend %description-24;
+	@extend %description-about-24;
 
 	font-style: normal;
 	font-weight: 300;
 	line-height: 130%;
 	letter-spacing: 0.025rem;
-	// margin-left: 6rem;
 	z-index: 2;
 }
 

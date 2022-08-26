@@ -31,14 +31,13 @@
 }
 
 .works__category__title {
-	@extend %title-64;
+	@extend %title-category-64;
 
-	font-weight: 700;
 	text-transform: uppercase;
 }
 
 .works__category__link__text {
-	@extend %description-20;
+	@extend %description-category-20;
 
 	align-self: flex-end;
 	color: $color-white;

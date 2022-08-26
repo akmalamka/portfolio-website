@@ -22,6 +22,9 @@
 }
 
 .navigation__current__job__wrapper {
+	@include media('<phone') {
+		display: none;
+	}
 }
 
 .navigation__current__job__text {
