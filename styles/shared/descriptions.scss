@@ -1,6 +1,10 @@
 %description-12 {
 	font-family: $font-graphik;
 	font-size: 1.2rem;
+
+	@include media('<phone') {
+		font-size: 1rem;
+	}
 }
 
 %description-16 {
@@ -100,12 +104,24 @@
 	}
 }
 
-%description-44 {
+%description-home-44 {
 	font-family: $font-graphik;
 	font-size: 4.4rem;
 	font-weight: 300;
 
 	@include media('<phone') {
 		font-size: 2.4rem;
+	}
+}
+
+%description-about-44 {
+	font-family: $font-graphik;
+	font-size: 4.4rem;
+	font-weight: 300;
+	line-height: 9rem;
+
+	@include media('<phone') {
+		font-size: 1.2rem;
+		line-height: 3.2rem;
 	}
 }
