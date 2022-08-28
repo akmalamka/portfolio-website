@@ -1,10 +1,9 @@
-nav.navigation
+nav.navigation(class=`navigation--${navbar.data.route === 'blog' ? 'white' : ''}`)
 	.navigation__link__wrapper
 		a.navigation__link(href='/')
 			|	Muhammad Akmal 
-		//- svg.navigation_link_icon 
 
-		.navigation__current__job__wrapper
+		.navigation__current__job__wrapper(class=`navigation__current__job__wrapper--${navbar.data.route === 'works' || navbar.data.route === 'blog' ? 'hide' : ''}`)
 			p.navigation__current__job__text=navbar.data.current_job
 
 	ul.navigation__list
@@ -13,4 +12,4 @@ nav.navigation
 		li.navigation__list__item 
 			a.navigation__list__link(href='/about') About
 		li.navigation__list__item 
-			a.navigation__list__link(href=`mailto:${navbar.data.email}`) Say Hello
+			a.navigation__list__link(href=`mailto:${navbar.data.email}`) Get In Touch

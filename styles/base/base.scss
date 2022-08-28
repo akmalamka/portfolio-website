@@ -23,6 +23,12 @@ html {
 body {
 }
 
+a {
+	color: inherit;
+	outline: none;
+	text-decoration: none;
+}
+
 button {
 	background: none;
 	border: none;

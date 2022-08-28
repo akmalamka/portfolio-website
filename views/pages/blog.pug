@@ -25,8 +25,8 @@ block content
         if section.slice_type == 'text_section'
           section.blog__paragraph 
             .blog__paragraph__wrapper(class=`blog__paragraph__wrapper--${section.primary.section_alignment.toLowerCase()}`)
-              figure.blog__paragraph__media(class=`blog__paragraph__media--${isEmpty(section.primary.section_image) ? 'no-image' : ''} ${section.primary.section_alignment.toLowerCase() === 'bottom'? 'blog__paragraph__media--bottom' : ''}`)
-                img.blog__paragraphy__media__image(alt=section.primary.section_image.alt src=section.primary.section_image.url)
+              figure.blog__paragraph__media(class=`blog__paragraph__media--${isEmpty(section.primary.section_image) ? 'no-image' : ''} blog__paragraph__media--${section.primary.section_alignment.toLowerCase()}`)
+                img.blog__paragraph__media__image(alt=section.primary.section_image.alt src=section.primary.section_image.url)
               .blog__paragraph__title__wrapper
                 .blog__paragraph__title(class=`blog__paragraph__title--${section.primary.section_alignment.toLowerCase()}`)=section.primary.section_title
                 .blog__paragraph__text(class=`blog__paragraph__text--${section.primary.section_alignment.toLowerCase()} 
