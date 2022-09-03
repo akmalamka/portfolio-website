@@ -29,5 +29,4 @@ block content
           each category, index in categories
             .works__category__title__wrapper(class=`${index === 0 ? 'works__category__title__wrapper--active' : ''}`)
               .works__category__title(class=`${index === 0 ? 'works__category__title--active' : ''}`)=category.data.type
-              //- a.works__category__link__text(class=`${category.data.link_text ? 'works__category__link__text--active' : ''}` href=category.data.link_url.url target="_blank")=category.data.link_text
               a.works__category__link__text(class=`${index === 0 ? 'works__category__link__text--active' : ''}` href=category.data.link_url.url target="_blank")=category.data.link_text

@@ -1,16 +1,13 @@
 .works__header {
-	// @extend %cover;
 }
 
 .works__header__wrapper {
-	// @extend %cover;
 	margin-top: 10.2rem;
 }
 
 .works__header__title__wrapper {
 	align-items: center;
 	column-gap: 3.4rem;
-	// display: flex;
 	width: max-content;
 
 	&--inactive {
@@ -25,10 +22,8 @@
 	@extend %title-80;
 
 	display: none;
-	// opacity: 0;
 	&--active {
 		display: flex;
-		// opacity: 1;
 	}
 }
 
@@ -36,7 +31,6 @@
 	border-radius: 50%;
 	height: 4.6rem;
 	width: 4.6rem;
-	// display: none;
 	&--cook {
 		background: $color-grenadier;
 	}
@@ -81,8 +75,6 @@
 	}
 }
 .works__gallery__wrapper {
-	// @extend %cover;
-
 	align-items: center;
 	column-gap: 3.4rem;
 	display: flex;

@@ -85,11 +85,12 @@ const parseDate = (startDate, endDate) => {
 	}
 	return `${startDateMonth} ${startDateYear} - ${endDateMonth} ${endDateYear}`
 }
-const handleRequest = async () => {
+const handleRequest = async (page) => {
 	const meta = await client.getSingle('meta')
 	const navbar = await client.getSingle('navbar')
 	const preloader = await client.getSingle('preloader')
 
+	navbar.data.route = page
 	return {
 		meta,
 		navbar,
@@ -137,14 +138,9 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
 app.get('/', async (req, res) => {
-	const defaults = await handleRequest()
+	const defaults = await handleRequest('home')
 	const home = await client.getSingle('home')
 	const works = await client.getAllByType('work')
-
-	// const mediaQuery = window.matchMedia('(min-width: 768px)')
-	// if (mediaQuery) {
-	// 	console.log('aaa')
-	// }
 
 	res.locals.addSpanHandler = addSpanHandler
 
@@ -165,7 +161,7 @@ app.get('/', async (req, res) => {
 
 app.get('/about', async (req, res) => {
 	const about = await client.getSingle('about')
-	const defaults = await handleRequest()
+	const defaults = await handleRequest('about')
 
 	res.render('pages/about', {
 		...defaults,
@@ -180,7 +176,7 @@ app.get('/works', async (req, res) => {
 			direction: 'asc',
 		},
 	})
-	const defaults = await handleRequest()
+	const defaults = await handleRequest('works')
 	const works = await client.getAllByType('work')
 
 	res.render('pages/works', {
@@ -194,7 +190,7 @@ app.get('/works/:uid', async (req, res) => {
 	const blog = await client.getByUID('blog', req.params.uid, {
 		fetchLinks: ['work.title', 'work.image', 'work.category'],
 	})
-	const defaults = await handleRequest()
+	const defaults = await handleRequest('blog')
 
 	res.locals.parseDate = parseDate
 	res.locals.isEmpty = isEmpty

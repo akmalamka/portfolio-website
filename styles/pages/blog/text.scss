@@ -42,7 +42,6 @@
 
 	&--bottom {
 		height: 43rem;
-		position: relative;
 		width: 87.5rem;
 	}
 	&--no-image {
@@ -55,11 +54,10 @@
 	}
 }
 
-.blog__paragraphy__media__image {
+.blog__paragraph__media__image {
 	@extend %cover;
 
 	object-fit: cover;
-	position: relative;
 }
 
 .blog__paragraph__title__wrapper {
@@ -87,14 +85,6 @@
 	&--no-image {
 		max-width: 105rem;
 	}
-
-	// &--right {
-	// 	text-align: end;
-	// }
-
-	// &--left {
-	// 	text-align: start;
-	// }
 
 	&--no-title {
 		margin-top: none;
