@@ -1,0 +1,128 @@
+%description-12 {
+	font-family: $font-graphik;
+	font-size: 1.2rem;
+
+	@include media('<phone') {
+		font-size: 1rem;
+	}
+}
+
+%description-16 {
+	font-family: $font-graphik;
+	font-size: 1.6rem;
+
+	@include media('<phone') {
+		font-size: 1.2rem;
+	}
+}
+
+%description-18 {
+	font-family: $font-graphik;
+	font-size: 1.8rem;
+	line-height: 1.4;
+
+	@include media('<phone') {
+		font-size: 1.4rem;
+	}
+}
+
+%description-about-20 {
+	font-family: $font-graphik;
+	font-size: 2rem;
+
+	@include media('<phone') {
+		font-size: 1.4rem;
+	}
+}
+
+%description-category-20 {
+	font-family: $font-graphik;
+	font-size: 2rem;
+
+	@include media('<phone') {
+		font-size: 1.2rem;
+	}
+}
+
+%description-blog-20 {
+	font-family: $font-graphik;
+	font-size: 2rem;
+
+	@include media('<phone') {
+		font-size: 1.6rem;
+	}
+}
+
+%description-about-24 {
+	font-family: $font-graphik;
+	font-size: 2.4rem;
+	line-height: 1.3;
+
+	@include media('<phone') {
+		font-size: 1.4rem;
+	}
+}
+
+%description-blog-header-24 {
+	font-family: $font-graphik;
+	font-size: 2.4rem;
+	font-weight: 300;
+
+	@include media('<phone') {
+		font-size: 1.6rem;
+		line-height: 1.1;
+	}
+}
+
+%description-blog-summary-24 {
+	font-family: $font-graphik;
+	font-size: 2.4rem;
+	line-height: 1.3;
+
+	@include media('<phone') {
+		font-size: 1.8rem;
+		line-height: 1.4;
+	}
+}
+
+%description-28 {
+	font-family: $font-canela;
+	font-size: 2.8rem;
+	line-height: 1.3;
+
+	@include media('<phone') {
+		font-size: 2rem;
+	}
+}
+
+%description-36 {
+	font-family: $font-graphik;
+	font-size: 3.6rem;
+	font-weight: 300;
+
+	@include media('<phone') {
+		font-size: 1.4rem;
+	}
+}
+
+%description-home-44 {
+	font-family: $font-graphik;
+	font-size: 4.4rem;
+	font-weight: 300;
+
+	@include media('<phone') {
+		font-size: 2.4rem;
+	}
+}
+
+%description-about-44 {
+	font-family: $font-graphik;
+	font-size: 4.4rem;
+	font-weight: 300;
+	line-height: 9rem;
+
+	@include media('<phone') {
+		font-size: 1.2rem;
+		line-height: 3.2rem;
+	}
+}

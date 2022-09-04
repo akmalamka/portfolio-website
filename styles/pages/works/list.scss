@@ -1,0 +1,103 @@
+.works__header {
+}
+
+.works__header__wrapper {
+	margin-top: 10.2rem;
+}
+
+.works__header__title__wrapper {
+	align-items: center;
+	column-gap: 3.4rem;
+	width: max-content;
+
+	&--inactive {
+		display: none;
+	}
+
+	&--active {
+		display: flex;
+	}
+}
+.works__header__title__title {
+	@extend %title-80;
+
+	display: none;
+	&--active {
+		display: flex;
+	}
+}
+
+.works__header__title__circle {
+	border-radius: 50%;
+	height: 4.6rem;
+	width: 4.6rem;
+	&--cook {
+		background: $color-grenadier;
+	}
+
+	&--music {
+		background: $color-science-blue;
+	}
+
+	&--ui-ux {
+		background: $color-la-palma;
+	}
+
+	&--webdev {
+		background: $color-corn;
+	}
+
+	&--miscellaneous {
+		background: $color-black;
+	}
+
+	&--inactive {
+		display: none;
+	}
+
+	&--active {
+		display: block;
+	}
+
+	@include media('<phone') {
+		height: 2.4rem;
+		width: 2.4rem;
+	}
+}
+
+.works__gallery {
+	height: 65.6rem;
+	position: relative;
+	z-index: 2;
+
+	@include media('<phone') {
+		height: 37.1rem;
+	}
+}
+.works__gallery__wrapper {
+	@extend %gallery__wrapper;
+	column-gap: 3.4rem;
+	top: 29%;
+
+	@include media('<phone') {
+		top: 50%;
+	}
+}
+.works__gallery__media__wrapper {
+}
+
+.works__gallery__media {
+	height: 50.5rem;
+	position: relative;
+	width: 34rem;
+
+	@include media('<phone') {
+		height: 27.7rem;
+		width: 18.7rem;
+	}
+}
+
+.works__gallery__media__image {
+	@extend %cover;
+	object-fit: cover;
+}

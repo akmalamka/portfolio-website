@@ -1,0 +1,40 @@
+*,
+*:after,
+*:before {
+	box-sizing: border-box;
+	user-select: none;
+}
+
+html {
+	@extend %cover;
+
+	background: $color-spring-wood;
+	color: $color-black;
+	font-size: calc(100vw / 1440 * 10);
+	line-height: 1;
+
+	@include media('<phone') {
+		font-size: calc(100vw / 360 * 10);
+	}
+}
+
+body {
+}
+
+a {
+	color: inherit;
+	outline: none;
+	text-decoration: none;
+}
+
+button {
+	background: none;
+	border: none;
+	color: inherit;
+	cursor: pointer;
+	outline: none;
+}
+
+img {
+	vertical-align: middle;
+}

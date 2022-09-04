@@ -1,0 +1,119 @@
+%title-20 {
+	font-family: $font-canela;
+	font-size: 2rem;
+
+	@include media('<phone') {
+		font-size: 1.6rem;
+	}
+}
+
+%title-graphik-40 {
+	font-family: $font-graphik;
+	font-size: 4rem;
+	font-weight: 300;
+	line-height: 7.02rem;
+
+	@include media('<phone') {
+		font-size: 2rem;
+		line-height: 4.2rem;
+	}
+}
+
+%title-canela-40 {
+	font-family: $font-canela;
+	font-size: 4rem;
+	font-weight: 300;
+
+	@include media('<phone') {
+		font-size: 2rem;
+	}
+}
+
+%title-52 {
+	font-family: $font-canela;
+	font-size: 5.2rem;
+	font-style: italic;
+	font-weight: 700;
+
+	@include media('<phone') {
+		font-size: 3.5rem;
+	}
+}
+
+%title-about-64 {
+	font-family: $font-canela;
+	font-size: 6.4rem;
+	font-weight: 700;
+
+	@include media('<phone') {
+		font-size: 3rem;
+	}
+}
+
+%title-category-64 {
+	font-family: $font-canela;
+	font-size: 6.4rem;
+	font-weight: 700;
+
+	@include media('<phone') {
+		font-size: 3rem;
+	}
+}
+
+%title-home-72 {
+	font-family: $font-canela;
+	font-size: 7.2rem;
+
+	@include media('<phone') {
+		font-size: 4.5rem;
+	}
+}
+
+%title-blog-72 {
+	font-family: $font-canela;
+	font-size: 7.2rem;
+
+	@include media('<phone') {
+		font-size: 3rem;
+	}
+}
+
+%title-80 {
+	font-family: $font-canela;
+	font-size: 8rem;
+
+	@include media('<phone') {
+		font-size: 5.2rem;
+	}
+}
+
+%title-96 {
+	font-family: $font-canela;
+	font-size: 9.6rem;
+
+	@include media('<phone') {
+		font-size: 6rem;
+	}
+}
+
+%title-104 {
+	font-family: $font-canela;
+	font-size: 10.4rem;
+	font-weight: 700;
+	text-transform: uppercase;
+
+	@include media('<phone') {
+		font-size: 3rem;
+	}
+}
+
+%title-440 {
+	font-family: $font-canela;
+	font-size: 44rem;
+	font-style: normal;
+	font-weight: 400;
+
+	@include media('<phone') {
+		font-size: 7.1rem;
+	}
+}

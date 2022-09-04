@@ -1,0 +1,51 @@
+.home {
+	background: $color-spring-wood;
+	overflow: hidden;
+}
+
+.home__wrapper {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+	row-gap: 36rem;
+
+	@include media('<phone') {
+		row-gap: 32rem;
+	}
+}
+
+.home__title__wrapper {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	margin-top: 22.8rem;
+	width: 100%;
+
+	@include media('<phone') {
+		margin-top: 19.4rem;
+	}
+}
+
+.home__title {
+	@extend %description-home-44;
+
+	padding-left: 22rem;
+	padding-right: 22rem;
+
+	@include media('<phone') {
+		padding-left: 5.2rem;
+		padding-right: 5.2rem;
+	}
+	&--1 {
+		margin-bottom: 4rem;
+		text-align: start;
+	}
+
+	&--2 {
+		margin-top: 4rem;
+		text-align: end;
+	}
+}

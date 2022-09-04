@@ -1,0 +1,54 @@
+.preloader {
+	@extend %cover;
+
+	background: $color-spring-wood;
+	display: none;
+	z-index: z('preloader');
+}
+
+.preloader__title__first__name {
+	@extend %title-440;
+
+	left: 0;
+	margin-left: 22rem;
+	text-transform: uppercase;
+	top: 50%;
+	transform: rotate(-90deg) translateX(-50%);
+	transform-origin: top left;
+
+	@include media('<phone') {
+		margin-left: 6rem;
+	}
+}
+
+.preloader__title__last__name {
+	@extend %title-440;
+
+	margin-right: 22rem;
+	right: 0;
+	text-align: center;
+	text-transform: uppercase;
+	top: 50%;
+	transform: rotate(90deg) translateX(50%);
+	transform-origin: top right;
+
+	@include media('<phone') {
+		margin-right: 6rem;
+	}
+}
+
+.preloader__number {
+	@extend %description-36;
+
+	bottom: 10.2rem;
+	left: 50%;
+	overflow: hidden;
+	position: absolute;
+	transform: translateX(-50%);
+
+	@include media('<phone') {
+		bottom: auto;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+}

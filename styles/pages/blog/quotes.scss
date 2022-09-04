@@ -1,0 +1,16 @@
+.blog__quotes {
+}
+
+.blog__quotes__wrapper {
+}
+
+.blog__quotes__text {
+	@extend %description-28;
+
+	max-width: 100rem;
+	text-align: center;
+
+	@include media('<phone') {
+		max-width: 32.8rem;
+	}
+}

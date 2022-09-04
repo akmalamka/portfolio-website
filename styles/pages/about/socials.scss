@@ -1,0 +1,31 @@
+.about__social {
+	column-gap: 2rem;
+	display: flex;
+	justify-content: center;
+	margin-top: 32.6rem;
+
+	@include media('<phone') {
+		column-gap: 0.8rem;
+		margin-top: 4.8rem;
+	}
+}
+
+.about__social__title {
+	@extend %description-about-44;
+
+	border: 1px solid $color-black;
+	border-radius: 50%;
+	color: $color-black;
+	font-style: normal;
+	font-weight: 300;
+	height: 9rem;
+
+	text-align: center;
+	text-transform: uppercase;
+	width: 9rem;
+
+	@include media('<phone') {
+		height: 3.2rem;
+		width: 3.2rem;
+	}
+}

@@ -1,0 +1,140 @@
+.home__story {
+	margin: 0 4.3rem;
+	position: relative;
+	@include media('<phone') {
+		div br {
+			display: none;
+		}
+	}
+}
+
+.home__story__text {
+	@extend %title-graphik-40;
+
+	position: relative;
+	z-index: 2;
+
+	span {
+		@extend %title-52;
+	}
+	span:nth-of-type(1) {
+		color: $color-grenadier;
+	}
+
+	span:nth-of-type(2),
+	span:nth-of-type(5) {
+		color: $color-science-blue;
+	}
+
+	span:nth-of-type(3) {
+		color: $color-la-palma;
+	}
+
+	span:nth-of-type(4) {
+		color: $color-corn;
+	}
+}
+
+.home__story__media {
+	position: absolute;
+
+	&--cook {
+		height: 15.8rem;
+		right: 0;
+		margin-right: -10.4rem;
+		margin-top: -6.1rem;
+		top: 0;
+		width: 23.8rem;
+
+		@include media('<phone') {
+			height: 6.4rem;
+			margin: -5rem 0 0 0;
+			width: 9.7rem;
+		}
+	}
+
+	&--studio {
+		height: 12.6rem;
+		left: 0;
+		margin-left: -16.8rem;
+		margin-top: 9.7rem;
+		top: 0;
+		width: 18.9rem;
+
+		@include media('<phone') {
+			height: 6.3rem;
+			margin-left: -4rem;
+			margin-top: 4rem;
+			width: 9.5rem;
+		}
+	}
+
+	&--pics {
+		height: 13.7rem;
+		right: 0;
+		margin-right: 21rem;
+		margin-top: 11.5rem;
+		top: 0;
+		width: 20.5rem;
+
+		@include media('<phone') {
+			height: 8.4rem;
+			margin-right: -4rem;
+			margin-top: 10rem;
+			width: 12.6rem;
+		}
+	}
+
+	&--books {
+		height: 22.3rem;
+		left: 0;
+		margin-left: 28.3rem;
+		margin-top: 3rem;
+		top: 0;
+		width: 14.8rem;
+
+		@include media('<phone') {
+			height: 8.2rem;
+			margin-left: -3rem;
+			margin-top: 20rem;
+			width: 5.4rem;
+		}
+	}
+
+	&--cat {
+		bottom: 0;
+		height: 25rem;
+		margin-bottom: -7rem;
+		margin-right: 0.4rem;
+		right: 0;
+		width: 16.7rem;
+
+		@include media('<phone') {
+			height: 13rem;
+			margin-bottom: 7rem;
+			margin-right: -3rem;
+			width: 8.7rem;
+		}
+	}
+
+	&--laptop {
+		bottom: 0;
+		height: 17.3rem;
+		left: 0;
+		margin-bottom: -7rem;
+		margin-left: 31.9rem;
+		width: 12.9rem;
+
+		@include media('<phone') {
+			height: 8.6rem;
+			margin-bottom: -3rem;
+			margin-left: 8rem;
+			width: 6.4rem;
+		}
+	}
+}
+
+.home__story__media__image {
+	@extend %cover;
+	object-fit: cover;
+}

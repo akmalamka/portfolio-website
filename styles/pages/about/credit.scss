@@ -1,0 +1,20 @@
+.about__credit {
+	display: flex;
+	justify-content: center;
+	column-gap: 0.1rem;
+	row-gap: 10rem;
+}
+
+.about__credit__text {
+	@extend %description-12;
+
+	line-height: 1.4;
+	margin-bottom: 19.7rem;
+	margin-top: 3.4rem;
+	text-align: center;
+
+	@include media('<phone') {
+		line-height: 1.2;
+		margin-top: 1.6rem;
+	}
+}

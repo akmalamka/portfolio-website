@@ -6,16 +6,22 @@ block variables
 block content
 	.home
 		.home__wrapper 
-			h1.home__title!=prismicDOM.RichText.asHtml(home.data.title)
-			section.home__personalities 
-				each personality in home.data.personalities 
-					.home__personalities__text!=prismicDOM.RichText.asHtml(personality.personalities_title)
+			.home__title__wrapper
+				.home__title(class='home__title--1')=home.data.title_1
+				section.home__personalities 
+					each personality, index in home.data.personalities 
+						.home__personalities__text__wrapper
+							p.home__personalities__text(class=`home__personalities__text--${personality.personalities_category.toLowerCase()}`)!=personality.personalities_title_1 === 'Wildcard' ? addSpanHandler(personality.personalities_title_1, 'letter') : personality.personalities_title_1
+							p.home__personalities__text!=personality.personalities_title_2
+						figure.home__personalities__images__media 
+							img.home__personalities__images__media__image(alt=workImages[index].alt src=workImages[index].url) 
+				.home__title(class='home__title--2')=home.data.title_2
 			section.home__story 
-				.home__story__text!=prismicDOM.RichText.asHtml(home.data.story)
-				each media in home.data.story_images 
-					figure.home__story__media 
-						img.home__story__media__image(alt=media.story_images_image.alt src=media.story_images_image.url)
+				.home__story__text!=addSpanHandler(home.data.story, 'word')
+				each media in home.data.story_images
+					figure.home__story__media(class=`home__story__media--${media.story_images_category.toLowerCase()}`)
+						img.home__story__media__image( alt=media.story_images_image.alt src=media.story_images_image.url)
 			section.home__welcoming 
-				.home__welcoming__text!=prismicDOM.RichText.asHtml(home.data.welcoming)
+				.home__welcoming__text!=addSpanHandler(home.data.welcoming, 'word')
 				
 				

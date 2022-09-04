@@ -1,6 +1,42 @@
-*,
-*:after,
-*:before {
-	box-sizing: border-box;
-	user-select: none;
-}
+@import './base/reset';
+
+@import './utils/variables';
+@import './utils/functions';
+@import './utils/mixins';
+@import './utils/vendors';
+@import './utils/responsive';
+
+@import './shared/descriptions';
+@import './shared/gallery';
+@import './shared/titles';
+
+@import './base/fonts';
+@import './base/base';
+
+@import './components/preloader';
+@import './components/transition';
+
+@import './layout/navigation';
+
+@import './pages/about/about';
+@import './pages/about/content';
+@import './pages/about/credit';
+@import './pages/about/socials';
+
+@import './pages/blog/blog';
+@import './pages/blog/gallery';
+@import './pages/blog/header';
+@import './pages/blog/next';
+@import './pages/blog/quotes';
+@import './pages/blog/summary';
+@import './pages/blog/text';
+
+@import './pages/home/home';
+@import './pages/home/personalities';
+@import './pages/home/story';
+@import './pages/home/welcoming';
+
+@import './pages/works/category';
+@import './pages/works/list';
+@import './pages/works/opening';
+@import './pages/works/works';

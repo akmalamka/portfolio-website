@@ -1,0 +1,12 @@
+.works {
+	@extend %cover;
+
+	background: $color-spring-wood;
+	overflow: hidden;
+}
+
+.works__wrapper {
+	@extend %cover;
+	display: flex;
+	flex-direction: column;
+}

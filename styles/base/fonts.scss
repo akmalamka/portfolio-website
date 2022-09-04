@@ -1,0 +1,224 @@
+@font-face {
+	font-family: $font-canela;
+	src: url('../fonts/canela-light.woff2') format('woff2'),
+		url('../fonts/canela-light.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-canela;
+	src: url('../fonts/canela-light-italic.woff2') format('woff2'),
+		url('../fonts/canela-light-italic.woff') format('woff');
+	font-weight: 300;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-canela;
+	src: url('../fonts/canela-regular-italic.woff2') format('woff2'),
+		url('../fonts/canela-regular-italic.woff') format('woff');
+	font-weight: normal;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-canela;
+	src: url('../fonts/canela-thin.woff2') format('woff2'),
+		url('../fonts/canela-thin.woff') format('woff');
+	font-weight: 100;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-canela;
+	src: url('../fonts/canela-bold.woff2') format('woff2'),
+		url('../fonts/canela-bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-canela;
+	src: url('../fonts/canela-bold-italic.woff2') format('woff2'),
+		url('../fonts/canela-bold-italic.woff') format('woff');
+	font-weight: bold;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-canela;
+	src: url('../fonts/canela-regular.woff2') format('woff2'),
+		url('../fonts/canela-regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-graphik;
+	src: url('../fonts/graphik-bold.woff2') format('woff2'),
+		url('../fonts/graphik-bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-graphik;
+	src: url('../fonts/graphik-black-italic.woff2') format('woff2'),
+		url('../fonts/graphik-black-italic.woff') format('woff');
+	font-weight: 900;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-graphik;
+	src: url('../fonts/graphik-black.woff2') format('woff2'),
+		url('../fonts/graphik-black.woff') format('woff');
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-graphik;
+	src: url('../fonts/graphik-extralight.woff2') format('woff2'),
+		url('../fonts/graphik-extralight.woff') format('woff');
+	font-weight: 200;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-graphik;
+	src: url('../fonts/graphik-light-italic.woff2') format('woff2'),
+		url('../fonts/graphik-light-italic.woff') format('woff');
+	font-weight: 300;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-graphik;
+	src: url('../fonts/graphik-medium.woff2') format('woff2'),
+		url('../fonts/graphik-medium.woff') format('woff');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-graphik;
+	src: url('../fonts/graphik-light.woff2') format('woff2'),
+		url('../fonts/graphik-light.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-graphik;
+	src: url('../fonts/graphik-extralight-italic.woff2') format('woff2'),
+		url('../fonts/graphik-extralight-italic.woff') format('woff');
+	font-weight: 200;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-graphik;
+	src: url('../fonts/graphik-bold-italic.woff2') format('woff2'),
+		url('../fonts/graphik-bold-italic.woff') format('woff');
+	font-weight: bold;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-graphik;
+	src: url('../fonts/graphik-semibold.woff2') format('woff2'),
+		url('../fonts/graphik-semibold.woff') format('woff');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-graphik;
+	src: url('../fonts/graphik-semibold-italic.woff2') format('woff2'),
+		url('../fonts/graphik-semibold-italic.woff') format('woff');
+	font-weight: 600;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-graphik;
+	src: url('../fonts/graphik-regular.woff2') format('woff2'),
+		url('../fonts/graphik-regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-graphik;
+	src: url('../fonts/graphik-regular-italic.woff2') format('woff2'),
+		url('../fonts/graphik-regular-italic.woff') format('woff');
+	font-weight: normal;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-graphik-super;
+	src: url('../fonts/graphik-super.woff2') format('woff2'),
+		url('../fonts/graphik-super.woff') format('woff');
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-graphik;
+	src: url('../fonts/graphik-medium-italic.woff2') format('woff2'),
+		url('../fonts/graphik-medium-italic.woff') format('woff');
+	font-weight: 500;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-graphik;
+	src: url('../fonts/graphik-thin.woff2') format('woff2'),
+		url('../fonts/graphik-thin.woff') format('woff');
+	font-weight: 100;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-graphik;
+	src: url('../fonts/graphik-thin-italic.woff2') format('woff2'),
+		url('../fonts/graphik-thin-italic.woff') format('woff');
+	font-weight: 100;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: $font-graphik-super;
+	src: url('../fonts/graphik-super-italic.woff2') format('woff2'),
+		url('../fonts/graphik-super-italic.woff') format('woff');
+	font-weight: 900;
+	font-style: italic;
+	font-display: swap;
+}

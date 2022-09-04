@@ -1,0 +1,20 @@
+.home__welcoming {
+	margin-bottom: 33.9rem;
+
+	@include media('<phone') {
+		margin: 0 4.3rem 21rem 4.3rem;
+		div br {
+			display: none;
+		}
+	}
+}
+
+.home__welcoming__text {
+	@extend %title-graphik-40;
+
+	span {
+		@extend %title-52;
+
+		color: $color-grenadier;
+	}
+}

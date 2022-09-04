@@ -1,0 +1,76 @@
+.home__personalities {
+	align-items: center;
+	display: flex;
+	height: 100%;
+	width: max-content;
+}
+.home__personalities__text__wrapper {
+	display: flex;
+	flex-direction: column;
+	row-gap: 0.5rem;
+
+	> :first-child {
+		@extend %title-96;
+
+		width: fit-content;
+	}
+	> :last-child {
+		@extend %title-home-72;
+	}
+}
+.home__personalities__text {
+	text-align: center;
+	margin-right: 2.5rem;
+
+	&--cook {
+		color: $color-grenadier;
+	}
+
+	&--music {
+		color: $color-science-blue;
+	}
+
+	&--ui-ux {
+		color: $color-la-palma;
+	}
+
+	&--webdev {
+		color: $color-corn;
+	}
+
+	&--miscellaneous {
+		color: $color-black;
+	}
+
+	&--wildcard {
+		:nth-child(4n + 1) {
+			color: $color-grenadier;
+		}
+		:nth-child(4n + 2) {
+			color: $color-la-palma;
+		}
+		:nth-child(4n + 3) {
+			color: $color-corn;
+		}
+		:nth-child(4n) {
+			color: $color-science-blue;
+		}
+	}
+}
+
+.home__personalities__images__media {
+	height: 14.4rem;
+	margin-right: 2.5rem;
+	position: relative;
+	width: 9.7rem;
+
+	@include media('<phone') {
+		height: 10.2rem;
+		width: 6.9rem;
+	}
+}
+
+.home__personalities__images__media__image {
+	@extend %cover;
+	object-fit: cover;
+}

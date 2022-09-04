@@ -10,6 +10,8 @@ const prismic = require('@prismicio/client')
 const prismicDOM = require('prismic-dom')
 const prismicH = require('@prismicio/helpers')
 
+const isEmpty = require('lodash/isEmpty')
+
 const fetch = (...args) =>
 	import('node-fetch').then(({ default: fetch }) => fetch(...args))
 
@@ -21,28 +23,74 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(methodOverride())
 app.use(errorHandler())
+app.use(express.static(path.join(__dirname, 'public')))
 
-// const handleLinkResolver = (doc) => {
-// 	if (doc.type === 'blog') {
-// 		return `/works/${doc.uid}`
-// 	}
+const addSpan = (word) => {
+	return `<span>${word}</span>`
+}
+const addSpanHandler = (word, category) => {
+	let newWord = ''
+	if (category === 'letter') {
+		for (i = 0; i < word.length; i++) {
+			newWord += addSpan(word[i])
+		}
+		return newWord
+	} else if (category === 'word') {
+		const category = [
+			'kitchen',
+			'music',
+			'pics',
+			'boooks',
+			'cat',
+			'laptop',
+			'enjoy',
+		]
+		let splittedWord = word.split(' ')
 
-// 	if (doc.type === 'works') {
-// 		return '/works'
-// 	}
+		const result = splittedWord.map((word, index) => {
+			if (category.includes(word)) {
+				return addSpan(splittedWord[index])
+			} else {
+				return splittedWord[index]
+			}
+		})
+		return result.join(' ').replace(/\n /g, '<br>').replace(/\n/g, '<br>')
+	}
+}
 
-// 	if (doc.type === 'about') {
-// 		return '/about'
-// 	}
-
-// 	return '/'
-// }
-
-const handleRequest = async () => {
+const parseDate = (startDate, endDate) => {
+	const monthNames = [
+		'Jan',
+		'Feb',
+		'Mar',
+		'Apr',
+		'May',
+		'Jun',
+		'Jul',
+		'Aug',
+		'Sep',
+		'Oct',
+		'Nov',
+		'Dec',
+	]
+	const startDateMonth = monthNames[prismicH.asDate(startDate).getMonth()]
+	const startDateYear = prismicH.asDate(startDate).getFullYear()
+	const endDateMonth = monthNames[prismicH.asDate(endDate).getMonth()]
+	const endDateYear = prismicH.asDate(endDate).getFullYear()
+	if (startDateYear === endDateYear) {
+		if (startDateMonth === endDateMonth) {
+			return `${endDateMonth} ${endDateYear}`
+		}
+		return `${startDateMonth} - ${endDateMonth} ${endDateYear}`
+	}
+	return `${startDateMonth} ${startDateYear} - ${endDateMonth} ${endDateYear}`
+}
+const handleRequest = async (page) => {
 	const meta = await client.getSingle('meta')
 	const navbar = await client.getSingle('navbar')
 	const preloader = await client.getSingle('preloader')
 
+	navbar.data.route = page
 	return {
 		meta,
 		navbar,
@@ -54,7 +102,7 @@ app.use((req, res, next) => {
 		prismicH,
 	}
 	res.locals.prismicDOM = prismicDOM
-	// res.locals.Link = handleLinkResolver if needed
+
 	next()
 })
 
@@ -90,18 +138,30 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
 app.get('/', async (req, res) => {
-	const defaults = await handleRequest()
+	const defaults = await handleRequest('home')
 	const home = await client.getSingle('home')
+	const works = await client.getAllByType('work')
+
+	res.locals.addSpanHandler = addSpanHandler
+
+	let number
+	let workImages = []
+
+	for (let i = 0; i < home.data.personalities.length; i++) {
+		number = Math.floor(Math.random() * works.length)
+		workImages.push(works[number].data.image)
+	}
 
 	res.render('pages/home', {
 		...defaults,
 		home,
+		workImages,
 	})
 })
 
 app.get('/about', async (req, res) => {
 	const about = await client.getSingle('about')
-	const defaults = await handleRequest()
+	const defaults = await handleRequest('about')
 
 	res.render('pages/about', {
 		...defaults,
@@ -110,8 +170,13 @@ app.get('/about', async (req, res) => {
 })
 
 app.get('/works', async (req, res) => {
-	const categories = await client.getAllByType('category')
-	const defaults = await handleRequest()
+	const categories = await client.getAllByType('category', {
+		orderings: {
+			field: 'my.category.order',
+			direction: 'asc',
+		},
+	})
+	const defaults = await handleRequest('works')
 	const works = await client.getAllByType('work')
 
 	res.render('pages/works', {
@@ -125,20 +190,25 @@ app.get('/works/:uid', async (req, res) => {
 	const blog = await client.getByUID('blog', req.params.uid, {
 		fetchLinks: ['work.title', 'work.image', 'work.category'],
 	})
-	const defaults = await handleRequest()
+	const defaults = await handleRequest('blog')
+
+	res.locals.parseDate = parseDate
+	res.locals.isEmpty = isEmpty
 
 	const { id: blogId } = blog
 
 	const allBlogs = await client.getAllByType('blog', {
-		fetchLinks: 'work.title',
+		fetchLinks: ['work.title', 'work.category'],
 	})
 
 	const blogIndex = allBlogs.findIndex((blog) => blog.id === blogId)
 
+	const next = allBlogs[(blogIndex + 1) % allBlogs.length].data.work
+
 	res.render('pages/blog', {
 		...defaults,
 		blog,
-		next: allBlogs[(blogIndex + 1) % allBlogs.length].data.work,
+		next,
 	})
 })
 

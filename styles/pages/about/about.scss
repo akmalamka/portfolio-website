@@ -1,0 +1,25 @@
+.about {
+	background: $color-spring-wood;
+}
+
+.about__wrapper {
+	display: flex;
+	flex-direction: column;
+
+	margin: 5.1rem 8.3rem 0 8.3rem;
+
+	@include media('<phone') {
+		margin: 7.6rem 1.6rem 0 1.6rem;
+	}
+}
+
+.about__title {
+	@extend %title-about-64;
+
+	margin-left: 13.7rem;
+	margin-top: 11.1rem;
+
+	@include media('<phone') {
+		margin: 2rem 0 0 0;
+	}
+}

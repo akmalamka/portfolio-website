@@ -1,0 +1,104 @@
+.blog__paragraph {
+}
+
+.blog__paragraph__wrapper {
+	display: flex;
+
+	&--bottom {
+		align-items: center;
+		flex-direction: column;
+		row-gap: 10rem;
+
+		@include media('<phone') {
+			row-gap: 3rem;
+		}
+	}
+
+	&--left {
+		column-gap: 10rem;
+		flex-direction: row;
+
+		@include media('<phone') {
+			align-items: center;
+			flex-direction: column;
+			row-gap: 2rem;
+		}
+	}
+
+	&--right {
+		column-gap: 10rem;
+		flex-direction: row-reverse;
+
+		@include media('<phone') {
+			flex-direction: column;
+		}
+	}
+}
+
+.blog__paragraph__media {
+	height: 42.5rem;
+	position: relative;
+	width: 56rem;
+
+	&--bottom {
+		height: 43rem;
+		width: 87.5rem;
+	}
+	&--no-image {
+		display: none;
+	}
+
+	@include media('<phone') {
+		height: 28rem;
+		width: 19rem;
+	}
+}
+
+.blog__paragraph__media__image {
+	@extend %cover;
+
+	object-fit: cover;
+}
+
+.blog__paragraph__title__wrapper {
+}
+
+.blog__paragraph__title {
+	@extend %description-blog-20;
+	font-weight: 500;
+	&--right {
+		text-align: end;
+	}
+
+	&--left {
+		text-align: start;
+	}
+}
+
+.blog__paragraph__text {
+	@extend %description-18;
+	font-weight: 300;
+
+	max-width: 54rem;
+
+	&--bottom,
+	&--no-image {
+		max-width: 105rem;
+	}
+
+	&--no-title {
+		margin-top: none;
+	}
+
+	&--with-title {
+		margin-top: 2.4rem;
+
+		@include media('<phone') {
+			margin-top: 1.6rem;
+		}
+	}
+
+	@include media('<phone') {
+		max-width: 32.8rem;
+	}
+}
