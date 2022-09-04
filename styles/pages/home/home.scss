@@ -22,11 +22,11 @@
 	flex-direction: column;
 	height: 100%;
 	margin-top: 22.8rem;
+	width: 100%;
 
 	@include media('<phone') {
 		margin-top: 19.4rem;
 	}
-	width: 100%;
 }
 
 .home__title {

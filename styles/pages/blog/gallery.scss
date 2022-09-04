@@ -9,12 +9,9 @@
 }
 
 .blog_gallery_wrapper {
-	align-items: center;
+	@extend %gallery__wrapper;
 	column-gap: 8rem;
-	display: flex;
-	position: absolute;
 	top: 50%;
-	transform: translateY(-50%);
 }
 
 .blog__gallery__media {
