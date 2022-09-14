@@ -27,7 +27,6 @@ export default class Page {
 					this.elements[key] = document.querySelector(entry)
 				}
 			}
-			console.log(this.elements[key], entry)
 		})
 	}
 }
