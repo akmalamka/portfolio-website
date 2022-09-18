@@ -15,7 +15,7 @@ block content
                 h2.about__content__title__title=section.section_title
                 .about__content__title__description!=prismicDOM.RichText.asHtml(section.section_description)
               figure.about__content__media 
-                img.about__content__media__image(alt=section.section_image.alt src=section.section_image.url)
+                img.about__content__media__image(alt=section.section_image.alt data-src=section.section_image.url)
       section.about__social 
         each social in about.data.socials 
           a.about__social__title(href=social.socials_link.url target="_blank")=social.socials_title

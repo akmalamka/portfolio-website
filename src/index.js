@@ -12,12 +12,15 @@ class App {
 		this.createContent()
 		this.createPages()
 
+		this.addEventListeners()
 		this.addLinkListeners()
+
+		this.update()
 	}
 
 	createPreloader() {
 		this.preloader = new Preloader()
-		this.preloader.once('completed', this.onPreloaded)
+		this.preloader.once('completed', this.onPreloaded.bind(this))
 	}
 
 	createContent() {
@@ -34,11 +37,18 @@ class App {
 
 		this.page = this.pages[this.template]
 		this.page.create()
-		this.page.show()
 	}
 
+	/**
+	 * Events
+	 */
+
 	onPreloaded() {
-		console.log('preloaded completed')
+		this.preloader.destroy()
+
+		this.onResize()
+
+		this.page.show()
 	}
 
 	async onChange(url) {
@@ -59,13 +69,41 @@ class App {
 			this.content.innerHTML = divContent.innerHTML
 
 			this.page = this.pages[this.template]
+
 			this.page.create()
+
+			this.onResize()
+
 			this.page.show()
 
 			this.addLinkListeners()
 		} else {
 			console.log('error')
 		}
+	}
+
+	onResize() {
+		if (this.page && this.page.onResize) {
+			this.page.onResize()
+		}
+	}
+
+	/**
+	 * Loop
+	 */
+
+	update() {
+		if (this.page && this.page.update) {
+			this.page.update()
+		}
+		this.frame = window.requestAnimationFrame(this.update.bind(this))
+	}
+
+	/**
+	 * Listeners
+	 */
+	addEventListeners() {
+		window.addEventListener('resize', this.onResize.bind(this))
 	}
 
 	addLinkListeners() {

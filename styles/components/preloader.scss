@@ -2,21 +2,23 @@
 	@extend %cover;
 
 	background: $color-spring-wood;
+	height: 100%;
+	// overflow: hidden;
+	// position: fixed;
 	z-index: z('preloader');
 }
 
 .preloader__title__first__name {
 	@extend %title-440;
 
-	left: 0;
 	margin-left: 22rem;
+	text-align: center;
 	text-transform: uppercase;
-	top: 50%;
-	transform: rotate(-90deg) translateX(-50%);
-	transform-origin: top left;
+	transform: rotate(-90deg) translate(70%, -100%);
 
 	@include media('<phone') {
 		margin-left: 6rem;
+		margin-right: 6rem;
 	}
 }
 
@@ -24,14 +26,12 @@
 	@extend %title-440;
 
 	margin-right: 22rem;
-	right: 0;
 	text-align: center;
 	text-transform: uppercase;
-	top: 50%;
-	transform: rotate(90deg) translateX(50%);
-	transform-origin: top right;
+	transform: rotate(90deg) translate(250%, -100%); //desktop: 100
 
 	@include media('<phone') {
+		margin-left: 6rem;
 		margin-right: 6rem;
 	}
 }
@@ -41,7 +41,6 @@
 
 	bottom: 10.2rem;
 	left: 50%;
-	overflow: hidden;
 	position: absolute;
 	transform: translateX(-50%);
 
@@ -50,4 +49,8 @@
 		top: 50%;
 		transform: translate(-50%, -50%);
 	}
+}
+
+.preloader__number__text {
+	display: inline-block;
 }

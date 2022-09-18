@@ -1,8 +1,10 @@
 .works {
-	@extend %cover;
+	@extend %page;
+	// @extend %cover;
 
 	background: $color-spring-wood;
-	overflow: hidden;
+	opacity: 0;
+	// overflow: hidden;
 }
 
 .works__wrapper {

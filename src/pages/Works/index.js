@@ -7,7 +7,12 @@ export default class Works extends Page {
 			id: 'works',
 			element: {
 				navigation: document.querySelector('.navigation'),
+				// wrapper: '.works__wrapper',
 			},
 		})
+	}
+
+	create() {
+		super.create()
 	}
 }

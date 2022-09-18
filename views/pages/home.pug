@@ -14,13 +14,13 @@ block content
 							p.home__personalities__text(class=`home__personalities__text--${personality.personalities_category.toLowerCase()}`)!=personality.personalities_title_1 === 'Wildcard' ? addSpanHandler(personality.personalities_title_1, 'letter') : personality.personalities_title_1
 							p.home__personalities__text!=personality.personalities_title_2
 						figure.home__personalities__images__media 
-							img.home__personalities__images__media__image(alt=workImages[index].alt src=workImages[index].url) 
+							img.home__personalities__images__media__image(alt=workImages[index].alt data-src=workImages[index].url) 
 				.home__title(class='home__title--2')=home.data.title_2
 			section.home__story 
 				.home__story__text!=addSpanHandler(home.data.story, 'word')
 				each media in home.data.story_images
 					figure.home__story__media(class=`home__story__media--${media.story_images_category.toLowerCase()}`)
-						img.home__story__media__image( alt=media.story_images_image.alt src=media.story_images_image.url)
+						img.home__story__media__image( alt=media.story_images_image.alt data-src=media.story_images_image.url)
 			section.home__welcoming 
 				.home__welcoming__text!=addSpanHandler(home.data.welcoming, 'word')
 				

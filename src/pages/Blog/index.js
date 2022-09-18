@@ -7,7 +7,12 @@ export default class Blog extends Page {
 			element: '.blog',
 			elements: {
 				navigation: document.querySelector('.navigation'),
+				wrapper: '.blog__wrapper',
 			},
 		})
+	}
+
+	create() {
+		super.create()
 	}
 }

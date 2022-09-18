@@ -1,14 +1,16 @@
 .blog {
-	@extend %cover;
+	// @extend %cover;
+	@extend %page;
 
 	background: $color-spring-wood;
+	opacity: 0;
 }
 
 .blog__wrapper {
 	align-items: center;
 	display: flex;
 	flex-direction: column;
-	overflow: hidden;
+	// overflow: hidden;
 	row-gap: 12rem;
 
 	@include media('<phone') {
