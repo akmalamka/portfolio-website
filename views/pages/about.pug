@@ -6,18 +6,18 @@ block variables
 block content
   .about
     .about__wrapper
-      h1.about__title=about.data.title
+      h1.about__title(data-animation="title")=about.data.title
       section.about__content
         .about__content__wrapper
           each section in about.data.section
             .about__content__box 
               .about__content__title__wrapper
-                h2.about__content__title__title=section.section_title
-                .about__content__title__description!=prismicDOM.RichText.asHtml(section.section_description)
+                h2.about__content__title__title(data-animation="label")=section.section_title
+                .about__content__title__description!=prismicDOM.RichText.asHtml(section.section_description).replace(/<p>/g, '<p data-animation="paragraph">')
               figure.about__content__media 
                 img.about__content__media__image(alt=section.section_image.alt data-src=section.section_image.url)
       section.about__social 
         each social in about.data.socials 
-          a.about__social__title(href=social.socials_link.url target="_blank")=social.socials_title
+          a.about__social__title(href=social.socials_link.url target="_blank" data-animation="social")=social.socials_title
       section.about__credit 
-        .about__credit__text!=prismicDOM.RichText.asHtml(about.data.credit)
+        .about__credit__text!=prismicDOM.RichText.asHtml(about.data.credit).replace(/<p>/g, '<p data-animation="paragraph">')
