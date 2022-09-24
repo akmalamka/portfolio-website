@@ -6,8 +6,10 @@ import GSAP from 'gsap'
 
 import Label from 'animations/Label'
 import Paragraph from 'animations/Paragraph'
-import Title from 'animations/Title'
 import Social from 'animations/Social'
+import Title from 'animations/Title'
+
+import AsyncLoad from 'classes/AsyncLoad'
 
 export default class Page {
 	constructor({ element, elements, id }) {
@@ -18,6 +20,8 @@ export default class Page {
 			animationsParagraphs: '[data-animation="paragraph"]',
 			animationsSocials: '[data-animation="social"]',
 			animationsTitles: '[data-animation="title"]',
+
+			preloaders: '[data-src]',
 		}
 
 		this.id = id
@@ -59,6 +63,7 @@ export default class Page {
 		})
 
 		this.createAnimations()
+		this.createPreloader()
 	}
 
 	createAnimations() {
@@ -96,6 +101,16 @@ export default class Page {
 		this.animations.push(...this.animationsTitles)
 	}
 
+	createPreloader() {
+		this.preloaders = map(this.elements.preloaders, (element) => {
+			return new AsyncLoad({ element })
+		})
+	}
+
+	/**
+	 * Animations
+	 */
+
 	show() {
 		return new Promise((resolve) => {
 			this.animationIn = GSAP.timeline()
@@ -117,7 +132,7 @@ export default class Page {
 
 	hide() {
 		return new Promise((resolve) => {
-			this.removeEventListeners()
+			this.destroy()
 			this.animateOut = GSAP.timeline()
 			this.animateOut.to(this.element, {
 				autoAlpha: 0,
@@ -125,6 +140,10 @@ export default class Page {
 			})
 		})
 	}
+
+	/**
+	 * Events
+	 */
 
 	onMouseWheel(event) {
 		const { pixelY } = NormalizeWheel(event)
@@ -140,6 +159,10 @@ export default class Page {
 
 		each(this.animations, (animation) => animation.onResize())
 	}
+
+	/**
+	 * Loop
+	 */
 
 	update() {
 		this.scroll.target = GSAP.utils.clamp(
@@ -165,11 +188,22 @@ export default class Page {
 		}
 	}
 
+	/**
+	 * Listeners
+	 */
 	addEventListeners() {
 		window.addEventListener('wheel', this.onMouseWheelEvent)
 	}
 
 	removeEventListeners() {
 		window.removeEventListener('wheel', this.onMouseWheelEvent)
+	}
+
+	/**
+	 * Destroy
+	 */
+	destroy() {
+		// super.destroy()
+		this.removeEventListeners()
 	}
 }

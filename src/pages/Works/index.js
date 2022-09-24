@@ -3,11 +3,11 @@ import Page from 'classes/Page'
 export default class Works extends Page {
 	constructor() {
 		super({
-			element: '.works',
 			id: 'works',
+			element: '.works',
 			element: {
 				navigation: document.querySelector('.navigation'),
-				// wrapper: '.works__wrapper',
+				wrapper: '.works__wrapper',
 			},
 		})
 	}

@@ -1,14 +1,10 @@
 .works {
 	@extend %page;
-	// @extend %cover;
-
-	background: $color-spring-wood;
-	opacity: 0;
-	// overflow: hidden;
+	//TODO make works page visible when transitioning, I think just to implement scroll behavior in the same as both home and about page
 }
 
 .works__wrapper {
-	@extend %cover;
+	// @extend %cover;
 	display: flex;
 	flex-direction: column;
 }

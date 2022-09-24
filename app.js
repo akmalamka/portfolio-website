@@ -5,10 +5,6 @@ const errorHandler = require('errorhandler')
 const express = require('express')
 const logger = require('morgan')
 const methodOverride = require('method-override')
-const path = require('path')
-const prismic = require('@prismicio/client')
-const prismicDOM = require('prismic-dom')
-const prismicH = require('@prismicio/helpers')
 
 const isEmpty = require('lodash/isEmpty')
 
@@ -16,6 +12,7 @@ const fetch = (...args) =>
 	import('node-fetch').then(({ default: fetch }) => fetch(...args))
 
 const app = express()
+const path = require('path')
 const port = 3000
 
 app.use(logger('dev'))
@@ -24,6 +21,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(methodOverride())
 app.use(errorHandler())
 app.use(express.static(path.join(__dirname, 'public')))
+
+const prismic = require('@prismicio/client')
+const prismicDOM = require('prismic-dom')
+const prismicH = require('@prismicio/helpers')
+const UAParser = require('ua-parser-js')
 
 const addSpan = (word) => {
 	return `<span>${word}</span>`
@@ -98,6 +100,11 @@ const handleRequest = async (page) => {
 	}
 }
 app.use((req, res, next) => {
+	const ua = UAParser(req.headers['user-agent'])
+
+	res.locals.isDesktop = ua.device.type === undefined
+	res.locals.isPhone = ua.device.type === 'mobile'
+	res.locals.isTablet = ua.device.type === 'tablet'
 	res.locals.ctx = {
 		prismicH,
 	}
