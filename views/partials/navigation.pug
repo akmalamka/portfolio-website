@@ -8,9 +8,9 @@ nav.navigation
 
 	ul.navigation__list
 		.navigation__list__top__wrapper
-			li.navigation__list__item(class=`navigation__list__item--${navbar.data.route === 'works' ? 'hide' : ''}`)
+			li.navigation__list__item
 				a.navigation__list__link(href='/works') Works
-			li.navigation__list__item(class=`navigation__list__item--${navbar.data.route === 'about' ? 'hide' : ''}`)
+			li.navigation__list__item
 				a.navigation__list__link(href='/about') About
 		li.navigation__list__item 
 			a.navigation__list__link(href=`mailto:${navbar.data.email}`) Get In Touch

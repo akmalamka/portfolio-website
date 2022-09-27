@@ -22,6 +22,8 @@
 
 /*! ../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */
 
+/*! ../utils/location */
+
 /*! ../utils/log.js */
 
 /*! ./CSSPlugin.js */
@@ -372,6 +374,8 @@
 
 /*! utils/colors */
 
+/*! utils/location */
+
 /*! utils/text */
 
 /*! webpack/hot/emitter.js */
@@ -399,6 +403,10 @@
 /*!*****************************!*\
   !*** ./src/utils/colors.js ***!
   \*****************************/
+
+/*!*******************************!*\
+  !*** ./src/utils/location.js ***!
+  \*******************************/
 
 /*!*********************************!*\
   !*** ./src/animations/Label.js ***!

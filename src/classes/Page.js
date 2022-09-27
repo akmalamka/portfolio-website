@@ -10,6 +10,7 @@ import Social from 'animations/Social'
 import Title from 'animations/Title'
 
 import AsyncLoad from 'classes/AsyncLoad'
+import { isHashLocationExist } from 'utils/location'
 
 export default class Page {
 	constructor({ element, elements, id }) {
@@ -83,7 +84,6 @@ export default class Page {
 				return new Paragraph({ element })
 			}
 		)
-
 		this.animations.push(...this.animationsParagraphs)
 
 		//Socials
@@ -114,6 +114,10 @@ export default class Page {
 	show() {
 		return new Promise((resolve) => {
 			this.animationIn = GSAP.timeline()
+			if (isHashLocationExist() && this.id === 'works')
+				this.animationIn.set(this.elements.openingWrapper, {
+					autoAlpha: 0,
+				})
 			this.animationIn.fromTo(
 				this.element,
 				{ autoAlpha: 0 },

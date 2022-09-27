@@ -1,7 +1,7 @@
 .works__opening {
 	@extend %cover;
 
-	display: none;
+	opacity: 1;
 	z-index: 4;
 }
 .works__opening__wrapper {
@@ -34,9 +34,11 @@
 }
 
 .works__opening__title {
+	@extend %link--hidden;
 	@extend %title-104;
 
 	color: $color-white;
+	overflow: inherit;
 	text-align: start;
 	transform: rotate(-90deg) translateX(50%);
 	width: fit-content;

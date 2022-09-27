@@ -14,7 +14,7 @@ block content
               .about__content__title__wrapper
                 h2.about__content__title__title(data-animation="label")=section.section_title
                 .about__content__title__description!=prismicDOM.RichText.asHtml(section.section_description).replace(/<p>/g, '<p data-animation="paragraph">')
-              figure.about__content__media 
+              figure.about__content__media
                 img.about__content__media__image(alt=section.section_image.alt data-src=section.section_image.url)
       section.about__social 
         each social in about.data.socials 

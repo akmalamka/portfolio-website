@@ -8,6 +8,8 @@ import Blog from 'pages/Blog'
 import Home from 'pages/Home'
 import Works from 'pages/Works'
 
+import { mapCategoryTag } from 'utils/location'
+
 class App {
 	constructor() {
 		this.createContent()
@@ -63,7 +65,7 @@ class App {
 		this.page.show()
 	}
 
-	async onChange({ url, push = true }) {
+	async onChange({ url, push = true, isHashExist = false, tag = '' }) {
 		await this.page.hide()
 
 		const request = await window.fetch(url)
@@ -73,7 +75,11 @@ class App {
 			const div = document.createElement('div')
 
 			if (push) {
-				window.history.pushState({}, '', url)
+				if (isHashExist && tag.length > 0) {
+					window.history.pushState({}, '', `/works#${tag}`)
+				} else {
+					window.history.pushState({}, '', url)
+				}
 			}
 			div.innerHTML = html
 
@@ -127,6 +133,7 @@ class App {
 
 	addLinkListeners() {
 		const links = document.querySelectorAll('a')
+		const buttons = document.querySelectorAll('button')
 
 		each(links, (link) => {
 			link.onclick = (event) => {
@@ -135,6 +142,21 @@ class App {
 				const { href } = link
 
 				this.onChange({ url: href })
+			}
+		})
+
+		each(buttons, (button) => {
+			button.onclick = (event) => {
+				if (button.className === 'works__opening__title') {
+					event.preventDefault()
+
+					this.onChange({
+						url: '/works',
+						push: true,
+						isHashExist: true,
+						tag: mapCategoryTag(button.innerText),
+					})
+				}
 			}
 		})
 	}
