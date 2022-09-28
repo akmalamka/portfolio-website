@@ -42,6 +42,7 @@
 }
 
 .works__category__link__text {
+	@extend %link--hidden;
 	@extend %description-category-20;
 
 	align-self: flex-end;

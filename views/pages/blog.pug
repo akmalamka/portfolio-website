@@ -11,13 +11,13 @@ block content
           figure.blog__header__media 
             img.blog__header__media__image(alt=blog.data.work.data.image.alt data-src=blog.data.work.data.image.url)
           .blog__header__title__wrapper(class=`blog__header__title__wrapper--${blog.data.work.data.category.uid.toLowerCase()}`)
-            h1.blog__header__title=blog.data.work.data.title
-            .blog__header__description=blog.data.description
+            h1.blog__header__title(data-animation="title")=blog.data.work.data.title
+            .blog__header__description(data-animation="label")=blog.data.description
             .blog__header__label 
-              .blog__header__label__type=blog.data.type
-              .blog__header__label__date=parseDate(blog.data.start_date, blog.data.end_date)
+              .blog__header__label__type(data-animation="label")=blog.data.type
+              .blog__header__label__date(data-animation="label")=parseDate(blog.data.start_date, blog.data.end_date)
       section.blog__summary 
-        .blog__summary_text=prismicDOM.RichText.asText(blog.data.summary)
+        .blog__summary_text!=prismicDOM.RichText.asHtml(blog.data.summary).replace(/<p>/g, '<p data-animation="paragraph">')
 
       each section, index in blog.data.body
         if section.slice_type == 'text_section'
@@ -29,7 +29,7 @@ block content
                 .blog__paragraph__title(class=`blog__paragraph__title--${section.primary.section_alignment.toLowerCase()}`)=section.primary.section_title
                 .blog__paragraph__text(class=`blog__paragraph__text--${section.primary.section_alignment.toLowerCase()} 
                 blog__paragraph__text--${section.primary.section_title === null ? 'no-title' : 'with-title'}
-                blog__paragraph__text--${isEmpty(section.primary.section_image) ? 'no-image' : ''}`)!=prismicDOM.RichText.asHtml(section.primary.section_paragraph)
+                blog__paragraph__text--${isEmpty(section.primary.section_image) ? 'no-image' : ''}`)!=prismicDOM.RichText.asHtml(section.primary.section_paragraph).replace(/<p>/g, '<p data-animation="paragraph">')
 
         if section.slice_type == 'gallery'
           section.blog__gallery 
@@ -41,11 +41,11 @@ block content
         if section.slice_type == 'quotes'
           section.blog__quotes 
             .blog__quotes__wrapper 
-              h3.blog__quotes__text!=prismicDOM.RichText.asHtml(section.primary.quotes_quote)
+              h3.blog__quotes__text!=prismicDOM.RichText.asHtml(section.primary.quotes_quote).replace(/<p>/g, '<p data-animation="paragraph">')
       section.blog__next 
           .blog__next__wrapper
             .blog__next__header='Next'
             .blog__next__description__wrapper
               each line in [0,1,2,3]
-                .blog__next__description__title=next.data.title
+                a.blog__next__description__title(href=`/works/${next.uid}`)=next.data.title
                 .blog__next__description__circle(class=`blog__next__description__circle--${next.data.category.uid.toLowerCase()}`)
