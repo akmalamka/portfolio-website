@@ -21,6 +21,7 @@
 }
 
 .blog__next__description__title {
+	@extend %link--hidden;
 	@extend %title-80;
 }
 
@@ -44,7 +45,7 @@
 		background: $color-corn;
 	}
 
-	&--miscellaneous {
+	&--others {
 		background: $color-black;
 	}
 

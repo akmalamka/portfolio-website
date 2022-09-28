@@ -10,7 +10,7 @@ block content
         .works__opening__wrapper
           each category in categories 
             .works__opening__title__wrapper
-              .works__opening__title=category.data.type
+              button.works__opening__title=category.data.type
       section.works__header 
         .works__header__wrapper
           each work, index in works
@@ -23,7 +23,7 @@ block content
           each work, index in works
             a.works__gallery__media__wrapper(href=work.data.url.url ? work.data.url.url : `/works/${work.uid}` target=work.data.url.url ? '_blank' : '')
               figure.works__gallery__media 
-                img.works__gallery__media__image(alt=work.data.image.alt src=work.data.image.url) 
+                img.works__gallery__media__image(alt=work.data.image.alt data-src=work.data.image.url) 
       section.works__category 
         .works__category__wrapper
           each category, index in categories

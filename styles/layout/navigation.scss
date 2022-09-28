@@ -1,13 +1,8 @@
 .navigation {
 	@extend %cover;
 
-	color: $color-black;
 	pointer-events: none;
 	z-index: z('navigation');
-
-	&--white {
-		color: $color-white;
-	}
 }
 .navigation__link__wrapper {
 	align-items: flex-end;
@@ -25,16 +20,10 @@
 	}
 }
 .navigation__link {
+	@extend %link--hidden;
 	@extend %title-20;
 
 	pointer-events: auto;
-
-	&:hover {
-		opacity: 0.5;
-	}
-}
-
-.navigation_link_icon {
 }
 
 .navigation__current__job__wrapper {
@@ -58,30 +47,22 @@
 }
 
 .navigation__list {
-}
-
-.navigation__list__item {
-	pointer-events: auto;
-}
-
-.navigation__list__link {
-	@extend %title-20;
-
-	color: inherit;
-	position: absolute;
-	text-decoration: none;
-
-	.navigation__list__item:not(:last-child) & {
+	> :first-child {
+		column-gap: 2.4rem;
+		display: flex;
+		position: absolute;
 		right: 3.2rem;
 		top: 2.4rem;
 
 		@include media('<phone') {
+			column-gap: 1.6rem;
 			right: 1.6rem;
 			top: 1.6rem;
 		}
 	}
 
-	.navigation__list__item:last-child & {
+	> :last-child {
+		position: absolute;
 		bottom: 2.4rem;
 		right: 3.2rem;
 
@@ -90,4 +71,23 @@
 			right: 1.6rem;
 		}
 	}
+}
+
+.navigation__list__top__wrapper {
+}
+
+.navigation__list__item {
+	pointer-events: auto;
+
+	&--hide {
+		display: none;
+	}
+}
+
+.navigation__list__link {
+	@extend %link--hidden;
+	@extend %title-20;
+
+	color: inherit;
+	text-decoration: none;
 }

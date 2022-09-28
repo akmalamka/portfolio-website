@@ -12,6 +12,8 @@ html {
 	color: $color-black;
 	font-size: calc(100vw / 1440 * 10);
 	line-height: 1;
+	overflow: hidden;
+	position: fixed;
 
 	@include media('<phone') {
 		font-size: calc(100vw / 360 * 10);
@@ -19,6 +21,8 @@ html {
 }
 
 body {
+	@extend %cover;
+	position: fixed;
 }
 
 a {
@@ -36,5 +40,25 @@ button {
 }
 
 img {
+	opacity: 0;
+	transition: opacity 0.4s ease;
 	vertical-align: middle;
+
+	&.loaded {
+		opacity: 1;
+	}
+}
+
+.content {
+	@extend %cover;
+}
+
+[data-animation='label'],
+[data-animation='paragraph'],
+[data-animation='title'] {
+	span {
+		display: inline-block;
+		overflow: hidden;
+		vertical-align: top;
+	}
 }

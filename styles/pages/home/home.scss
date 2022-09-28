@@ -1,13 +1,11 @@
 .home {
-	background: $color-spring-wood;
-	overflow: hidden;
+	@extend %page;
 }
 
 .home__wrapper {
 	align-items: center;
 	display: flex;
 	flex-direction: column;
-	height: 100%;
 	width: 100%;
 	justify-content: center;
 	row-gap: 36rem;
