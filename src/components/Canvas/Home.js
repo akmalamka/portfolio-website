@@ -11,7 +11,7 @@ export default class {
 
 		this.group = new Transform()
 		this.mediasElements = document.querySelectorAll(
-			'.home__personalities__images__media__image'
+			'.home__gallery__media__image'
 		)
 
 		this.createGeometry()
@@ -73,8 +73,8 @@ export default class {
 	}
 
 	onTouchMove({ x, y }) {
-		const xDistance = (x.start = x.end)
-		const yDistance = (y.start = y.end)
+		const xDistance = x.start - x.end
+		const yDistance = y.start - y.end
 		this.x.target = this.scrollCurrent.x - xDistance
 		this.y.target = this.scrollCurrent.y - yDistance
 	}
