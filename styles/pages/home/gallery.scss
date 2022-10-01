@@ -1,0 +1,23 @@
+.home__gallery {
+	align-items: center;
+	display: flex;
+	height: 100%;
+	width: max-content;
+}
+
+.home__gallery__media {
+	height: 14.4rem;
+	margin-right: 2.5rem;
+	position: relative;
+	width: 9.7rem;
+
+	@include media('<phone') {
+		height: 10.2rem;
+		width: 6.9rem;
+	}
+}
+
+.home__gallery__media__image {
+	@extend %cover;
+	object-fit: cover;
+}

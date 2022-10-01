@@ -8,6 +8,11 @@ block content
 		.home__wrapper 
 			.home__title__wrapper
 				.home__title(class='home__title--1')=home.data.title_1
+				//- TODO : remove gallery
+				section.home__gallery 
+					each personality, index in home.data.personalities 
+						figure.home__gallery__media 
+							img.home__gallery__media__image(alt=workImages[index].alt data-src=workImages[index].url)
 				section.home__personalities 
 					each personality, index in home.data.personalities 
 						.home__personalities__text__wrapper
