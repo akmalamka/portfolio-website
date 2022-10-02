@@ -1,9 +1,11 @@
 import { Camera, Renderer, Transform } from 'ogl'
 
+import Blog from './Blog'
 import Home from './Home'
 
 export default class Canvas {
-	constructor() {
+	constructor({ template }) {
+		this.template = template
 		this.x = {
 			start: 0,
 			distance: 0,
@@ -22,7 +24,7 @@ export default class Canvas {
 
 		this.onResize()
 
-		this.createHome()
+		this.onChangeEnd(this.template)
 	}
 
 	createRenderer() {
@@ -49,9 +51,49 @@ export default class Canvas {
 		this.home = new Home({ gl: this.gl, scene: this.scene, sizes: this.sizes })
 	}
 
+	destroyHome() {
+		if (!this.home) return
+		this.home.destroy()
+		this.home = null
+	}
+
+	createBlog() {
+		this.blog = new Blog({ gl: this.gl, scene: this.scene, sizes: this.sizes })
+	}
+
+	destroyBlog() {
+		if (!this.blog) return
+		this.blog.destroy()
+		this.blog = null
+	}
+
 	/**
 	 * Events
 	 */
+
+	onChangeStart() {
+		if (this.blog) {
+			this.blog.hide()
+		}
+
+		if (this.home) {
+			this.home.hide()
+		}
+	}
+
+	onChangeEnd(template) {
+		if (template === 'blog') {
+			this.createBlog()
+		} else {
+			this.destroyBlog()
+		}
+
+		if (template === 'home') {
+			this.createHome()
+		} else {
+			this.destroyHome()
+		}
+	}
 
 	onResize() {
 		this.renderer.setSize(window.innerWidth, window.innerHeight)
@@ -67,8 +109,13 @@ export default class Canvas {
 			width,
 		}
 
+		const values = { sizes: this.sizes }
+
 		if (this.home) {
-			this.home.onResize({ sizes: this.sizes })
+			this.home.onResize(values)
+		}
+		if (this.blog) {
+			this.blog.onResize(values)
 		}
 	}
 
@@ -78,8 +125,12 @@ export default class Canvas {
 		this.x.start = event.touches ? event.touches[0].clientX : event.clientX
 		this.y.start = event.touches ? event.touches[0].clientY : event.clientY
 
+		const values = { x: this.x, y: this.y }
 		if (this.home) {
-			this.home.onTouchDown({ x: this.x, y: this.y })
+			this.home.onTouchDown(values)
+		}
+		if (this.blog) {
+			this.blog.onTouchDown(values)
 		}
 	}
 
@@ -92,8 +143,12 @@ export default class Canvas {
 		this.x.end = x
 		this.y.end = y
 
+		const values = { x: this.x, y: this.y }
 		if (this.home) {
-			this.home.onTouchMove({ x: this.x, y: this.y })
+			this.home.onTouchMove(values)
+		}
+		if (this.blog) {
+			this.blog.onTouchMove(values)
 		}
 	}
 
@@ -109,8 +164,12 @@ export default class Canvas {
 		this.x.end = x
 		this.y.end = y
 
+		const values = { x: this.x, y: this.y }
 		if (this.home) {
-			this.home.onTouchUp({ x: this.x, y: this.y })
+			this.home.onTouchUp(values)
+		}
+		if (this.blog) {
+			this.blog.onTouchUp(values)
 		}
 	}
 
@@ -127,6 +186,10 @@ export default class Canvas {
 	update() {
 		if (this.home) {
 			this.home.update()
+		}
+
+		if (this.blog) {
+			this.blog.update()
 		}
 
 		this.renderer.render({

@@ -1,7 +1,9 @@
 .blog__gallery {
 	height: 65.6rem;
+	pointer-events: none;
 	position: relative;
 	width: 100%;
+	visibility: hidden;
 
 	@include media('<phone') {
 		height: 32.7rem;

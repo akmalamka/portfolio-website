@@ -1,9 +1,0 @@
-/*! ogl */
-
-/*! shaders/plane-fragment.glsl */
-
-/*! shaders/plane-vertex.glsl */
-
-/*!****************************************!*\
-  !*** ./src/components/Canvas/Media.js ***!
-  \****************************************/

@@ -37,7 +37,7 @@ class App {
 	}
 
 	createCanvas() {
-		this.canvas = new Canvas()
+		this.canvas = new Canvas({ template: this.template })
 	}
 
 	createContent() {
@@ -73,6 +73,8 @@ class App {
 	}
 
 	async onChange({ url, push = true, isHashExist = false, tag = '' }) {
+		this.canvas.onChangeStart(this.template)
+
 		await this.page.hide()
 
 		const request = await window.fetch(url)
@@ -98,6 +100,8 @@ class App {
 
 			this.content.setAttribute('data-template', this.template)
 			this.content.innerHTML = divContent.innerHTML
+
+			this.canvas.onChangeEnd(this.template)
 
 			this.page = this.pages[this.template]
 
