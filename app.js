@@ -183,13 +183,44 @@ app.get('/works', async (req, res) => {
 			direction: 'asc',
 		},
 	})
+
+	const mapCategoriesIntoIndex = (uid) => {
+		switch (uid) {
+			case 'cook':
+				return 0
+			case 'music':
+				return 1
+			case 'ui-ux':
+				return 2
+			case 'webdev':
+				return 3
+			case 'others':
+				return 4
+		}
+	}
+
+	const compareWorks = (a, b) => {
+		if (a.index < b.index) {
+			return -1
+		} else if (a.index > b.index) {
+			return 1
+		}
+		return 0
+	}
 	const defaults = await handleRequest('works')
 	const works = await client.getAllByType('work')
+
+	let worksWithIndex = works.map((work) => ({
+		...work,
+		index: mapCategoriesIntoIndex(work.data.category.uid),
+	}))
+
+	worksWithIndex.sort(compareWorks)
 
 	res.render('pages/works', {
 		...defaults,
 		categories,
-		works,
+		works: worksWithIndex,
 	})
 })
 

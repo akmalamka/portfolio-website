@@ -65,6 +65,7 @@ export default class {
 		this.sizes = event.sizes
 		this.width = (this.bounds.width / window.innerWidth) * this.sizes.width
 		this.scroll.current = this.scroll.target = 0
+		this.scroll.limit = this.bounds.width - this.medias[0].element.clientWidth
 
 		map(this.medias, (media) => media.onResize(event, this.scroll.current))
 	}
@@ -88,21 +89,28 @@ export default class {
 	update(scroll) {
 		if (!this.bounds) return
 
-		const distance = (scroll.current - scroll.target) * 0.05
+		//for distance auto scrolling
+		// const distance = (scroll.current - scroll.target) * 0.05
 		const y = scroll.current / window.innerHeight
+
+		this.scroll.target = GSAP.utils.clamp(
+			-this.scroll.limit,
+			0,
+			this.scroll.target
+		)
 
 		if (this.scroll.current < this.scroll.target) {
 			this.direction = 'right'
 			// for auto scroll
-			this.scroll.velocity = -1
+			// this.scroll.velocity = -1
 		} else if (this.scroll.current > this.scroll.target) {
 			this.direction = 'left'
 			// for auto scroll
-			this.scroll.velocity = 1
+			// this.scroll.velocity = 1
 		}
 		// if we want auto scroll
-		this.scroll.target -= this.scroll.velocity
-		this.scroll.target -= distance
+		// this.scroll.target -= this.scroll.velocity
+		// this.scroll.target -= distance
 
 		this.scroll.current = GSAP.utils.interpolate(
 			this.scroll.current,
@@ -111,19 +119,19 @@ export default class {
 		)
 
 		map(this.medias, (media) => {
-			const scaleX = media.mesh.scale.x / 2 + 0.25
+			// const scaleX = media.mesh.scale.x / 2 + 0.25
 
-			if (this.direction === 'left') {
-				const x = media.mesh.position.x + scaleX
-				if (x < -this.sizes.width / 2) {
-					media.extra += this.width
-				}
-			} else if (this.direction === 'right') {
-				const x = media.mesh.position.x - scaleX
-				if (x > this.sizes.width / 2) {
-					media.extra -= this.width
-				}
-			}
+			// if (this.direction === 'left') {
+			// 	const x = media.mesh.position.x + scaleX
+			// 	if (x < -this.sizes.width / 2) {
+			// 		media.extra += this.width
+			// 	}
+			// } else if (this.direction === 'right') {
+			// 	const x = media.mesh.position.x - scaleX
+			// 	if (x > this.sizes.width / 2) {
+			// 		media.extra -= this.width
+			// 	}
+			// }
 
 			media.update(this.scroll.current)
 		})

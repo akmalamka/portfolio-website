@@ -2,6 +2,7 @@ import { Camera, Renderer, Transform } from 'ogl'
 
 import Blog from './Blog'
 import Home from './Home'
+import Works from './Works'
 
 export default class Canvas {
 	constructor({ template }) {
@@ -47,6 +48,9 @@ export default class Canvas {
 		this.scene = new Transform()
 	}
 
+	/**
+	 * Home
+	 */
 	createHome() {
 		this.home = new Home({ gl: this.gl, scene: this.scene, sizes: this.sizes })
 	}
@@ -57,6 +61,9 @@ export default class Canvas {
 		this.home = null
 	}
 
+	/**
+	 * Blog
+	 */
 	createBlog() {
 		this.blog = new Blog({ gl: this.gl, scene: this.scene, sizes: this.sizes })
 	}
@@ -68,6 +75,23 @@ export default class Canvas {
 	}
 
 	/**
+	 * Works
+	 */
+	createWorks() {
+		this.works = new Works({
+			gl: this.gl,
+			scene: this.scene,
+			sizes: this.sizes,
+		})
+	}
+
+	destroyWorks() {
+		if (!this.works) return
+		this.works.destroy()
+		this.works = null
+	}
+
+	/**
 	 * Events
 	 */
 
@@ -75,9 +99,11 @@ export default class Canvas {
 		if (this.blog) {
 			this.blog.hide()
 		}
-
 		if (this.home) {
 			this.home.hide()
+		}
+		if (this.works) {
+			this.works.hide()
 		}
 	}
 
@@ -92,6 +118,14 @@ export default class Canvas {
 			this.createHome()
 		} else {
 			this.destroyHome()
+		}
+
+		if (template === 'works') {
+			this.gl.canvas.style.zIndex = 1000
+			this.createWorks()
+		} else {
+			this.gl.canvas.style.zIndex = ''
+			this.destroyWorks()
 		}
 	}
 
@@ -111,11 +145,14 @@ export default class Canvas {
 
 		const values = { sizes: this.sizes }
 
+		if (this.blog) {
+			this.blog.onResize(values)
+		}
 		if (this.home) {
 			this.home.onResize(values)
 		}
-		if (this.blog) {
-			this.blog.onResize(values)
+		if (this.works) {
+			this.works.onResize(values)
 		}
 	}
 
@@ -126,11 +163,14 @@ export default class Canvas {
 		this.y.start = event.touches ? event.touches[0].clientY : event.clientY
 
 		const values = { x: this.x, y: this.y }
+		if (this.blog) {
+			this.blog.onTouchDown(values)
+		}
 		if (this.home) {
 			this.home.onTouchDown(values)
 		}
-		if (this.blog) {
-			this.blog.onTouchDown(values)
+		if (this.works) {
+			this.works.onTouchDown(values)
 		}
 	}
 
@@ -144,11 +184,14 @@ export default class Canvas {
 		this.y.end = y
 
 		const values = { x: this.x, y: this.y }
+		if (this.blog) {
+			this.blog.onTouchMove(values)
+		}
 		if (this.home) {
 			this.home.onTouchMove(values)
 		}
-		if (this.blog) {
-			this.blog.onTouchMove(values)
+		if (this.works) {
+			this.works.onTouchMove(values)
 		}
 	}
 
@@ -165,17 +208,23 @@ export default class Canvas {
 		this.y.end = y
 
 		const values = { x: this.x, y: this.y }
+		if (this.blog) {
+			this.blog.onTouchUp(values)
+		}
 		if (this.home) {
 			this.home.onTouchUp(values)
 		}
-		if (this.blog) {
-			this.blog.onTouchUp(values)
+		if (this.works) {
+			this.works.onTouchUp(values)
 		}
 	}
 
 	onWheel(event) {
 		if (this.home) {
 			this.home.onWheel(event)
+		}
+		if (this.works) {
+			this.works.onWheel(event)
 		}
 	}
 
@@ -184,12 +233,14 @@ export default class Canvas {
 	 */
 
 	update(scroll) {
+		if (this.blog) {
+			this.blog.update(scroll)
+		}
 		if (this.home) {
 			this.home.update()
 		}
-
-		if (this.blog) {
-			this.blog.update(scroll)
+		if (this.works) {
+			this.works.update()
 		}
 
 		this.renderer.render({

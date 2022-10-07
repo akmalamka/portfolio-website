@@ -1,8 +1,6 @@
 %gallery__wrapper {
 	align-items: center;
-	// column-gap: 8rem;
 	display: flex;
 	position: absolute;
-	// top: 50%;
-	transform: translateY(-50%);
+	transform: translate(-34rem * 0.5, -50%);
 }

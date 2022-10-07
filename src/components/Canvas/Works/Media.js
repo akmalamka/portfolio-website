@@ -7,7 +7,6 @@ import vertex from 'shaders/plane-vertex.glsl'
 export default class {
 	constructor({ element, geometry, index, gl, scene, sizes }) {
 		this.element = element
-		this.elementBounds = this.element.getBoundingClientRect()
 		this.geometry = geometry
 		this.index = index
 		this.gl = gl
@@ -27,7 +26,7 @@ export default class {
 	createTexture() {
 		this.texture = new Texture(this.gl)
 
-		const image = this.element.querySelector('img')
+		const image = this.element.querySelector('.works__gallery__media__image')
 
 		this.image = new Image()
 		this.image.crossOrigin = 'anonymous'
@@ -87,78 +86,43 @@ export default class {
 	 * Events
 	 */
 
-	updateRatio() {
-		// const scale = GSAP.utils.mapRange(
-		// 	0,
-		// 	this.sizes.width / 2,
-		// 	-Math.PI / 2,
-		// 	Math.PI / 2,
-		// 	this.mesh.position.x
-		// )
-		// this.mesh.scale.x = Math.abs(Math.cos(scale)) * this.originScaleX
-		// this.mesh.scale.y = Math.abs(Math.cos(scale)) * this.originScaleY
-	}
-
 	onResize(sizes, scroll) {
-		this.extra = 0
+		this.extra = {
+			x: 0,
+			y: 0,
+		}
 
 		this.createBounds(sizes)
-		this.updateX(scroll)
-		this.updateY(0)
+		this.updateX(scroll && scroll.x)
+		this.updateY(scroll && scroll.y)
 	}
 
 	updateScale() {
-		//TODO make sure the scale animations right
 		this.height = this.bounds.height / window.innerHeight
 		this.width = this.bounds.width / window.innerWidth
 
 		this.mesh.scale.x = this.sizes.width * this.width
 		this.mesh.scale.y = this.sizes.height * this.height
-
-		// const scale = GSAP.utils.mapRange(
-		// 	0,
-		// 	this.sizes.width / 2,
-		// 	1,
-		// 	0,
-		// 	Math.abs(this.mesh.position.x)
-		// )
-
-		const scale = GSAP.utils.mapRange(
-			0,
-			this.sizes.width / 2,
-			0,
-			Math.PI / 2,
-			Math.abs(this.mesh.position.x)
-		)
-
-		// this.mesh.scale.x += Math.cos(scale)
-		// this.mesh.scale.y += Math.cos(scale)
-
-		// if (!this.originScaleX && !this.originScaleY) {
-		// 	this.originScaleX = this.mesh.scale.x
-		// 	this.originScaleY = this.mesh.scale.y
-		// }
 	}
 
 	updateX(x = 0) {
 		this.x = (this.bounds.left + x) / window.innerWidth
 
-		// TODO: update the position x to be better :)
 		this.mesh.position.x =
 			-this.sizes.width / 2 +
 			this.mesh.scale.x / 2 +
 			this.x * this.sizes.width +
-			this.extra
+			this.extra.x
 	}
 
 	updateY(y = 0) {
 		this.y = (this.bounds.top + y) / window.innerHeight
 
 		this.mesh.position.y =
-			this.sizes.height / 2 - this.mesh.scale.y / 2 - this.y * this.sizes.height
-		// this.mesh.position.y -= Math.abs(
-		// 	Math.sin((this.mesh.position.x / this.sizes.width) * Math.PI)
-		// )
+			this.sizes.height / 2 -
+			this.mesh.scale.y / 2 -
+			this.y * this.sizes.height +
+			this.extra.y
 	}
 
 	/**
@@ -167,9 +131,7 @@ export default class {
 	update(scroll) {
 		if (!this.bounds) return
 
-		// this.updateRatio(this.mesh.scale)
-		this.updateScale()
 		this.updateX(scroll)
-		this.updateY(0)
+		this.updateY()
 	}
 }
