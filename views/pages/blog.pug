@@ -6,22 +6,21 @@ block variables
 block content
   .blog 
     .blog__wrapper 
-      //- TODO: remove every comment here
-      //- section.blog__header
-      //-   .blog__header__wrapper
-      //-     figure.blog__header__media 
-      //-       img.blog__header__media__image(alt=blog.data.work.data.image.alt data-src=blog.data.work.data.image.url)
-      //-     .blog__header__title__wrapper(class=`blog__header__title__wrapper--${blog.data.work.data.category.uid.toLowerCase()}`)
-      //-       h1.blog__header__title(data-animation="title")=blog.data.work.data.title
-      //-       .blog__header__description(data-animation="label")=blog.data.description
-      //-       .blog__header__label 
-      //-         .blog__header__label__type(data-animation="label")=blog.data.type
-      //-         .blog__header__label__date(data-animation="label")=parseDate(blog.data.start_date, blog.data.end_date)
-      //- section.blog__summary 
-      //-   .blog__summary_text!=prismicDOM.RichText.asHtml(blog.data.summary).replace(/<p>/g, '<p data-animation="paragraph">')
-
+      section.blog__header
+        .blog__header__wrapper
+          figure.blog__header__media 
+            img.blog__header__media__image(alt=blog.data.work.data.image.alt data-src=blog.data.work.data.image.url)
+          .blog__header__title__wrapper(class=`blog__header__title__wrapper--${blog.data.work.data.category.uid.toLowerCase()}`)
+            h1.blog__header__title(data-animation="title")=blog.data.work.data.title
+            .blog__header__description(data-animation="label")=blog.data.description
+            .blog__header__label 
+              .blog__header__label__type(data-animation="label")=blog.data.type
+              .blog__header__label__date(data-animation="label")=parseDate(blog.data.start_date, blog.data.end_date)
+      section.blog__summary 
+        .blog__summary_text!=prismicDOM.RichText.asHtml(blog.data.summary).replace(/<p>/g, '<p data-animation="paragraph">')
+        
       each section, index in blog.data.body
-        //- if section.slice_type == 'text_section'
+        if section.slice_type == 'text_section'
           section.blog__paragraph 
             .blog__paragraph__wrapper(class=`blog__paragraph__wrapper--${section.primary.section_alignment.toLowerCase()}`)
               figure.blog__paragraph__media(class=`blog__paragraph__media--${isEmpty(section.primary.section_image) ? 'no-image' : ''} blog__paragraph__media--${section.primary.section_alignment.toLowerCase()}`)

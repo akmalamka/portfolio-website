@@ -12,12 +12,12 @@
 
 .blog_gallery_wrapper {
 	@extend %gallery__wrapper;
-	column-gap: 8rem;
 	top: 50%;
 }
 
 .blog__gallery__media {
 	height: 50.5rem;
+	margin-right: 4rem; //TODO: update regarding the expected margin
 	position: relative;
 	width: 34rem;
 

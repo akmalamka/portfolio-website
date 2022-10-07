@@ -22,6 +22,7 @@ export default class {
 			start: 0,
 			target: 0,
 			lerp: 0.1,
+			velocity: 1,
 		}
 
 		this.createMedias()
@@ -84,14 +85,24 @@ export default class {
 	 * Loop
 	 */
 
-	update() {
+	update(scroll) {
 		if (!this.bounds) return
+
+		const distance = (scroll.current - scroll.target) * 0.05
+		const y = scroll.current / window.innerHeight
 
 		if (this.scroll.current < this.scroll.target) {
 			this.direction = 'right'
+			// for auto scroll
+			this.scroll.velocity = -1
 		} else if (this.scroll.current > this.scroll.target) {
 			this.direction = 'left'
+			// for auto scroll
+			this.scroll.velocity = 1
 		}
+		// if we want auto scroll
+		this.scroll.target -= this.scroll.velocity
+		this.scroll.target -= distance
 
 		this.scroll.current = GSAP.utils.interpolate(
 			this.scroll.current,
@@ -100,7 +111,7 @@ export default class {
 		)
 
 		map(this.medias, (media) => {
-			const scaleX = media.mesh.scale.x / 2
+			const scaleX = media.mesh.scale.x / 2 + 0.25
 
 			if (this.direction === 'left') {
 				const x = media.mesh.position.x + scaleX
@@ -116,6 +127,7 @@ export default class {
 
 			media.update(this.scroll.current)
 		})
+		this.group.position.y = y * this.sizes.height
 	}
 
 	/**

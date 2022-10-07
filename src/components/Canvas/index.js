@@ -183,13 +183,13 @@ export default class Canvas {
 	 * Loop
 	 */
 
-	update() {
+	update(scroll) {
 		if (this.home) {
 			this.home.update()
 		}
 
 		if (this.blog) {
-			this.blog.update()
+			this.blog.update(scroll)
 		}
 
 		this.renderer.render({
