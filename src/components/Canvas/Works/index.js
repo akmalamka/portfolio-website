@@ -46,6 +46,12 @@ export default class {
 			velocity: 1,
 		}
 
+		this.speed = {
+			current: 0,
+			target: 0,
+			lerp: 0.1,
+		}
+
 		this.createGeometry()
 		this.createGallery()
 
@@ -55,7 +61,10 @@ export default class {
 	}
 
 	createGeometry() {
-		this.geometry = new Plane(this.gl)
+		this.geometry = new Plane(this.gl, {
+			heightSegments: 20,
+			widthSegments: 20,
+		})
 	}
 
 	createGallery() {
@@ -116,7 +125,7 @@ export default class {
 	/**
 	 * Changed
 	 */
-	onChange({ index, prevIndex }) {
+	onChange(index) {
 		this.index = index
 
 		const selectedCategory = parseInt(
@@ -151,6 +160,14 @@ export default class {
 
 	update() {
 		if (!this.bounds) return
+
+		this.speed.target = (this.scroll.target - this.scroll.current) * 0.01
+
+		this.speed.current = GSAP.utils.interpolate(
+			this.speed.current,
+			this.speed.target,
+			this.speed.lerp
+		)
 
 		this.scroll.target = GSAP.utils.clamp(
 			-this.scroll.limit,
@@ -192,7 +209,7 @@ export default class {
 			// 	}
 			// }
 
-			media.update(this.scroll.current)
+			media.update(this.scroll.current, this.speed.current)
 		})
 
 		const index = Math.floor(
@@ -200,7 +217,7 @@ export default class {
 		)
 
 		if (this.index !== index) {
-			this.onChange({ index, prevIndex: this.index ?? 0 })
+			this.onChange(index)
 		}
 	}
 

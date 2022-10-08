@@ -1,8 +1,8 @@
 import { Mesh, Program } from 'ogl'
 import GSAP from 'gsap'
 
-import fragment from 'shaders/plane-fragment.glsl'
-import vertex from 'shaders/plane-vertex.glsl'
+import fragment from 'shaders/works-fragment.glsl'
+import vertex from 'shaders/works-vertex.glsl'
 
 export default class {
 	constructor({ element, geometry, index, gl, scene, sizes }) {
@@ -33,7 +33,12 @@ export default class {
 		this.program = new Program(this.gl, {
 			fragment,
 			vertex,
-			uniforms: { uAlpha: { value: 0 }, tMap: { value: this.texture } },
+			uniforms: {
+				uAlpha: { value: 0 },
+				uSpeed: { value: 0 },
+				uViewportSizes: { value: [this.sizes.width, this.sizes.height] },
+				tMap: { value: this.texture },
+			},
 		})
 	}
 
@@ -123,10 +128,12 @@ export default class {
 	/**
 	 * Loop
 	 */
-	update(scroll) {
+	update(scroll, speed) {
 		if (!this.bounds) return
 
 		this.updateX(scroll)
 		this.updateY()
+
+		this.program.uniforms.uSpeed.value = speed
 	}
 }
