@@ -1,4 +1,4 @@
-import { Mesh, Program, Texture } from 'ogl'
+import { Mesh, Program } from 'ogl'
 import GSAP from 'gsap'
 
 import fragment from 'shaders/plane-fragment.glsl'
@@ -24,12 +24,9 @@ export default class {
 	}
 
 	createTexture() {
-		this.texture = new Texture(this.gl)
+		const image = this.element
 
-		this.image = new Image()
-		this.image.crossOrigin = 'anonymous'
-		this.image.src = this.element.getAttribute('data-src')
-		this.image.onload = (_) => (this.texture.image = this.image)
+		this.texture = window.TEXTURES[image.getAttribute('data-src')]
 	}
 
 	createProgram() {
