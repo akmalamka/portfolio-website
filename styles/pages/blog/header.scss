@@ -12,6 +12,7 @@
 .blog__header__media {
 	height: 72rem;
 	position: relative;
+	visibility: hidden; //TODO: update when needed
 	width: 72rem;
 
 	@include media('<phone') {

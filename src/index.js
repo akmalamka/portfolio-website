@@ -75,11 +75,10 @@ class App {
 	}
 
 	async onChange({ url, push = true, isHashExist = false, tag = '' }) {
-		this.canvas.onChangeStart(this.template)
+		this.canvas.onChangeStart(this.template, url)
 
 		await this.page.hide()
 
-		console.log({ url })
 		const request = await window.fetch(url)
 
 		if (request.status === 200) {

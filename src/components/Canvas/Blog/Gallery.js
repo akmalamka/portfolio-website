@@ -26,6 +26,7 @@ export default class {
 		}
 
 		this.createMedias()
+		this.onResize({ sizes: this.sizes })
 
 		this.group.setParent(this.scene)
 	}
@@ -87,8 +88,6 @@ export default class {
 	 */
 
 	update(scroll) {
-		if (!this.bounds) return
-
 		//for distance auto scrolling
 		// const distance = (scroll.current - scroll.target) * 0.05
 		const y = scroll.current / window.innerHeight

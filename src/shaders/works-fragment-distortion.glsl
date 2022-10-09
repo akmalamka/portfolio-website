@@ -3,7 +3,6 @@ precision highp float;
 uniform float uAlpha;
 uniform sampler2D tMap;
 
-varying vec4 vPosition;
 varying vec2 vUv;
 
 void main() {

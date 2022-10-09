@@ -6,10 +6,12 @@ import Prefix from 'prefix'
 import Media from './Media'
 
 export default class {
-	constructor({ gl, scene, sizes }) {
+	constructor({ gl, scene, sizes, transition }) {
+		this.id = 'works'
 		this.gl = gl
 		this.scene = scene
 		this.sizes = sizes
+		this.transition = transition
 
 		this.group = new Transform()
 
@@ -54,6 +56,7 @@ export default class {
 
 		this.createGeometry()
 		this.createGallery()
+		this.onResize({ sizes: this.sizes })
 
 		this.group.setParent(this.scene)
 
@@ -84,6 +87,11 @@ export default class {
 	 * Animations
 	 */
 	show() {
+		if (this.transition) {
+			this.transition.animate(this.medias[0], (_) => {
+				this.program.uniforms.uAlpha = 1
+			})
+		}
 		map(this.medias, (media) => media.show())
 	}
 
@@ -159,8 +167,6 @@ export default class {
 	 */
 
 	update() {
-		if (!this.bounds) return
-
 		this.speed.target = (this.scroll.target - this.scroll.current) * 0.01
 
 		this.speed.current = GSAP.utils.interpolate(
@@ -193,6 +199,18 @@ export default class {
 
 		this.scroll.last = this.scroll.current
 
+		const index = Math.floor(
+			Math.abs(
+				(this.scroll.current - this.medias[0].bounds.width / 2) /
+					this.scroll.limit
+			) *
+				(this.medias.length - 1)
+		)
+
+		if (this.index !== index) {
+			this.onChange(index)
+		}
+
 		map(this.medias, (media) => {
 			//TODO :  this is for infinite scrolling
 			// const scaleX = media.mesh.scale.x / 2
@@ -209,16 +227,8 @@ export default class {
 			// 	}
 			// }
 
-			media.update(this.scroll.current, this.speed.current)
+			media.update(this.scroll.current, this.speed.current, this.index)
 		})
-
-		const index = Math.floor(
-			Math.abs(this.scroll.current / this.scroll.limit) * this.medias.length
-		)
-
-		if (this.index !== index) {
-			this.onChange(index)
-		}
 	}
 
 	/**

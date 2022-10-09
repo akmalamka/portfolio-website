@@ -148,7 +148,6 @@ const handleRequest = async (page) => {
 		assets.push(item.data.image.url)
 	})
 
-	console.log(blogs)
 	blogs.forEach((blog) => {
 		blog.data.body.forEach((section) => {
 			if (section.slice_type === 'text_section') {

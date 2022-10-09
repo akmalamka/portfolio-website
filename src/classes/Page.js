@@ -109,21 +109,26 @@ export default class Page {
 	 * Animations
 	 */
 
-	show() {
+	show(animation) {
 		return new Promise((resolve) => {
-			this.animationIn = GSAP.timeline()
-			if (isHashLocationExist() && this.id === 'works')
-				this.animationIn.set(this.elements.openingWrapper, {
-					autoAlpha: 0,
-				})
-			this.animationIn.fromTo(
-				this.element,
-				{ autoAlpha: 0 },
-				{
-					autoAlpha: 1,
-					onComplete: resolve,
-				}
-			)
+			if (animation) {
+				this.animationIn = animation
+			} else {
+				this.animationIn = GSAP.timeline()
+				if (isHashLocationExist() && this.id === 'works')
+					this.animationIn.set(this.elements.openingWrapper, {
+						autoAlpha: 0,
+					})
+				this.animationIn.fromTo(
+					this.element,
+					{ autoAlpha: 0 },
+					{
+						autoAlpha: 1,
+						// onComplete: resolve,
+					}
+				)
+			}
+
 			this.animationIn.call((_) => {
 				this.addEventListeners()
 
@@ -199,7 +204,6 @@ export default class Page {
 	 * Destroy
 	 */
 	destroy() {
-		// super.destroy()
 		this.removeEventListeners()
 	}
 }
