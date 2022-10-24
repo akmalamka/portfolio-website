@@ -64,11 +64,12 @@ export default class {
 	 */
 	show() {
 		map(this.galleries, (gallery) => gallery.show())
+		this.imageHeader.show()
 	}
 
 	hide() {
 		map(this.galleries, (gallery) => gallery.hide())
-		// this.imageHeader.hide()
+		this.imageHeader.hide()
 	}
 
 	/**

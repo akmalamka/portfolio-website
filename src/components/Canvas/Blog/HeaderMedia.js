@@ -67,13 +67,17 @@ export default class {
 			})
 		} else {
 			console.log('not transition')
-			// GSAP.to(this.program.uniforms.uAlpha, {
-			// 	value: 1,
-			// })
+			GSAP.to(this.program.uniforms.uAlpha, {
+				value: 1,
+			})
 		}
 	}
 
-	hide() {}
+	hide() {
+		GSAP.to(this.program.uniforms.uAlpha, {
+			value: 0,
+		})
+	}
 
 	/**
 	 * Events

@@ -4,7 +4,6 @@ import Page from 'classes/Page'
 
 export default class Blog extends Page {
 	constructor() {
-		//TODO: make sure if routing directly to Blog the image header still displaying by changing the uAlpha to 1
 		super({
 			id: 'blog',
 			element: '.blog',
