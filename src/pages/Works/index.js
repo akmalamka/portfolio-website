@@ -45,4 +45,11 @@ export default class Works extends Page {
 			duration: 1,
 		})
 	}
+
+	/**
+	 * Destroy.
+	 */
+	destroy() {
+		super.destroy()
+	}
 }

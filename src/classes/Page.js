@@ -1,6 +1,6 @@
 import each from 'lodash/each'
 import map from 'lodash/map'
-import NormalizeWheel from 'normalize-wheel'
+
 import Prefix from 'prefix'
 import GSAP from 'gsap'
 
@@ -28,8 +28,6 @@ export default class Page {
 		this.id = id
 
 		this.transformPrefix = Prefix('transform')
-
-		this.onMouseWheelEvent = this.onMouseWheel.bind(this)
 	}
 
 	create() {
@@ -111,21 +109,26 @@ export default class Page {
 	 * Animations
 	 */
 
-	show() {
+	show(animation) {
 		return new Promise((resolve) => {
-			this.animationIn = GSAP.timeline()
-			if (isHashLocationExist() && this.id === 'works')
-				this.animationIn.set(this.elements.openingWrapper, {
-					autoAlpha: 0,
-				})
-			this.animationIn.fromTo(
-				this.element,
-				{ autoAlpha: 0 },
-				{
-					autoAlpha: 1,
-					onComplete: resolve,
-				}
-			)
+			if (animation) {
+				this.animationIn = animation
+			} else {
+				this.animationIn = GSAP.timeline()
+				if (isHashLocationExist() && this.id === 'works')
+					this.animationIn.set(this.elements.openingWrapper, {
+						autoAlpha: 0,
+					})
+				this.animationIn.fromTo(
+					this.element,
+					{ autoAlpha: 0 },
+					{
+						autoAlpha: 1,
+						// onComplete: resolve,
+					}
+				)
+			}
+
 			this.animationIn.call((_) => {
 				this.addEventListeners()
 
@@ -149,12 +152,6 @@ export default class Page {
 	 * Events
 	 */
 
-	onMouseWheel(event) {
-		const { pixelY } = NormalizeWheel(event)
-
-		this.scroll.target += pixelY
-	}
-
 	onResize() {
 		if (this.elements.wrapper) {
 			this.scroll.limit =
@@ -162,6 +159,10 @@ export default class Page {
 		}
 
 		each(this.animations, (animation) => animation.onResize())
+	}
+
+	onWheel({ pixelY }) {
+		this.scroll.target += pixelY
 	}
 
 	/**
@@ -195,19 +196,14 @@ export default class Page {
 	/**
 	 * Listeners
 	 */
-	addEventListeners() {
-		window.addEventListener('wheel', this.onMouseWheelEvent)
-	}
+	addEventListeners() {}
 
-	removeEventListeners() {
-		window.removeEventListener('wheel', this.onMouseWheelEvent)
-	}
+	removeEventListeners() {}
 
 	/**
 	 * Destroy
 	 */
 	destroy() {
-		// super.destroy()
 		this.removeEventListeners()
 	}
 }

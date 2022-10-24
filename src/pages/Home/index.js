@@ -15,4 +15,11 @@ export default class Home extends Page {
 	create() {
 		super.create()
 	}
+
+	/**
+	 * Destroy.
+	 */
+	destroy() {
+		super.destroy()
+	}
 }

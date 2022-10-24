@@ -87,16 +87,90 @@ const parseDate = (startDate, endDate) => {
 	}
 	return `${startDateMonth} ${startDateYear} - ${endDateMonth} ${endDateYear}`
 }
+
+const mapCategoriesIntoIndex = (uid) => {
+	switch (uid) {
+		case 'cook':
+			return 0
+		case 'music':
+			return 1
+		case 'ui-ux':
+			return 2
+		case 'webdev':
+			return 3
+		case 'others':
+			return 4
+	}
+}
+
+const compareWorks = (a, b) => {
+	if (a.index < b.index) {
+		return -1
+	} else if (a.index > b.index) {
+		return 1
+	}
+	return 0
+}
+
 const handleRequest = async (page) => {
 	const meta = await client.getSingle('meta')
+
+	const about = await client.getSingle('about')
+	const blogs = await client.getAllByType('blog', {
+		fetchLinks: ['work.title', 'work.image', 'work.category'],
+	})
+	const home = await client.getSingle('home')
 	const navbar = await client.getSingle('navbar')
 	const preloader = await client.getSingle('preloader')
 
+	const works = await client.getAllByType('work')
+
+	let worksWithIndex = works.map((work) => ({
+		...work,
+		index: mapCategoriesIntoIndex(work.data.category.uid),
+	}))
+
+	worksWithIndex.sort(compareWorks)
+
 	navbar.data.route = page
+
+	const assets = []
+
+	about.data.section.forEach((item) => {
+		assets.push(item.section_image.url)
+	})
+
+	home.data.story_images.forEach((item) => {
+		assets.push(item.story_images_image.url)
+	})
+
+	worksWithIndex.forEach((item) => {
+		assets.push(item.data.image.url)
+	})
+
+	blogs.forEach((blog) => {
+		blog.data.body.forEach((section) => {
+			if (section.slice_type === 'text_section') {
+				if (!isEmpty(section.primary.section_image)) {
+					assets.push(section.primary.section_image.url)
+				}
+			} else if (section.slice_type === 'gallery') {
+				section.items.forEach((media) => {
+					assets.push(media.gallery_image.url)
+				})
+			}
+		})
+	})
+
 	return {
+		assets,
 		meta,
+		about,
+		blogs,
+		home,
 		navbar,
 		preloader,
+		works: worksWithIndex,
 	}
 }
 app.use((req, res, next) => {
@@ -146,8 +220,7 @@ app.set('view engine', 'pug')
 
 app.get('/', async (req, res) => {
 	const defaults = await handleRequest('home')
-	const home = await client.getSingle('home')
-	const works = await client.getAllByType('work')
+	const { home, works } = defaults
 
 	res.locals.addSpanHandler = addSpanHandler
 
@@ -161,18 +234,15 @@ app.get('/', async (req, res) => {
 
 	res.render('pages/home', {
 		...defaults,
-		home,
 		workImages,
 	})
 })
 
 app.get('/about', async (req, res) => {
-	const about = await client.getSingle('about')
 	const defaults = await handleRequest('about')
 
 	res.render('pages/about', {
 		...defaults,
-		about,
 	})
 })
 
@@ -183,34 +253,28 @@ app.get('/works', async (req, res) => {
 			direction: 'asc',
 		},
 	})
+
 	const defaults = await handleRequest('works')
-	const works = await client.getAllByType('work')
 
 	res.render('pages/works', {
 		...defaults,
 		categories,
-		works,
 	})
 })
 
 app.get('/works/:uid', async (req, res) => {
-	const blog = await client.getByUID('blog', req.params.uid, {
-		fetchLinks: ['work.title', 'work.image', 'work.category'],
-	})
 	const defaults = await handleRequest('blog')
+	const { blogs } = defaults
+
+	const blog = blogs.find((blog) => blog.uid === req.params.uid)
+	const { id: blogId } = blog
+
+	const blogIndex = blogs.findIndex((blog) => blog.id === blogId)
+
+	const next = blogs[(blogIndex + 1) % blogs.length].data.work
 
 	res.locals.parseDate = parseDate
 	res.locals.isEmpty = isEmpty
-
-	const { id: blogId } = blog
-
-	const allBlogs = await client.getAllByType('blog', {
-		fetchLinks: ['work.title', 'work.category'],
-	})
-
-	const blogIndex = allBlogs.findIndex((blog) => blog.id === blogId)
-
-	const next = allBlogs[(blogIndex + 1) % allBlogs.length].data.work
 
 	res.render('pages/blog', {
 		...defaults,

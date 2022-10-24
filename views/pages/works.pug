@@ -14,19 +14,18 @@ block content
       section.works__header 
         .works__header__wrapper
           each work, index in works
-            .works__header__title__wrapper(class=`works__header__title__wrapper--${index === 0 ? 'active' : 'inactive'}`)
+            .works__header__title__wrapper(class=`works__header__title__wrapper--${index === 0 ? 'active' : ''}`)
               each line in [0,1,2,3]
-                .works__header__title__title(class=`works__header__title__title--${index === 0 ? 'active' : ''}`)=work.data.title
-                .works__header__title__circle(class=`works__header__title__circle--${work.data.category.uid.toLowerCase()} works__list__title__circle--${index === 0 ? 'active' : 'inactive'}`)
+                .works__header__title__title=work.data.title
+                .works__header__title__circle(class=`works__header__title__circle--${work.data.category.uid.toLowerCase()}`)
       section.works__gallery
         .works__gallery__wrapper
           each work, index in works
-            a.works__gallery__media__wrapper(href=work.data.url.url ? work.data.url.url : `/works/${work.uid}` target=work.data.url.url ? '_blank' : '')
-              figure.works__gallery__media 
+            a.works__gallery__link(href=work.data.url.url ? work.data.url.url : `/works/${work.uid}` target=work.data.url.url ? '_blank' : '')
+              figure.works__gallery__media(data-index=work.index)
                 img.works__gallery__media__image(alt=work.data.image.alt data-src=work.data.image.url) 
       section.works__category 
-        .works__category__wrapper
-          each category, index in categories
-            .works__category__title__wrapper(class=`${index === 0 ? 'works__category__title__wrapper--active' : ''}`)
-              .works__category__title(class=`${index === 0 ? 'works__category__title--active' : ''}`)=category.data.type
-              a.works__category__link__text(class=`${index === 0 ? 'works__category__link__text--active' : ''}` href=category.data.link_url.url target="_blank")=category.data.link_text
+        each category, index in categories
+          .works__category__wrapper(class=`${index === 0 ? 'works__category__wrapper--active' : ''}`)
+            .works__category__title=category.data.type
+            a.works__category__link__text(href=category.data.link_url.url target="_blank")=category.data.link_text

@@ -16,4 +16,11 @@ export default class About extends Page {
 	create() {
 		super.create()
 	}
+
+	/**
+	 * Destroy.
+	 */
+	destroy() {
+		super.destroy()
+	}
 }

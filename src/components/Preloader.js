@@ -1,10 +1,10 @@
+import { Texture } from 'ogl'
 import GSAP from 'gsap'
-import each from 'lodash/each'
 
 import Component from 'classes/Component'
 
 export default class Preloader extends Component {
-	constructor() {
+	constructor({ canvas }) {
 		super({
 			element: '.preloader',
 			elements: {
@@ -12,25 +12,40 @@ export default class Preloader extends Component {
 				lastName: '.preloader__title__last__name',
 				number: '.preloader__number',
 				numberText: '.preloader__number__text',
-				images: document.querySelectorAll('img'),
 			},
 		})
+
+		this.canvas = canvas
+
+		window.TEXTURES = {}
 
 		this.length = 0
 		this.createLoader()
 	}
 
 	createLoader() {
-		each(this.elements.images, (element) => {
-			element.src = element.getAttribute('data-src')
-			element.onload = (_) => this.onAssetLoaded(element)
+		window.ASSETS.forEach((image) => {
+			const texture = new Texture(this.canvas.gl, {
+				generateMipmaps: false,
+			})
+
+			const media = new window.Image()
+			media.crossOrigin = 'anonymous'
+			media.src = image
+
+			media.onload = (_) => {
+				texture.image = media
+				this.onAssetLoaded()
+			}
+
+			window.TEXTURES[image] = texture
 		})
 	}
 
 	onAssetLoaded(image) {
 		this.length += 1
 
-		const percent = this.length / this.elements.images.length
+		const percent = this.length / window.ASSETS.length
 
 		this.elements.numberText.innerHTML = `${Math.round(percent * 100)}%`
 
@@ -41,27 +56,41 @@ export default class Preloader extends Component {
 
 	onLoaded() {
 		return new Promise((resolve) => {
+			this.emit('completed')
+
 			this.animateOut = GSAP.timeline({
-				delay: 2,
+				delay: 1,
 			})
 			this.animateOut
 				.to(this.elements.firstName, { y: '1300%', duration: 1 }) //desktop 700 TODO: differentiate between mobile and desktop duration mobile: 6, desktop:9 ,
 				.to(this.elements.lastName, { y: '-500%', duration: 1 }, '-=1') //mobile: 5, desktop 7
 
+			// TODO: update animations for numberText if required
+			// this.animateOut.to(
+			// 	this.elements.numberText,
+			// 	{
+			// 		duration: 1.5,
+			// 		ease: 'expo.out',
+			// 		y: '100%',
+			// 	},
+			// 	'-=1.4'
+			// )
+
 			this.animateOut.to(
 				this.elements.numberText,
 				{
+					autoAlpha: 0,
 					duration: 1.5,
-					ease: 'expo.out',
-					y: '100%',
 				},
 				'-=1.4'
 			)
+
 			this.animateOut.to(this.element, {
 				autoAlpha: 0,
 			})
+
 			this.animateOut.call((_) => {
-				this.emit('completed')
+				this.destroy()
 			})
 		})
 	}

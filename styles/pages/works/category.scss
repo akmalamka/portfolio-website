@@ -1,7 +1,7 @@
 .works__category {
-	position: absolute;
 	bottom: 0;
 	height: 13rem;
+	position: absolute;
 	width: 100%;
 	z-index: 3;
 
@@ -11,27 +11,44 @@
 }
 
 .works__category__wrapper {
-	@extend %center;
-
-	background: $color-corn;
 	color: $color-white;
 	height: 100%;
-	padding-left: 3.2rem;
-	padding-right: 3.2rem;
+	opacity: 0;
+	padding: 3.2rem 3.2rem 0 3.2rem;
+	position: absolute;
+	transition: opacity 0.4s ease;
 	width: 100%;
 
 	@include media('<phone') {
-		padding-left: 1.6rem;
-		padding-right: 1.6rem;
+		padding: 1.6rem 1.6rem 0 1.6rem;
 	}
-}
-
-.works__category__title__wrapper {
-	width: 100%;
-	display: none;
 	&--active {
+		align-items: baseline;
 		display: flex;
 		justify-content: space-between;
+		opacity: 1;
+		transition-delay: 0.4s;
+		z-index: inherit;
+	}
+
+	&--0 {
+		background-color: $color-grenadier;
+	}
+
+	&--1 {
+		background-color: $color-science-blue;
+	}
+
+	&--2 {
+		background-color: $color-la-palma;
+	}
+
+	&--3 {
+		background-color: $color-corn;
+	}
+
+	&--4 {
+		background-color: $color-black;
 	}
 }
 
@@ -45,12 +62,5 @@
 	@extend %link--hidden;
 	@extend %description-category-20;
 
-	align-self: flex-end;
-	color: $color-white;
 	font-weight: 300;
-
-	display: none;
-	&--active {
-		display: block;
-	}
 }

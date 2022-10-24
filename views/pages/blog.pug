@@ -18,7 +18,7 @@ block content
               .blog__header__label__date(data-animation="label")=parseDate(blog.data.start_date, blog.data.end_date)
       section.blog__summary 
         .blog__summary_text!=prismicDOM.RichText.asHtml(blog.data.summary).replace(/<p>/g, '<p data-animation="paragraph">')
-
+        
       each section, index in blog.data.body
         if section.slice_type == 'text_section'
           section.blog__paragraph 

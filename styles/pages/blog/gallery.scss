@@ -1,7 +1,9 @@
 .blog__gallery {
 	height: 65.6rem;
+	pointer-events: none;
 	position: relative;
 	width: 100%;
+	visibility: hidden;
 
 	@include media('<phone') {
 		height: 32.7rem;
@@ -10,14 +12,23 @@
 
 .blog_gallery_wrapper {
 	@extend %gallery__wrapper;
-	column-gap: 8rem;
+	left: 50%;
 	top: 50%;
 }
 
 .blog__gallery__media {
 	height: 50.5rem;
+	// margin-right: 4rem; //TODO: update regarding the expected margin
+	margin: 0 4rem;
 	position: relative;
 	width: 34rem;
+
+	&:first-child {
+		margin-left: 0;
+	}
+	&:last-child {
+		margin-right: 0;
+	}
 
 	@include media('<phone') {
 		height: 28rem;

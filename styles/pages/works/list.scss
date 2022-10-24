@@ -8,23 +8,17 @@
 .works__header__title__wrapper {
 	align-items: center;
 	column-gap: 3.4rem;
+	display: flex;
 	width: max-content;
-
-	&--inactive {
-		display: none;
-	}
+	position: absolute;
+	opacity: 0;
 
 	&--active {
-		display: flex;
+		opacity: 1;
 	}
 }
 .works__header__title__title {
 	@extend %title-80;
-
-	display: none;
-	&--active {
-		display: flex;
-	}
 }
 
 .works__header__title__circle {
@@ -51,14 +45,6 @@
 		background: $color-black;
 	}
 
-	&--inactive {
-		display: none;
-	}
-
-	&--active {
-		display: block;
-	}
-
 	@include media('<phone') {
 		height: 2.4rem;
 		width: 2.4rem;
@@ -67,28 +53,37 @@
 
 .works__gallery {
 	height: 65.6rem;
-	position: relative;
-	z-index: 2;
+	left: 50%;
+	position: absolute;
+	top: 40%; //TODO: update top to be 29%, changed fake button also
+	z-index: 1;
 
 	@include media('<phone') {
 		height: 37.1rem;
-	}
-}
-.works__gallery__wrapper {
-	@extend %gallery__wrapper;
-	column-gap: 3.4rem;
-	top: 29%;
-
-	@include media('<phone') {
 		top: 50%;
 	}
 }
-.works__gallery__media__wrapper {
+
+.works__gallery__wrapper {
+	@extend %gallery__wrapper;
+}
+
+.works__gallery__link {
+	display: block;
+	margin: 0 3.4rem;
+
+	&:first-child {
+		margin-left: 0;
+	}
+	&:last-child {
+		margin-right: 0;
+	}
 }
 
 .works__gallery__media {
 	height: 50.5rem;
 	position: relative;
+	visibility: hidden;
 	width: 34rem;
 
 	@include media('<phone') {
@@ -100,4 +95,5 @@
 .works__gallery__media__image {
 	@extend %cover;
 	object-fit: cover;
+	user-select: none;
 }
