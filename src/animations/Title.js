@@ -26,4 +26,6 @@ export default class Title extends Animation {
 			autoAlpha: 0,
 		})
 	}
+
+	animateRepeat() {}
 }

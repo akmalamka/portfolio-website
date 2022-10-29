@@ -13,6 +13,7 @@ export default class Works extends Page {
 				navigation: document.querySelector('.navigation'),
 				openingWrapper: '.works__opening',
 				wrapper: '.works__wrapper',
+				infiniteGalleryWrapper: '.works__header__wrapper',
 			},
 		})
 	}

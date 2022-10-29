@@ -8,6 +8,9 @@ export default class Home extends Page {
 			elements: {
 				navigation: document.querySelector('.navigation'),
 				wrapper: '.home__wrapper',
+				infiniteGalleryWrapper: document.querySelector(
+					'.home__personalities__wrapper'
+				),
 			},
 		})
 	}

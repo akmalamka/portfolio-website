@@ -59,7 +59,6 @@ export default class {
 	/**
 	 * Animations
 	 */
-
 	show() {
 		GSAP.fromTo(
 			this.program.uniforms.uAlpha,
@@ -81,7 +80,6 @@ export default class {
 	/**
 	 * Events
 	 */
-
 	onResize(sizes, scroll) {
 		this.extra = {
 			x: 0,

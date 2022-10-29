@@ -47,5 +47,5 @@ block content
             .blog__next__header='Next'
             .blog__next__description__wrapper
               each line in [0,1,2,3]
-                a.blog__next__description__title(href=`/works/${next.uid}`)=next.data.title
-                .blog__next__description__circle(class=`blog__next__description__circle--${next.data.category.uid.toLowerCase()}`)
+                a.blog__next__description__title(href=`/works/${next.uid}` data-animation="infinite-gallery")=next.data.title
+                .blog__next__description__circle(class=`blog__next__description__circle--${next.data.category.uid.toLowerCase()}` data-animation="infinite-gallery")

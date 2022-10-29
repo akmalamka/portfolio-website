@@ -10,6 +10,7 @@ export default class Blog extends Page {
 			elements: {
 				navigation: document.querySelector('.navigation'),
 				wrapper: '.blog__wrapper',
+				infiniteGalleryWrapper: '.blog__next__description__wrapper',
 			},
 		})
 	}

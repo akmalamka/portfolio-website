@@ -11,12 +11,14 @@ import Title from 'animations/Title'
 
 import AsyncLoad from 'classes/AsyncLoad'
 import { isHashLocationExist } from 'utils/location'
+import InfiniteGallery from '../animations/InfiniteGallery'
 
 export default class Page {
 	constructor({ element, elements, id }) {
 		this.selector = element
 		this.selectorChildren = {
 			...elements,
+			animationsInfiniteGallery: '[data-animation="infinite-gallery"]',
 			animationsLabels: '[data-animation="label"]',
 			animationsParagraphs: '[data-animation="paragraph"]',
 			animationsSocials: '[data-animation="social"]',
@@ -67,6 +69,21 @@ export default class Page {
 
 	createAnimations() {
 		this.animations = []
+
+		//Infinite Gallery
+		this.animationsInfiniteGallery = map(
+			this.elements.animationsInfiniteGallery,
+			(element) => {
+				return new InfiniteGallery({
+					element,
+					elements: {
+						infiniteGalleryWrapper: this.elements.infiniteGalleryWrapper,
+					},
+				})
+			}
+		)
+
+		this.animations.push(...this.animationsInfiniteGallery)
 
 		//Labels
 		this.animationsLabels = map(this.elements.animationsLabels, (element) => {

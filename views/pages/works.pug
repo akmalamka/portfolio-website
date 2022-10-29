@@ -16,8 +16,8 @@ block content
           each work, index in works
             .works__header__title__wrapper(class=`works__header__title__wrapper--${index === 0 ? 'active' : ''}`)
               each line in [0,1,2,3]
-                .works__header__title__title=work.data.title
-                .works__header__title__circle(class=`works__header__title__circle--${work.data.category.uid.toLowerCase()}`)
+                .works__header__title__title(data-animation="infinite-gallery")=work.data.title
+                .works__header__title__circle(class=`works__header__title__circle--${work.data.category.uid.toLowerCase()}` data-animation="infinite-gallery")
       section.works__gallery
         .works__gallery__wrapper
           each work, index in works

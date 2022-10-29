@@ -1,9 +1,21 @@
 .home__personalities {
+	margin: auto;
+	overflow: hidden;
+}
+
+.home__personalities__wrapper {
 	align-items: center;
 	display: flex;
-	height: 100%;
+	position: absolute;
 	width: max-content;
+	position: relative;
+	// left: -50px;
 }
+
+.home__personalities__item {
+	display: flex;
+}
+
 .home__personalities__text__wrapper {
 	display: flex;
 	flex-direction: column;

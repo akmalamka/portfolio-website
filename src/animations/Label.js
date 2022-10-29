@@ -26,4 +26,6 @@ export default class Label extends Animation {
 			autoAlpha: 0,
 		})
 	}
+
+	animateRepeat() {}
 }
