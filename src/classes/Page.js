@@ -23,7 +23,6 @@ export default class Page {
 			animationsParagraphs: '[data-animation="paragraph"]',
 			animationsSocials: '[data-animation="social"]',
 			animationsTitles: '[data-animation="title"]',
-
 			preloaders: '[data-src]',
 		}
 
@@ -141,7 +140,6 @@ export default class Page {
 					{ autoAlpha: 0 },
 					{
 						autoAlpha: 1,
-						// onComplete: resolve,
 					}
 				)
 			}
@@ -158,6 +156,17 @@ export default class Page {
 		return new Promise((resolve) => {
 			this.destroy()
 			this.animateOut = GSAP.timeline()
+			//TODO update animations to expected behavior
+			if (this.id === 'category') {
+				each(this.elements.titles, (element) => {
+					this.animateOut.to(element, { autoAlpha: 0, duration: 0.75 }, '-=0.5')
+				})
+				this.animateOut.to(this.elements.wrapper, {
+					height: 0,
+					ease: 'ease.out',
+					duration: 1,
+				})
+			}
 			this.animateOut.to(this.element, {
 				autoAlpha: 0,
 				onComplete: resolve,

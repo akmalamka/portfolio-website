@@ -6,12 +6,11 @@ import Prefix from 'prefix'
 import Media from './Media'
 
 export default class {
-	constructor({ gl, scene, sizes, transition }) {
+	constructor({ gl, scene, sizes }) {
 		this.id = 'works'
 		this.gl = gl
 		this.scene = scene
 		this.sizes = sizes
-		this.transition = transition
 
 		this.group = new Transform()
 
@@ -87,11 +86,6 @@ export default class {
 	 * Animations
 	 */
 	show() {
-		if (this.transition) {
-			this.transition.animate(this.medias[0], (_) => {
-				this.program.uniforms.uAlpha = 1
-			})
-		}
 		map(this.medias, (media) => media.show())
 	}
 

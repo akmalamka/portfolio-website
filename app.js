@@ -262,6 +262,22 @@ app.get('/works', async (req, res) => {
 	})
 })
 
+app.get('/category', async (req, res) => {
+	const categories = await client.getAllByType('category', {
+		orderings: {
+			field: 'my.category.order',
+			direction: 'asc',
+		},
+	})
+
+	const defaults = await handleRequest('works')
+
+	res.render('pages/category', {
+		...defaults,
+		categories,
+	})
+})
+
 app.get('/works/:uid', async (req, res) => {
 	const defaults = await handleRequest('blog')
 	const { blogs } = defaults

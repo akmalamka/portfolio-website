@@ -2,25 +2,20 @@ import { Plane, Transform } from 'ogl'
 import map from 'lodash/map'
 
 import Gallery from './Gallery'
-import HeaderMedia from './HeaderMedia'
 
 export default class {
-	constructor({ gl, scene, sizes, transition }) {
+	constructor({ gl, scene, sizes }) {
 		this.id = 'blog'
 		this.gl = gl
 		this.scene = scene
 		this.sizes = sizes
-		this.transition = transition
 
 		this.galleriesGroup = new Transform()
-		this.imageHeaderGroup = new Transform()
 
 		this.createGeometry()
 		this.createGalleries()
-		this.createHeaderMedia()
 
 		this.galleriesGroup.setParent(this.scene)
-		this.imageHeaderGroup.setParent(this.scene)
 
 		this.show()
 	}
@@ -44,32 +39,15 @@ export default class {
 		})
 	}
 
-	createHeaderMedia() {
-		this.imageHeaderElement = document.querySelector(
-			'.blog__header__media__image'
-		)
-
-		this.imageHeader = new HeaderMedia({
-			element: this.imageHeaderElement,
-			geometry: this.geometry,
-			gl: this.gl,
-			scene: this.imageHeaderGroup,
-			sizes: this.sizes,
-			transition: this.transition,
-		})
-	}
-
 	/**
 	 * Animations
 	 */
 	show() {
 		map(this.galleries, (gallery) => gallery.show())
-		this.imageHeader.show()
 	}
 
 	hide() {
 		map(this.galleries, (gallery) => gallery.hide())
-		this.imageHeader.hide()
 	}
 
 	/**
@@ -78,7 +56,6 @@ export default class {
 
 	onResize(event) {
 		map(this.galleries, (gallery) => gallery.onResize(event)) //TODO: add this.scroll to params
-		// this.imageHeader.onResize(event)
 	}
 
 	onTouchDown(event) {
@@ -101,7 +78,6 @@ export default class {
 
 	update(scroll) {
 		map(this.galleries, (gallery) => gallery.update(scroll))
-		this.imageHeader.update(scroll)
 	}
 
 	/**
@@ -109,7 +85,5 @@ export default class {
 	 */
 	destroy() {
 		map(this.galleries, (gallery) => gallery.destroy())
-
-		this.imageHeader.destroy()
 	}
 }

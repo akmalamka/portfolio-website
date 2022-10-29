@@ -7,11 +7,6 @@ export default class InfiniteGallery extends Animation {
 		super({ element, elements })
 
 		this.wrapperWidth = this.elements.infiniteGalleryWrapper.offsetWidth
-
-		console.log({
-			width: this.wrapperWidth,
-			computed: getComputedStyle(this.elements.infiniteGalleryWrapper).width,
-		})
 	}
 
 	animateIn() {
@@ -43,8 +38,6 @@ export default class InfiniteGallery extends Animation {
 
 	animateOut() {
 		if (this.visible) {
-			// console.log('aaa', { element: this.element })
-
 			GSAP.set(this.element, {
 				x: `+=${this.wrapperWidth}`, //move each box 500px to right
 				overwrite: true,

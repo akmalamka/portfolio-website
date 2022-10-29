@@ -1,15 +1,14 @@
-.works__opening {
-	@extend %cover;
-
-	opacity: 1;
-	z-index: 4;
+.category {
+	@extend %page;
 }
-.works__opening__wrapper {
+
+.category__wrapper {
 	@extend %cover;
 	display: flex;
 	flex-direction: row;
 }
-.works__opening__title__wrapper {
+
+.category__title__wrapper {
 	align-items: flex-end;
 	display: flex;
 	height: 100%;
@@ -33,7 +32,7 @@
 	}
 }
 
-.works__opening__title {
+.category__title {
 	@extend %link--hidden;
 	@extend %title-104;
 

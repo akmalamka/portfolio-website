@@ -16,7 +16,6 @@
 @import './base/base';
 
 @import './components/preloader';
-@import './components/transition';
 
 @import './layout/navigation';
 
@@ -33,6 +32,8 @@
 @import './pages/blog/summary';
 @import './pages/blog/text';
 
+@import './pages/category/category';
+
 @import './pages/home/home';
 @import './pages/home/gallery'; //TODO remove gallery
 @import './pages/home/personalities';
@@ -41,5 +42,4 @@
 
 @import './pages/works/category';
 @import './pages/works/list';
-@import './pages/works/opening';
 @import './pages/works/works';
