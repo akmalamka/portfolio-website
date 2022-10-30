@@ -81,14 +81,14 @@
 }
 
 .works__gallery__media {
-	height: 50.5rem;
+	height: 44rem;
 	position: relative;
 	visibility: hidden;
-	width: 34rem;
+	width: 29.6rem;
 
 	@include media('<phone') {
-		height: 27.7rem;
-		width: 18.7rem;
+		height: 36.5rem;
+		width: 24.5rem;
 	}
 }
 

@@ -26,25 +26,21 @@ export default class Navigation extends Component {
 				color: COLOR_WHITE,
 				duration: 1.5,
 			})
-			each(this.elements.items, (element) => {
-				this.timeline.to(element, {
-					autoAlpha: 1,
-					delay: 0.75,
-					duration: 0.75,
-				})
-			})
 		} else {
 			this.timeline.set(this.element, {
 				color: COLOR_BLACK,
 				duration: 1.5,
 			})
-			each(this.elements.items, (element) => {
-				this.timeline.set(element, {
-					autoAlpha: 1,
-					delay: 0.75, //TODO it's for smooth transition in floema because different page has different color, just omit it when unusable
-					duration: 0.75,
-				})
-			})
 		}
+		each(this.elements.items, (element, index) => {
+			this.timeline.set(element, {
+				autoAlpha:
+					(template === 'works' || template === 'category') && index === 2
+						? 0
+						: 1,
+				delay: 0.75, //TODO it's for smooth transition in floema because different page has different color, just omit it when unusable
+				duration: 0.75,
+			})
+		})
 	}
 }
