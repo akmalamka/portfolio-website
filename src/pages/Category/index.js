@@ -8,6 +8,7 @@ export default class Category extends Page {
 			elements: {
 				navigation: document.querySelector('.navigation'),
 				wrapper: '.category__wrapper',
+				titleWrapper: '.category__title__wrapper',
 				titles: '.category__title',
 			},
 		})

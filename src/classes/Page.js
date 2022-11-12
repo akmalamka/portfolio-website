@@ -10,7 +10,6 @@ import Social from 'animations/Social'
 import Title from 'animations/Title'
 
 import AsyncLoad from 'classes/AsyncLoad'
-import { isHashLocationExist } from 'utils/location'
 import InfiniteGallery from '../animations/InfiniteGallery'
 
 export default class Page {
@@ -131,17 +130,45 @@ export default class Page {
 				this.animationIn = animation
 			} else {
 				this.animationIn = GSAP.timeline()
-				if (isHashLocationExist() && this.id === 'works')
-					this.animationIn.set(this.elements.openingWrapper, {
-						autoAlpha: 0,
+				if (this.id === 'category') {
+					this.animationIn.fromTo(
+						this.element,
+						{ autoAlpha: 0 },
+						{
+							autoAlpha: 1,
+						}
+					)
+					each(this.elements.titleWrapper, (element) => {
+						this.animationIn.fromTo(
+							element,
+							{
+								height: 0,
+							},
+							{
+								height: element.offsetHeight,
+								ease: 'ease.out',
+								duration: 0.5,
+							},
+							`>-0.25`
+						)
 					})
-				this.animationIn.fromTo(
-					this.element,
-					{ autoAlpha: 0 },
-					{
-						autoAlpha: 1,
-					}
-				)
+					each(this.elements.titles, (element) => {
+						this.animationIn.fromTo(
+							element,
+							{ autoAlpha: 0 },
+							{ autoAlpha: 1, duration: 0.5 },
+							'>-0.25'
+						)
+					})
+				} else {
+					this.animationIn.fromTo(
+						this.element,
+						{ autoAlpha: 0 },
+						{
+							autoAlpha: 1,
+						}
+					)
+				}
 			}
 
 			this.animationIn.call((_) => {
@@ -161,10 +188,16 @@ export default class Page {
 				each(this.elements.titles, (element) => {
 					this.animateOut.to(element, { autoAlpha: 0, duration: 0.75 }, '-=0.5')
 				})
-				this.animateOut.to(this.elements.wrapper, {
-					height: 0,
-					ease: 'ease.out',
-					duration: 1,
+				each(this.elements.titleWrapper, (element) => {
+					this.animateOut.to(
+						element,
+						{
+							height: 0,
+							ease: 'ease.out',
+							duration: 0.5,
+						},
+						`>-0.25`
+					)
 				})
 			}
 			this.animateOut.to(this.element, {

@@ -12,6 +12,8 @@ export default class Works extends Page {
 				navigation: document.querySelector('.navigation'),
 				wrapper: '.works__wrapper',
 				infiniteGalleryWrapper: '.works__header__wrapper',
+				transition: '.works__transition',
+				transitionWrapper: '.works__transition__title__wrapper',
 			},
 		})
 	}

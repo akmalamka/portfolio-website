@@ -80,10 +80,21 @@ export default class Canvas {
 	 * Works
 	 */
 	createWorks() {
+		const hash = window.location.hash.substring(1)
+		this.mediasElements = document.querySelectorAll('.works__gallery__media')
+
+		let firstIndex
+		this.mediasElements.forEach((element, index) => {
+			if (element.getAttribute('id') === `first-${hash}`) {
+				firstIndex = index
+			}
+		})
+
 		this.works = new Works({
 			gl: this.gl,
 			scene: this.scene,
 			sizes: this.sizes,
+			index: firstIndex,
 		})
 	}
 

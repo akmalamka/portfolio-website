@@ -1,3 +1,49 @@
+.works__transition {
+	@extend %page;
+	z-index: 4;
+}
+
+.works__transition__wrapper {
+	@extend %cover;
+	display: flex;
+	flex-direction: row;
+}
+
+.works__transition__title__wrapper {
+	align-items: flex-end;
+	display: flex;
+	height: 100%;
+	justify-content: center;
+	width: 20%;
+
+	&:nth-child(1) {
+		background-color: $color-grenadier;
+	}
+	&:nth-child(2) {
+		background-color: $color-science-blue;
+	}
+	&:nth-child(3) {
+		background-color: $color-la-palma;
+	}
+	&:nth-child(4) {
+		background-color: $color-corn;
+	}
+	&:nth-child(5) {
+		background-color: $color-black;
+	}
+}
+
+.works__opening__title {
+	@extend %link--hidden;
+	@extend %title-104;
+
+	color: $color-white;
+	overflow: inherit;
+	text-align: start;
+	transform: rotate(-90deg) translateX(50%);
+	width: fit-content;
+}
+
 .works__header {
 }
 

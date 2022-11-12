@@ -254,11 +254,23 @@ app.get('/works', async (req, res) => {
 		},
 	})
 
-	const defaults = await handleRequest('works')
+	const { works, ...rest } = await handleRequest('works')
+
+	const firstIndexInCategoryMap = []
+	let categoryInterator = 0
+	for (let i = 0; i < works.length; i++) {
+		if (works[i].data.category.uid === categories[categoryInterator].uid) {
+			firstIndexInCategoryMap.push(i)
+			categoryInterator += 1
+		}
+	}
+	console.log({ firstIndexInCategoryMap })
 
 	res.render('pages/works', {
-		...defaults,
+		...rest,
 		categories,
+		firstIndexInCategoryMap,
+		works,
 	})
 })
 
