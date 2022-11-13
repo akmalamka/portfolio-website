@@ -27,7 +27,7 @@ export default class {
 		)
 		this.categoriesElementsActive = `${this.categoriesElementsClass}--active`
 
-		this.headerTitleClass = 'works__header__title__wrapper'
+		this.headerTitleClass = 'works__header__title__wrapper__outer'
 		this.headerTitleCircleClass = 'works__header__title__circle'
 		this.headerTitleElements = document.querySelectorAll(
 			`.${this.headerTitleClass}`

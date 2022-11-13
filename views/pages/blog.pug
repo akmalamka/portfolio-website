@@ -30,7 +30,6 @@ block content
                 .blog__paragraph__text(class=`blog__paragraph__text--${section.primary.section_alignment.toLowerCase()} 
                 blog__paragraph__text--${section.primary.section_title === null ? 'no-title' : 'with-title'}
                 blog__paragraph__text--${isEmpty(section.primary.section_image) ? 'no-image' : ''}`)!=prismicDOM.RichText.asHtml(section.primary.section_paragraph).replace(/<p>/g, '<p data-animation="paragraph">')
-
         if section.slice_type == 'gallery'
           section.blog__gallery 
             .blog_gallery_wrapper 
@@ -45,7 +44,9 @@ block content
       section.blog__next 
           .blog__next__wrapper
             .blog__next__header='Next'
-            .blog__next__description__wrapper
-              each line in [0,1,2,3]
-                a.blog__next__description__title(href=`/works/${next.uid}` data-animation="infinite-gallery")=next.data.title
-                .blog__next__description__circle(class=`blog__next__description__circle--${next.data.category.uid.toLowerCase()}` data-animation="infinite-gallery")
+            .blog__next__description__wrapper__outer
+              .blog__next__description__wrapper(data-animation="infinite-marquee")
+                each line in [0,1,2,3,4,5,6]
+                  span.blog__next__description__item
+                    a.blog__next__description__title(href=`/works/${next.uid}`)=next.data.title
+                    .blog__next__description__circle(class=`blog__next__description__circle--${next.data.category.uid.toLowerCase()}`)

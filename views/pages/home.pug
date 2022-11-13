@@ -10,12 +10,16 @@ block content
 				.home__title(class='home__title--1')=home.data.title_1
 				section.home__personalities
 					.home__personalities__wrapper 
-						each personality, index in home.data.personalities
-							.home__personalities__text__wrapper(data-animation="infinite-gallery")
-								p.home__personalities__text(class=`home__personalities__text--${personality.personalities_category.toLowerCase()}`)!=personality.personalities_title_1 === 'Wildcard' ? addSpanHandler(personality.personalities_title_1, 'letter') : personality.personalities_title_1
-								p.home__personalities__text!=personality.personalities_title_2
-							figure.home__personalities__images__media(data-animation="infinite-gallery")
-								img.home__personalities__images__media__image(alt=workImages[index].alt data-src=workImages[index].url) 
+							.home__personalities__item__wrapper__outer 
+								.home__personalities__item__wrapper(data-animation="infinite-marquee")
+									each personality, index in home.data.personalities
+										span.home__personalities__item
+											.home__personalities__text__wrapper
+												p.home__personalities__text(class=`home__personalities__text--${personality.personalities_category.toLowerCase()}`)!=personality.personalities_title_1 === 'Wildcard' ? addSpanHandler(personality.personalities_title_1, 'letter') : personality.personalities_title_1
+												p.home__personalities__text!=personality.personalities_title_2
+										span.home__personalities__item
+											figure.home__personalities__images__media
+												img.home__personalities__images__media__image(alt=workImages[index].alt data-src=workImages[index].url) 
 				.home__title(class='home__title--2')=home.data.title_2
 			section.home__story 
 				.home__story__text!=addSpanHandler(home.data.story, 'word')

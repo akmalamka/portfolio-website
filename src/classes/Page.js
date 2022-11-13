@@ -10,14 +10,14 @@ import Social from 'animations/Social'
 import Title from 'animations/Title'
 
 import AsyncLoad from 'classes/AsyncLoad'
-import InfiniteGallery from '../animations/InfiniteGallery'
+import InfiniteMarquee from '../animations/InfiniteMarquee'
 
 export default class Page {
 	constructor({ element, elements, id }) {
 		this.selector = element
 		this.selectorChildren = {
 			...elements,
-			animationsInfiniteGallery: '[data-animation="infinite-gallery"]',
+			animationsInfiniteMarquee: '[data-animation="infinite-marquee"]',
 			animationsLabels: '[data-animation="label"]',
 			animationsParagraphs: '[data-animation="paragraph"]',
 			animationsSocials: '[data-animation="social"]',
@@ -69,19 +69,17 @@ export default class Page {
 		this.animations = []
 
 		//Infinite Gallery
-		this.animationsInfiniteGallery = map(
-			this.elements.animationsInfiniteGallery,
+		this.animationsInfiniteMarquee = map(
+			this.elements.animationsInfiniteMarquee,
 			(element) => {
-				return new InfiniteGallery({
+				return new InfiniteMarquee({
 					element,
-					elements: {
-						infiniteGalleryWrapper: this.elements.infiniteGalleryWrapper,
-					},
+					infiniteLink: this.id === 'blog',
 				})
 			}
 		)
 
-		this.animations.push(...this.animationsInfiniteGallery)
+		this.animations.push(...this.animationsInfiniteMarquee)
 
 		//Labels
 		this.animationsLabels = map(this.elements.animationsLabels, (element) => {

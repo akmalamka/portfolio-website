@@ -1,0 +1,31 @@
+%marquee__wrapper__outer {
+	align-items: center;
+	display: flex;
+	overflow-x: hidden;
+}
+
+%marquee__wrapper {
+	padding: 0;
+	position: relative;
+	white-space: nowrap;
+	will-change: transform;
+}
+
+%marquee__title {
+	@extend %title-80;
+	display: inline-block;
+	margin-right: 3.4rem;
+}
+
+%marquee__circle {
+	border-radius: 50%;
+	display: inline-block;
+	height: 4.6rem;
+	margin-right: 3.4rem;
+	width: 4.6rem;
+
+	@include media('<phone') {
+		height: 2.4rem;
+		width: 2.4rem;
+	}
+}

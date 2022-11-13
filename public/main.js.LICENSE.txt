@@ -18,7 +18,7 @@
  * @author: Jack Doyle, jack@greensock.com
 */
 
-/*! ../animations/InfiniteGallery */
+/*! ../animations/InfiniteMarquee */
 
 /*! ../core/Geometry.js */
 
@@ -835,7 +835,7 @@
   \*******************************************/
 
 /*!*******************************************!*\
-  !*** ./src/animations/InfiniteGallery.js ***!
+  !*** ./src/animations/InfiniteMarquee.js ***!
   \*******************************************/
 
 /*!********************************************!*\
