@@ -3,6 +3,41 @@
 
 	pointer-events: none;
 	z-index: z('navigation');
+
+	&:before,
+	&:after {
+		content: '';
+		height: 8rem;
+		left: 0;
+		position: absolute;
+		width: 100%;
+		z-index: 1;
+	}
+
+	&:before {
+		background: linear-gradient(
+			to bottom,
+			$color-spring-wood 0%,
+			rgba($color-spring-wood, 0) 100%
+		);
+		top: 0;
+	}
+
+	&:after {
+		background: linear-gradient(
+			to top,
+			$color-spring-wood 0%,
+			rgba($color-spring-wood, 0) 100%
+		);
+		bottom: 0;
+	}
+
+	&--disable-gradient {
+		&:before,
+		&:after {
+			content: none;
+		}
+	}
 }
 .navigation__link__wrapper {
 	align-items: flex-end;
@@ -11,6 +46,7 @@
 	left: 3.2rem;
 	position: absolute;
 	top: 2.4rem;
+	z-index: 2;
 
 	@include media('<phone') {
 		align-items: flex-start;
@@ -78,6 +114,7 @@
 
 .navigation__list__item {
 	pointer-events: auto;
+	z-index: 2;
 
 	&--hide {
 		display: none;

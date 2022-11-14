@@ -15,13 +15,21 @@ export default class Navigation extends Component {
 			},
 		})
 
+		this.disableGradientClass = 'navigation--disable-gradient'
+
 		this.onChange(template)
 	}
 
 	onChange(template) {
 		this.timeline = GSAP.timeline()
 
-		if (template === 'blog' || template === 'category') {
+		if (template === 'category' || template === 'works') {
+			this.element.classList.add(this.disableGradientClass)
+		} else {
+			this.element.classList.remove(this.disableGradientClass)
+		}
+
+		if (template === 'category') {
 			this.timeline.set(this.element, {
 				color: COLOR_WHITE,
 				duration: 1.5,
