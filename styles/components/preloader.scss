@@ -14,7 +14,7 @@
 	margin-left: 22rem;
 	text-align: center;
 	text-transform: uppercase;
-	transform: rotate(-90deg) translate(70%, -100%);
+	transform: rotate(-90deg) translate(500%, -100%);
 
 	@include media('<phone') {
 		margin-left: 6rem;
@@ -28,7 +28,7 @@
 	margin-right: 22rem;
 	text-align: center;
 	text-transform: uppercase;
-	transform: rotate(90deg) translate(250%, -100%); //desktop: 100
+	transform: rotate(90deg) translate(500%, -100%); //desktop: 100
 
 	@include media('<phone') {
 		margin-left: 6rem;
