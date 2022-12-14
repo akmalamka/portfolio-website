@@ -25,7 +25,7 @@ block content
             .blog__paragraph__wrapper(class=`blog__paragraph__wrapper--${isEmpty(section.primary.section_image) ? 'no-image' : section.primary.section_alignment.toLowerCase()}`)
               .blog__paragraph__media__wrapper
                 figure.blog__paragraph__media(class=`blog__paragraph__media--${isEmpty(section.primary.section_image) ? 'no-image' : ''} blog__paragraph__media--${section.primary.section_alignment.toLowerCase()}` 
-                style={height:isEmpty(section.primary.section_image) ? 'inherit' : `${section.primary.section_image.dimensions.height/10}rem`, })
+                style={height:isEmpty(section.primary.section_image) ? 'inherit' : `${section.primary.section_image.dimensions.height/10}rem`, width:isEmpty(section.primary.section_image) ? inherit : `${section.primary.section_image.dimensions.width/10}rem` })
                   img.blog__paragraph__media__image(alt=section.primary.section_image.alt data-src=section.primary.section_image.url)
                 .blog__paragraph__media__caption(class=`blog__paragraph__media__caption--${section.primary.section_alignment.toLowerCase()}`)=section.primary.section_caption
               .blog__paragraph__title__wrapper
