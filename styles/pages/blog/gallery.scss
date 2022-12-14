@@ -1,6 +1,10 @@
 .blog__gallery {
 	display: flex;
 	flex-direction: column;
+	row-gap: 3.6rem;
+	@include media('<phone') {
+		row-gap: 2rem;
+	}
 }
 
 .blog__gallery__outer__wrapper {
@@ -18,10 +22,7 @@
 .blog_gallery_wrapper {
 	@extend %gallery__wrapper;
 	left: 50%;
-	top: 25%;
-	@include media('<phone') {
-		top: 50%;
-	}
+	top: 0%;
 }
 
 .blog__gallery__media {
@@ -52,4 +53,5 @@
 
 .blog__gallery__media__caption {
 	@extend %description-blog-16;
+	text-align: center;
 }

@@ -24,7 +24,8 @@ block content
           section.blog__paragraph 
             .blog__paragraph__wrapper(class=`blog__paragraph__wrapper--${isEmpty(section.primary.section_image) ? 'no-image' : section.primary.section_alignment.toLowerCase()}`)
               .blog__paragraph__media__wrapper
-                figure.blog__paragraph__media(class=`blog__paragraph__media--${isEmpty(section.primary.section_image) ? 'no-image' : ''} blog__paragraph__media--${section.primary.section_alignment.toLowerCase()}`)
+                figure.blog__paragraph__media(class=`blog__paragraph__media--${isEmpty(section.primary.section_image) ? 'no-image' : ''} blog__paragraph__media--${section.primary.section_alignment.toLowerCase()}` 
+                style={height:isEmpty(section.primary.section_image) ? 'inherit' : `${section.primary.section_image.dimensions.height/10}rem`, })
                   img.blog__paragraph__media__image(alt=section.primary.section_image.alt data-src=section.primary.section_image.url)
                 .blog__paragraph__media__caption(class=`blog__paragraph__media__caption--${section.primary.section_alignment.toLowerCase()}`)=section.primary.section_caption
               .blog__paragraph__title__wrapper
@@ -35,10 +36,10 @@ block content
         
         if section.slice_type == 'gallery'
           section.blog__gallery
-            .blog__gallery__outer__wrapper 
-              .blog_gallery_wrapper 
+            .blog__gallery__outer__wrapper(style={height: `${section.primary.section_image_height/10}rem`, width: `${section.primary.section_image_width/10}rem`})
+              .blog_gallery_wrapper(style={transform: `translate(-${section.primary.section_image_width/20}rem, 0%)`}) 
                 each media, mediaIndex in section.items
-                  figure.blog__gallery__media 
+                  figure.blog__gallery__media(style={height: `${media.gallery_image.dimensions.height/10}rem`, width: `${media.gallery_image.dimensions.width/10}rem`}) 
                     img.blog__gallery__media__image(alt=media.gallery_image.alt data-src=media.gallery_image.url)
             .blog__gallery__media__caption=section.primary.section_caption
 
