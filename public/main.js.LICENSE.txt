@@ -18,6 +18,26 @@
  * @author: Jack Doyle, jack@greensock.com
 */
 
+/*!
+ * Observer 3.11.1
+ * https://greensock.com
+ *
+ * @license Copyright 2008-2022, GreenSock. All rights reserved.
+ * Subject to the terms at https://greensock.com/standard-license or for
+ * Club GreenSock members, the agreement issued with that membership.
+ * @author: Jack Doyle, jack@greensock.com
+*/
+
+/*!
+ * ScrollTrigger 3.11.1
+ * https://greensock.com
+ *
+ * @license Copyright 2008-2022, GreenSock. All rights reserved.
+ * Subject to the terms at https://greensock.com/standard-license or for
+ * Club GreenSock members, the agreement issued with that membership.
+ * @author: Jack Doyle, jack@greensock.com
+*/
+
 /*! ../animations/InfiniteMarquee */
 
 /*! ../core/Geometry.js */
@@ -53,6 +73,8 @@
 /*! ./Mat4.js */
 
 /*! ./Media */
+
+/*! ./Observer.js */
 
 /*! ./Transform.js */
 
@@ -392,6 +414,8 @@
 
 /*! gsap */
 
+/*! gsap/ScrollTrigger */
+
 /*! html-entities */
 
 /*! lodash/each */
@@ -428,6 +452,8 @@
 
 /*! utils/location */
 
+/*! utils/text */
+
 /*! webpack/hot/emitter.js */
 
 /*! webpack/hot/log.js */
@@ -437,6 +463,10 @@
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
+
+/*!***************************!*\
+  !*** ./src/utils/text.js ***!
+  \***************************/
 
 /*!***************************!*\
   !*** ./styles/index.scss ***!
@@ -560,6 +590,10 @@
 
 /*!***************************************!*\
   !*** ./node_modules/events/events.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./node_modules/gsap/Observer.js ***!
   \***************************************/
 
 /*!***************************************!*\
@@ -841,6 +875,10 @@
 /*!********************************************!*\
       !*** ./client-src/modules/logger/index.js ***!
       \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/gsap/ScrollTrigger.js ***!
+  \********************************************/
 
 /*!********************************************!*\
   !*** ./node_modules/lodash/_Uint8Array.js ***!

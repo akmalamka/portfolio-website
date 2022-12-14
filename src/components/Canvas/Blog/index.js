@@ -25,7 +25,9 @@ export default class {
 	}
 
 	createGalleries() {
-		this.galleriesElements = document.querySelectorAll('.blog__gallery')
+		this.galleriesElements = document.querySelectorAll(
+			'.blog__gallery__outer__wrapper'
+		)
 
 		this.galleries = map(this.galleriesElements, (element, index) => {
 			return new Gallery({

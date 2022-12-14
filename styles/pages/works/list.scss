@@ -130,4 +130,10 @@
 	@extend %cover;
 	object-fit: cover;
 	user-select: none;
+	height: 44rem;
+	width: 29.6rem;
+	@include media('<phone') {
+		height: 36.5rem;
+		width: 24.5rem;
+	}
 }

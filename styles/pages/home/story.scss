@@ -11,6 +11,17 @@
 .home__story__text {
 	@extend %title-graphik-40;
 
+	background: linear-gradient(
+		to right,
+		rgb(255, 255, 255) 50%,
+		rgb(37, 37, 37) 50%
+	);
+	background-size: 200% 100%;
+	background-position-x: 100%;
+	color: transparent;
+	background-clip: text;
+	-webkit-background-clip: text;
+
 	position: relative;
 	z-index: 2;
 
@@ -33,6 +44,22 @@
 	span:nth-of-type(4) {
 		color: $color-corn;
 	}
+}
+
+.home__example {
+}
+.home__example__text {
+	background: linear-gradient(
+		to right,
+		rgb(255, 255, 255) 50%,
+		rgb(37, 37, 37) 50%
+	);
+	background-size: 200% 100%;
+	background-position-x: 100%;
+	color: transparent;
+	background-clip: text;
+	-webkit-background-clip: text;
+	@extend %title-graphik-40;
 }
 
 .home__story__media {

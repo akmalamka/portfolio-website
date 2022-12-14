@@ -8,6 +8,7 @@ export default class Home extends Page {
 			elements: {
 				navigation: document.querySelector('.navigation'),
 				wrapper: '.home__wrapper',
+				example: '.home__example__text',
 			},
 		})
 	}

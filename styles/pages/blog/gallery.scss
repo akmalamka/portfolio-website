@@ -1,4 +1,9 @@
 .blog__gallery {
+	display: flex;
+	flex-direction: column;
+}
+
+.blog__gallery__outer__wrapper {
 	height: 65.6rem;
 	pointer-events: none;
 	position: relative;
@@ -13,7 +18,10 @@
 .blog_gallery_wrapper {
 	@extend %gallery__wrapper;
 	left: 50%;
-	top: 50%;
+	top: 25%;
+	@include media('<phone') {
+		top: 50%;
+	}
 }
 
 .blog__gallery__media {
@@ -40,4 +48,8 @@
 	@extend %cover;
 
 	object-fit: cover;
+}
+
+.blog__gallery__media__caption {
+	@extend %description-blog-16;
 }

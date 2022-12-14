@@ -4,6 +4,11 @@
 .blog__paragraph__wrapper {
 	display: flex;
 
+	&--no-image {
+		align-items: center;
+		flex-direction: column;
+	}
+
 	&--bottom {
 		align-items: center;
 		flex-direction: column;
@@ -30,8 +35,21 @@
 		flex-direction: row-reverse;
 
 		@include media('<phone') {
+			align-items: center;
 			flex-direction: column;
+			row-gap: 2rem;
 		}
+	}
+}
+
+.blog__paragraph__media__wrapper {
+	display: flex;
+	flex-direction: column;
+	row-gap: 2.4rem;
+	align-items: center;
+
+	@include media('<phone') {
+		row-gap: 2rem;
 	}
 }
 
@@ -58,6 +76,23 @@
 	@extend %cover;
 
 	object-fit: cover;
+}
+
+.blog__paragraph__media__caption {
+	@extend %description-blog-16;
+	width: 100%;
+	&--right,
+	&--left {
+		text-align: start;
+	}
+
+	&--bottom {
+		text-align: center;
+	}
+
+	@include media('<phone') {
+		padding: 0 3.2rem;
+	}
 }
 
 .blog__paragraph__title__wrapper {
