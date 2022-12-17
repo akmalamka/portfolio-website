@@ -176,7 +176,6 @@ export default class Page {
 						element: this.elements.example,
 						expression: '<br>',
 					})
-					console.log({ splitted })
 					splitted.forEach((target) => {
 						GSAP.to(target, {
 							backgroundPositionX: 0,

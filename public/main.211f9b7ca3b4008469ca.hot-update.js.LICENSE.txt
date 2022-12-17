@@ -1,0 +1,27 @@
+/*! animations/InfiniteMarquee */
+
+/*! animations/Label */
+
+/*! animations/Paragraph */
+
+/*! animations/Social */
+
+/*! animations/Title */
+
+/*! classes/AsyncLoad */
+
+/*! gsap */
+
+/*! gsap/ScrollTrigger */
+
+/*! lodash/each */
+
+/*! lodash/map */
+
+/*! prefix */
+
+/*! utils/text */
+
+/*!*****************************!*\
+  !*** ./src/classes/Page.js ***!
+  \*****************************/
