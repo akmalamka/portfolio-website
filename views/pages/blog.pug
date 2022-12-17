@@ -16,6 +16,7 @@ block content
             .blog__header__label 
               .blog__header__label__type(data-animation="label")=blog.data.type
               .blog__header__label__date(data-animation="label")=parseDate(blog.data.start_date, blog.data.end_date)
+              a.blog__header__label__url(data-animation="label" href=blog.data.url.url class=`blog__header__label__url--${blog.data.url.url ? '' : 'hidden'}`)='Check out the website'
       section.blog__summary 
         .blog__summary_text!=prismicDOM.RichText.asHtml(blog.data.summary).replace(/<p>/g, '<p data-animation="paragraph">')
         

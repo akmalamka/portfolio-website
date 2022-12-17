@@ -22,7 +22,7 @@ block content
       section.works__gallery
         .works__gallery__wrapper
           each work, index in works
-            a.works__gallery__link( href=work.data.url.url ? work.data.url.url : `/works/${work.uid}` target=work.data.url.url ? '_blank' : '')
+            a.works__gallery__link( href=work.data.url.url ? work.data.url.url : `/works/${work.uid}` target=work.data.url.url ? '_blank' : '' rel=work.data.url.url ? 'noopener noreferrer': '')
               figure.works__gallery__media(id=firstIndexInCategoryMap.includes(index) ? `first-${work.data.category.uid}` : '' data-index=work.index data-list-index=index)
                 img.works__gallery__media__image(alt=work.data.image.alt data-src=work.data.image.url) 
       section.works__category 

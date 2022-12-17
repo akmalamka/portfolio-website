@@ -110,3 +110,18 @@
 		text-align: center;
 	}
 }
+
+.blog__header__label__url {
+	@extend %description-about-20;
+	@extend %link--hidden;
+	font-weight: 400;
+	padding-top: 1.6rem;
+
+	&--hidden {
+		display: none;
+	}
+
+	@include media('<phone') {
+		text-align: center;
+	}
+}
