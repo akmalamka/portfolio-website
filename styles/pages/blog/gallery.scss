@@ -8,14 +8,25 @@
 }
 
 .blog__gallery__outer__wrapper {
-	height: 65.6rem;
 	pointer-events: none;
 	position: relative;
 	width: 100%;
 	visibility: hidden;
 
-	@include media('<phone') {
-		height: 32.7rem;
+	&--portrait {
+		@extend %media__image__portrait;
+	}
+
+	&--landscape-1 {
+		@extend %media__image__landscape-1;
+	}
+
+	&--landscape-2 {
+		@extend %media__image__landscape-2;
+	}
+
+	&--square {
+		@extend %media__image__square;
 	}
 }
 
@@ -26,22 +37,31 @@
 }
 
 .blog__gallery__media {
-	height: 50.5rem;
 	// margin-right: 4rem; //TODO: update regarding the expected margin
 	margin: 0 4rem;
 	position: relative;
-	width: 34rem;
+
+	&--portrait {
+		@extend %media__image__portrait;
+	}
+
+	&--landscape-1 {
+		@extend %media__image__landscape-1;
+	}
+
+	&--landscape-2 {
+		@extend %media__image__landscape-2;
+	}
+
+	&--square {
+		@extend %media__image__square;
+	}
 
 	&:first-child {
 		margin-left: 0;
 	}
 	&:last-child {
 		margin-right: 0;
-	}
-
-	@include media('<phone') {
-		height: 28rem;
-		width: 19rem;
 	}
 }
 

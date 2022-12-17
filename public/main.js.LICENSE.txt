@@ -38,8 +38,6 @@
  * @author: Jack Doyle, jack@greensock.com
 */
 
-/*! ../animations/InfiniteMarquee */
-
 /*! ../core/Geometry.js */
 
 /*! ../math/Euler.js */
@@ -385,6 +383,8 @@
 /*! ./utils/sendMessage.js */
 
 /*! ./utils/stripAnsi.js */
+
+/*! animations/InfiniteMarquee */
 
 /*! animations/Label */
 

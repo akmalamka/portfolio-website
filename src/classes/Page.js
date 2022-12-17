@@ -5,6 +5,7 @@ import Prefix from 'prefix'
 import GSAP from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
+import InfiniteMarquee from 'animations/InfiniteMarquee'
 import Label from 'animations/Label'
 import Paragraph from 'animations/Paragraph'
 import Social from 'animations/Social'
@@ -13,7 +14,6 @@ import Title from 'animations/Title'
 import { split } from 'utils/text'
 
 import AsyncLoad from 'classes/AsyncLoad'
-import InfiniteMarquee from '../animations/InfiniteMarquee'
 
 export default class Page {
 	constructor({ element, elements, id }) {

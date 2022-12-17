@@ -304,6 +304,8 @@ app.get('/works/:uid', async (req, res) => {
 	res.locals.parseDate = parseDate
 	res.locals.isEmpty = isEmpty
 
+	console.log({ blog: blog.data.body })
+
 	res.render('pages/blog', {
 		...defaults,
 		blog,
