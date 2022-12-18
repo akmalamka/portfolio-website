@@ -12,6 +12,7 @@ export default class Preloader extends Component {
 				lastName: '.preloader__title__last__name',
 				number: '.preloader__number',
 				numberText: '.preloader__number__text',
+				quote: '.preloader__quote',
 			},
 		})
 
@@ -61,6 +62,25 @@ export default class Preloader extends Component {
 			this.animateOut = GSAP.timeline({
 				delay: 1,
 			})
+
+			this.animateOut.to(
+				this.elements.numberText,
+				{
+					autoAlpha: 0,
+					duration: 1.5,
+				},
+				'-=1.4'
+			)
+
+			this.animateOut.to(
+				this.elements.quote,
+				{
+					autoAlpha: 0,
+					duration: 1.5,
+				},
+				'-=1.4'
+			)
+
 			this.animateOut
 				.to(this.elements.firstName, { y: '2000%', duration: 1 }) //desktop 700 TODO: differentiate between mobile and desktop duration mobile: 6, desktop:9 ,
 				.to(this.elements.lastName, { y: '-500%', duration: 1 }, '-=1') //mobile: 5, desktop 7
@@ -75,15 +95,6 @@ export default class Preloader extends Component {
 			// 	},
 			// 	'-=1.4'
 			// )
-
-			this.animateOut.to(
-				this.elements.numberText,
-				{
-					autoAlpha: 0,
-					duration: 1.5,
-				},
-				'-=1.4'
-			)
 
 			this.animateOut.to(this.element, {
 				autoAlpha: 0,

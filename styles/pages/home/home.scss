@@ -6,9 +6,10 @@
 	align-items: center;
 	display: flex;
 	flex-direction: column;
-	width: 100%;
+	height: 100%;
 	justify-content: center;
 	row-gap: 36rem;
+	width: 100%;
 
 	@include media('<phone') {
 		row-gap: 32rem;
@@ -18,13 +19,9 @@
 .home__title__wrapper {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	height: 100%;
-	margin-top: 14.8rem;
 	width: 100%;
-
-	@include media('<phone') {
-		margin-top: 19.4rem;
-	}
 }
 
 .home__title {
