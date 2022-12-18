@@ -22,14 +22,14 @@
 	&:nth-child(2) {
 		background-color: $color-science-blue;
 	}
+	// &:nth-child(3) {
+	// 	background-color: $color-la-palma;
+	// }
 	&:nth-child(3) {
-		background-color: $color-la-palma;
-	}
-	&:nth-child(4) {
 		background-color: $color-corn;
 	}
-	&:nth-child(5) {
-		background-color: $color-black;
+	&:nth-child(4) {
+		background-color: $color-la-palma;
 	}
 }
 
@@ -72,16 +72,16 @@
 		background: $color-science-blue;
 	}
 
-	&--ui-ux {
-		background: $color-la-palma;
-	}
+	// &--ui-ux {
+	// 	background: $color-la-palma;
+	// }
 
 	&--webdev {
 		background: $color-corn;
 	}
 
 	&--others {
-		background: $color-black;
+		background: $color-la-palma;
 	}
 }
 

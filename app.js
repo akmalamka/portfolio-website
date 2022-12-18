@@ -97,12 +97,12 @@ const mapCategoriesIntoIndex = (uid) => {
 			return 0
 		case 'music':
 			return 1
-		case 'ui-ux':
-			return 2
+		// case 'ui-ux':
+		// 	return 2
 		case 'webdev':
-			return 3
+			return 2
 		case 'others':
-			return 4
+			return 3
 	}
 }
 
@@ -265,13 +265,16 @@ app.get('/works', async (req, res) => {
 	let categoryIterator = 0
 
 	for (let i = 0; i < works.length; i++) {
-		if (works[i].data.category.uid === categories[categoryIterator].uid) {
+		if (
+			categoryIterator < categories.length &&
+			works[i].data.category.uid === categories[categoryIterator].uid
+		) {
 			firstIndexInCategoryMap.push(i)
-			if (categoryIterator < categories.length - 1) {
-				categoryIterator += 1
-			}
+			categoryIterator += 1
 		}
 	}
+
+	console.log({ works })
 
 	res.render('pages/works', {
 		...rest,

@@ -21,15 +21,15 @@ block content
 											figure.home__personalities__images__media
 												img.home__personalities__images__media__image(alt=workImages[index].alt data-src=workImages[index].url) 
 				.home__title(class='home__title--2')=home.data.title_2
-			section.home__story 
-				.home__story__text!=addSpanHandler(home.data.story, 'word')
-				each media in home.data.story_images
-					figure.home__story__media(class=`home__story__media--${media.story_images_category.toLowerCase()}`)
-						img.home__story__media__image( alt=media.story_images_image.alt data-src=media.story_images_image.url)
-			section.home__example 
-				p.home__example__text!='Macaroon croissant pastry shortbread<br> cupcake chupa chups pudding.<br> Gummies pie candy canes sweet roll cake chupa chups cake fruitcake.<br>Cake bonbon chupa chups carrot<br> cake cake gingerbread cookie cake.'
-			section.home__welcoming 
-				.home__welcoming__text!=addSpanHandler(home.data.welcoming, 'word')
-				a.home__works(href='/category')!=home.data.works
+			//- section.home__story 
+			//- 	.home__story__text!=addSpanHandler(home.data.story, 'word')
+			//- 	each media in home.data.story_images
+			//- 		figure.home__story__media(class=`home__story__media--${media.story_images_category.toLowerCase()}`)
+			//- 			img.home__story__media__image( alt=media.story_images_image.alt data-src=media.story_images_image.url)
+			//- section.home__example 
+			//- 	p.home__example__text!='Macaroon croissant pastry shortbread<br> cupcake chupa chups pudding.<br> Gummies pie candy canes sweet roll cake chupa chups cake fruitcake.<br>Cake bonbon chupa chups carrot<br> cake cake gingerbread cookie cake.'
+			//- section.home__welcoming 
+			//- 	.home__welcoming__text!=addSpanHandler(home.data.welcoming, 'word')
+			//- 	a.home__works(href='/category')!=home.data.works
 				
 				
