@@ -52,11 +52,14 @@
 
 .works__header__title__wrapper {
 	@extend %marquee__wrapper;
+	@include marquee__animation(40s);
 	display: flex;
 }
 
-.works__header__title__inner {
+.works__header__title__item {
 }
+
+@include marquee__keyframes(-50%);
 
 .works__header__title__title {
 	@extend %marquee__title;

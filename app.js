@@ -274,8 +274,6 @@ app.get('/works', async (req, res) => {
 		}
 	}
 
-	console.log({ works })
-
 	res.render('pages/works', {
 		...rest,
 		categories,
@@ -313,8 +311,6 @@ app.get('/works/:uid', async (req, res) => {
 
 	res.locals.parseDate = parseDate
 	res.locals.isEmpty = isEmpty
-
-	console.log({ blog: blog.data.url })
 
 	res.render('pages/blog', {
 		...defaults,

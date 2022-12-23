@@ -14,9 +14,9 @@ block content
         .works__header__wrapper
           each work, index in works
             .works__header__title__wrapper__outer(class=`works__header__title__wrapper__outer--${index === 0 ? 'active' : ''}`)
-              .works__header__title__wrapper(data-animation="infinite-marquee")
-                each line in [0,1,2,3,4,5,6]
-                  span.works__header__title__inner
+              .works__header__title__wrapper
+                each line in [0,1,2,3,4,5,6,7]
+                  span.works__header__title__item
                     .works__header__title__title=work.data.title
                     .works__header__title__circle(class=`works__header__title__circle--${work.data.category.uid.toLowerCase()}`)
       section.works__gallery

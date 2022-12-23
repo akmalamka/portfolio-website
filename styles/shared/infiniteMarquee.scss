@@ -8,6 +8,11 @@
 	padding: 0;
 	position: relative;
 	white-space: nowrap;
+}
+
+@mixin marquee__animation($duration) {
+	animation: marquee $duration linear infinite;
+	animation-play-state: running;
 	will-change: transform;
 }
 

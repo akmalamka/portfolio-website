@@ -9,7 +9,10 @@ export default class AsyncLoad extends Component {
 	createObserver() {
 		this.observer = new window.IntersectionObserver((entries) => {
 			entries.forEach((entry) => {
-				if (entry.isIntersecting) {
+				if (
+					entry.isIntersecting ||
+					entry.target.className.includes('personalities')
+				) {
 					if (!this.element.src) {
 						this.element.src = this.element.getAttribute('data-src')
 						this.element.onload = (_) => {

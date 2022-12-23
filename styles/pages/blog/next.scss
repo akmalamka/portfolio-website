@@ -20,8 +20,11 @@
 
 .blog__next__description__wrapper {
 	@extend %marquee__wrapper;
+	@include marquee__animation(20s);
 	display: flex;
 }
+
+@include marquee__keyframes(-50%);
 
 .blog__next__description__item {
 	align-items: center;
@@ -31,6 +34,10 @@
 .blog__next__description__title {
 	@extend %marquee__title;
 	@extend %link--hidden;
+}
+
+.blog__next__description__wrapper:hover {
+	animation-play-state: paused;
 }
 
 .blog__next__description__circle {

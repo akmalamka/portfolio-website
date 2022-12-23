@@ -4,22 +4,19 @@
 .home__personalities__wrapper {
 }
 
-.home__personalities__item__wrapper__outer {
-	@extend %marquee__wrapper__outer;
-}
-
 .home__personalities__item__wrapper {
 	@extend %marquee__wrapper;
+	@include marquee__animation(30s);
 	align-items: center;
 	display: flex;
-}
-.home__personalities__item {
-	display: inline-block;
-	margin-right: 5rem;
+	flex-direction: row;
+	width: max-content;
 }
 
-.home__personalities__item__inner {
-	display: flex;
+@include marquee__keyframes(-50%);
+
+.home__personalities__item {
+	margin-right: 5rem;
 }
 
 .home__personalities__text__wrapper {
