@@ -45,16 +45,18 @@ export default class VerticalSlide extends Animation {
 			let label = 'slide' + i
 			vSlide.add(label)
 			// Move the whole word
-			vSlide.to(
-				vSlideOptions.list,
-				{
-					duration: vSlideOptions.duration,
-					y: i * -1 * vSlideOptions.lineHeight,
-				},
-				label
-			)
-			// Add some blank space before the next animation
-			vSlide.to({}, { duration: 4 })
+			if (i > 0) {
+				vSlide.to(
+					vSlideOptions.list,
+					{
+						duration: vSlideOptions.duration,
+						y: i * -1 * vSlideOptions.lineHeight,
+					},
+					label
+				)
+				// Add some blank space before the next animation
+				vSlide.to({}, { duration: 7 })
+			}
 		})
 
 		vSlide.play()
