@@ -197,13 +197,17 @@ class App {
 		const links = document.querySelectorAll('a')
 		const buttons = document.querySelectorAll('button')
 
+		console.log({ links })
+
 		each(links, (link) => {
 			link.onclick = (event) => {
-				event.preventDefault()
-
 				const { href } = link
+				if (href.includes('localhost:3000')) {
+					//TODO: add prod url here also
+					event.preventDefault()
 
-				this.onChange({ url: href })
+					this.onChange({ url: href })
+				}
 			}
 		})
 
