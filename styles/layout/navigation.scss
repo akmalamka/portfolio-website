@@ -62,19 +62,29 @@
 	pointer-events: auto;
 }
 
-.navigation__current__job__wrapper {
+.navigation__current__wrapper {
+	overflow: hidden;
+	height: 1.2rem;
+	position: relative;
 	&--hide {
 		display: none;
 	}
+
 	@include media('<phone') {
 		margin-top: 0.8rem;
 	}
 }
 
-.navigation__current__job__text {
-	@extend %description-12;
+.navigation__current__inner__wrapper {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
 
+.navigation__current__text {
+	@extend %description-12;
 	font-weight: 300;
+	line-height: 12px;
 
 	@include media('<phone') {
 		line-height: 1.4;

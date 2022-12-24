@@ -19,8 +19,8 @@ class App {
 
 		this.createCanvas()
 		this.createPreloader()
-		this.createNavigation()
 		this.createPages()
+		this.createNavigation()
 
 		this.addEventListeners()
 		this.addLinkListeners()
@@ -193,6 +193,7 @@ class App {
 	}
 
 	addLinkListeners() {
+		//TODO: fix for cors issue probably starts here
 		const links = document.querySelectorAll('a')
 		const buttons = document.querySelectorAll('button')
 

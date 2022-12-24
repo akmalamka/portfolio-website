@@ -10,6 +10,7 @@ import Label from 'animations/Label'
 import Paragraph from 'animations/Paragraph'
 import Social from 'animations/Social'
 import Title from 'animations/Title'
+import VerticalSlide from 'animations/VerticalSlide'
 
 import { split } from 'utils/text'
 
@@ -20,11 +21,12 @@ export default class Page {
 		this.selector = element
 		this.selectorChildren = {
 			...elements,
-			animationsInfiniteMarquee: '[data-animation="infinite-marquee"]',
+			animationsInfiniteMarquee: '[data-animation="infinite-marquee"]', //TODO: remove everything animation marquee
 			animationsLabels: '[data-animation="label"]',
 			animationsParagraphs: '[data-animation="paragraph"]',
 			animationsSocials: '[data-animation="social"]',
 			animationsTitles: '[data-animation="title"]',
+			animationsVerticalSlides: '[data-animation="vertical-slide"]',
 			preloaders: '[data-src]',
 		}
 
@@ -113,6 +115,19 @@ export default class Page {
 		})
 
 		this.animations.push(...this.animationsTitles)
+
+		//Vertical Slides
+		this.animationsVerticalSlides = map(
+			this.elements.animationsVerticalSlides,
+			(element) => {
+				return new VerticalSlide({
+					element,
+					elements: { currentText: '.navigation__current__text' },
+				})
+			}
+		)
+
+		this.animations.push(...this.animationsVerticalSlides)
 	}
 
 	createPreloader() {
