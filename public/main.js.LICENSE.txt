@@ -18,6 +18,26 @@
  * @author: Jack Doyle, jack@greensock.com
 */
 
+/*!
+ * Observer 3.11.1
+ * https://greensock.com
+ *
+ * @license Copyright 2008-2022, GreenSock. All rights reserved.
+ * Subject to the terms at https://greensock.com/standard-license or for
+ * Club GreenSock members, the agreement issued with that membership.
+ * @author: Jack Doyle, jack@greensock.com
+*/
+
+/*!
+ * ScrollTrigger 3.11.1
+ * https://greensock.com
+ *
+ * @license Copyright 2008-2022, GreenSock. All rights reserved.
+ * Subject to the terms at https://greensock.com/standard-license or for
+ * Club GreenSock members, the agreement issued with that membership.
+ * @author: Jack Doyle, jack@greensock.com
+*/
+
 /*! ../core/Geometry.js */
 
 /*! ../math/Euler.js */
@@ -34,8 +54,6 @@
 
 /*! ../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */
 
-/*! ../utils/location */
-
 /*! ../utils/log.js */
 
 /*! ./Blog */
@@ -46,8 +64,6 @@
 
 /*! ./Gallery */
 
-/*! ./HeaderMedia */
-
 /*! ./Home */
 
 /*! ./Logger */
@@ -56,9 +72,9 @@
 
 /*! ./Media */
 
-/*! ./Transform.js */
+/*! ./Observer.js */
 
-/*! ./Transition */
+/*! ./Transform.js */
 
 /*! ./UserAgent_DEPRECATED */
 
@@ -368,6 +384,8 @@
 
 /*! ./utils/stripAnsi.js */
 
+/*! animations/InfiniteMarquee */
+
 /*! animations/Label */
 
 /*! animations/Paragraph */
@@ -375,6 +393,8 @@
 /*! animations/Social */
 
 /*! animations/Title */
+
+/*! animations/VerticalSlide */
 
 /*! ansi-html-community */
 
@@ -396,6 +416,8 @@
 
 /*! gsap */
 
+/*! gsap/ScrollTrigger */
+
 /*! html-entities */
 
 /*! lodash/each */
@@ -409,6 +431,8 @@
 /*! pages/About */
 
 /*! pages/Blog */
+
+/*! pages/Category */
 
 /*! pages/Home */
 
@@ -430,6 +454,8 @@
 
 /*! utils/location */
 
+/*! utils/text */
+
 /*! webpack/hot/emitter.js */
 
 /*! webpack/hot/log.js */
@@ -439,6 +465,10 @@
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
+
+/*!***************************!*\
+  !*** ./src/utils/text.js ***!
+  \***************************/
 
 /*!***************************!*\
   !*** ./styles/index.scss ***!
@@ -536,6 +566,10 @@
   !*** ./src/components/Preloader.js ***!
   \*************************************/
 
+/*!*************************************!*\
+  !*** ./src/pages/Category/index.js ***!
+  \*************************************/
+
 /*!**************************************!*\
   !*** ./node_modules/lodash/_Hash.js ***!
   \**************************************/
@@ -558,6 +592,10 @@
 
 /*!***************************************!*\
   !*** ./node_modules/events/events.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./node_modules/gsap/Observer.js ***!
   \***************************************/
 
 /*!***************************************!*\
@@ -686,6 +724,10 @@
 
 /*!*****************************************!*\
   !*** ./node_modules/webpack/hot/log.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/animations/VerticalSlide.js ***!
   \*****************************************/
 
 /*!*****************************************!*\
@@ -832,9 +874,17 @@
   !*** ./node_modules/ogl/src/math/Vec3.js ***!
   \*******************************************/
 
+/*!*******************************************!*\
+  !*** ./src/animations/InfiniteMarquee.js ***!
+  \*******************************************/
+
 /*!********************************************!*\
       !*** ./client-src/modules/logger/index.js ***!
       \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/gsap/ScrollTrigger.js ***!
+  \********************************************/
 
 /*!********************************************!*\
   !*** ./node_modules/lodash/_Uint8Array.js ***!
@@ -982,10 +1032,6 @@
 
 /*!*********************************************!*\
   !*** ./src/components/Canvas/Home/index.js ***!
-  \*********************************************/
-
-/*!*********************************************!*\
-  !*** ./src/components/Canvas/Transition.js ***!
   \*********************************************/
 
 /*!**********************************************!*\
@@ -1146,10 +1192,6 @@
 
 /*!***************************************************!*\
   !*** ./node_modules/ansi-html-community/index.js ***!
-  \***************************************************/
-
-/*!***************************************************!*\
-  !*** ./src/components/Canvas/Blog/HeaderMedia.js ***!
   \***************************************************/
 
 /*!****************************************************!*\

@@ -77,6 +77,9 @@ const parseDate = (startDate, endDate) => {
 	]
 	const startDateMonth = monthNames[prismicH.asDate(startDate).getMonth()]
 	const startDateYear = prismicH.asDate(startDate).getFullYear()
+	if (!endDate) {
+		return `${startDateMonth} ${startDateYear} - Present`
+	}
 	const endDateMonth = monthNames[prismicH.asDate(endDate).getMonth()]
 	const endDateYear = prismicH.asDate(endDate).getFullYear()
 	if (startDateYear === endDateYear) {
@@ -94,12 +97,12 @@ const mapCategoriesIntoIndex = (uid) => {
 			return 0
 		case 'music':
 			return 1
-		case 'ui-ux':
-			return 2
+		// case 'ui-ux':
+		// 	return 2
 		case 'webdev':
-			return 3
+			return 2
 		case 'others':
-			return 4
+			return 3
 	}
 }
 
@@ -184,6 +187,8 @@ app.use((req, res, next) => {
 	}
 	res.locals.prismicDOM = prismicDOM
 
+	// res.set('Access-Control-Allow-Origin', 'https://biteofappetite.com/')
+
 	next()
 })
 
@@ -254,9 +259,40 @@ app.get('/works', async (req, res) => {
 		},
 	})
 
-	const defaults = await handleRequest('works')
+	const { works, ...rest } = await handleRequest('works')
+
+	const firstIndexInCategoryMap = []
+	let categoryIterator = 0
+
+	for (let i = 0; i < works.length; i++) {
+		if (
+			categoryIterator < categories.length &&
+			works[i].data.category.uid === categories[categoryIterator].uid
+		) {
+			firstIndexInCategoryMap.push(i)
+			categoryIterator += 1
+		}
+	}
 
 	res.render('pages/works', {
+		...rest,
+		categories,
+		firstIndexInCategoryMap,
+		works,
+	})
+})
+
+app.get('/category', async (req, res) => {
+	const categories = await client.getAllByType('category', {
+		orderings: {
+			field: 'my.category.order',
+			direction: 'asc',
+		},
+	})
+
+	const defaults = await handleRequest('works')
+
+	res.render('pages/category', {
 		...defaults,
 		categories,
 	})

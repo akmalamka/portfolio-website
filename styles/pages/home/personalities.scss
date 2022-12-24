@@ -1,9 +1,24 @@
 .home__personalities {
+}
+
+.home__personalities__wrapper {
+}
+
+.home__personalities__item__wrapper {
+	@extend %marquee__wrapper;
+	@include marquee__animation(30s);
 	align-items: center;
 	display: flex;
-	height: 100%;
+	flex-direction: row;
 	width: max-content;
 }
+
+@include marquee__keyframes(-50%);
+
+.home__personalities__item {
+	margin-right: 5rem;
+}
+
 .home__personalities__text__wrapper {
 	display: flex;
 	flex-direction: column;
@@ -11,16 +26,15 @@
 
 	> :first-child {
 		@extend %title-96;
-
-		width: fit-content;
 	}
+
 	> :last-child {
 		@extend %title-home-72;
 	}
 }
+
 .home__personalities__text {
 	text-align: center;
-	margin-right: 2.5rem;
 
 	&--cook {
 		color: $color-grenadier;
@@ -30,16 +44,16 @@
 		color: $color-science-blue;
 	}
 
-	&--ui-ux {
-		color: $color-la-palma;
-	}
+	// &--ui-ux {
+	// 	color: $color-la-palma;
+	// }
 
 	&--webdev {
 		color: $color-corn;
 	}
 
 	&--others {
-		color: $color-black;
+		color: $color-la-palma;
 	}
 
 	&--wildcard {
@@ -60,7 +74,6 @@
 
 .home__personalities__images__media {
 	height: 14.4rem;
-	margin-right: 2.5rem;
 	position: relative;
 	width: 9.7rem;
 

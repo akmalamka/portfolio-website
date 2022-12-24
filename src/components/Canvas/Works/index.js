@@ -6,12 +6,11 @@ import Prefix from 'prefix'
 import Media from './Media'
 
 export default class {
-	constructor({ gl, scene, sizes, transition }) {
+	constructor({ gl, scene, sizes, index = 0 }) {
 		this.id = 'works'
 		this.gl = gl
 		this.scene = scene
 		this.sizes = sizes
-		this.transition = transition
 
 		this.group = new Transform()
 
@@ -28,7 +27,7 @@ export default class {
 		)
 		this.categoriesElementsActive = `${this.categoriesElementsClass}--active`
 
-		this.headerTitleClass = 'works__header__title__wrapper'
+		this.headerTitleClass = 'works__header__title__wrapper__outer'
 		this.headerTitleCircleClass = 'works__header__title__circle'
 		this.headerTitleElements = document.querySelectorAll(
 			`.${this.headerTitleClass}`
@@ -39,11 +38,27 @@ export default class {
 		this.headerTitleActive = `${this.headerTitleClass}--active`
 
 		this.mediasElements = document.querySelectorAll('.works__gallery__media')
+		this.mediasLink = document.querySelectorAll('.works__gallery__link')
+
+		//TODO: add case for IE, https://stackoverflow.com/questions/14275304/how-to-get-margin-value-of-a-div-in-plain-javascript
+		this.columnGap =
+			parseFloat(
+				window
+					.getComputedStyle(this.mediasLink[0])
+					.marginRight.replace('px', '')
+			) * 2
+
+		this.index = index
+		this.hasMoved = false
+
+		this.createGeometry()
+		this.createGallery()
 
 		this.scroll = {
-			current: 0,
-			start: 0,
-			target: 0,
+			current:
+				-(this.medias[0].element.clientWidth + this.columnGap) * this.index,
+			target:
+				-(this.medias[0].element.clientWidth + this.columnGap) * this.index,
 			lerp: 0.1,
 			velocity: 1,
 		}
@@ -54,11 +69,10 @@ export default class {
 			lerp: 0.1,
 		}
 
-		this.createGeometry()
-		this.createGallery()
 		this.onResize({ sizes: this.sizes })
 
 		this.group.setParent(this.scene)
+		this.onChange(this.index)
 
 		this.show()
 	}
@@ -87,11 +101,6 @@ export default class {
 	 * Animations
 	 */
 	show() {
-		if (this.transition) {
-			this.transition.animate(this.medias[0], (_) => {
-				this.program.uniforms.uAlpha = 1
-			})
-		}
 		map(this.medias, (media) => media.show())
 	}
 
@@ -106,9 +115,18 @@ export default class {
 	onResize(event) {
 		this.sizes = event.sizes
 
+		this.columnGap =
+			parseFloat(
+				window
+					.getComputedStyle(this.mediasLink[0])
+					.marginRight.replace('px', '')
+			) * 2
+
 		this.bounds = this.galleryWrapperElement.getBoundingClientRect()
 
-		this.scroll.last = this.scroll.target = 0
+		// this.scroll.last = this.scroll.target = 0
+		this.scroll.last = this.scroll.target =
+			-(this.medias[0].element.clientWidth + this.columnGap) * this.index
 
 		map(this.medias, (media) => media.onResize(event, this.scroll))
 
@@ -116,10 +134,12 @@ export default class {
 	}
 
 	onTouchDown({ x, y }) {
-		this.scroll.last = this.scroll.current
+		// this.hasMoved = true
+		// this.scroll.last = this.scroll.current
 	}
 
 	onTouchMove({ x, y }) {
+		this.hasMoved = true
 		const distance = x.start - x.end
 		this.scroll.target = this.scroll.last - distance
 	}
@@ -127,6 +147,7 @@ export default class {
 	onTouchUp({ x, y }) {}
 
 	onWheel({ pixelY }) {
+		this.hasMoved = true
 		this.scroll.target += pixelY
 	}
 
@@ -184,12 +205,12 @@ export default class {
 		this.scroll.current = GSAP.utils.interpolate(
 			this.scroll.current,
 			this.scroll.target,
-			this.scroll.lerp
+			this.hasMoved ? this.scroll.lerp : 0
 		)
 
-		this.galleryElement.style[
-			this.transformPrefix
-		] = `translateX(${this.scroll.current}px)`
+		this.galleryElement.style[this.transformPrefix] = `translateX(${
+			this.hasMoved ? this.scroll.current : 0
+		}px)`
 
 		if (this.scroll.last < this.scroll.current) {
 			this.scroll.direction = 'right'

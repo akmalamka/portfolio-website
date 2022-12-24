@@ -9,6 +9,7 @@ export default class Animation extends Component {
 		this.createObserver()
 
 		this.animateOut()
+		this.isAnimateInCalled = false
 	}
 
 	createObserver() {
@@ -16,9 +17,13 @@ export default class Animation extends Component {
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
 					this.animateIn()
+					this.isAnimateInCalled = true
 				} else {
 					this.animateOut()
 				}
+				// if (this.isAnimateInCalled) {
+				this.animateRepeat()
+				// }
 			})
 		})
 
@@ -28,6 +33,8 @@ export default class Animation extends Component {
 	animateIn() {}
 
 	animateOut() {}
+
+	animateRepeat() {}
 
 	onResize() {}
 }

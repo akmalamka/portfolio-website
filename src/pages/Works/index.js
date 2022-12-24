@@ -9,41 +9,16 @@ export default class Works extends Page {
 			id: 'works',
 			element: '.works',
 			elements: {
-				openingTitles: '.works__opening__title',
 				navigation: document.querySelector('.navigation'),
-				openingWrapper: '.works__opening',
 				wrapper: '.works__wrapper',
+				transition: '.works__transition',
+				transitionWrapper: '.works__transition__title__wrapper',
 			},
 		})
 	}
 
 	create() {
 		super.create()
-	}
-
-	addEventListeners() {
-		each(this.elements.openingTitles, (element) => {
-			const innerText = element.innerText
-			element.addEventListener('click', this.onHideOpening.bind(this))
-		})
-	}
-
-	onHideOpening() {
-		//TODO update animations to expected behavior
-		this.animateOnHideOpening = GSAP.timeline()
-
-		each(this.elements.openingTitles, (element) => {
-			this.animateOnHideOpening.to(
-				element,
-				{ autoAlpha: 0, duration: 0.75 },
-				'-=0.5'
-			)
-		})
-		this.animateOnHideOpening.to(this.elements.openingWrapper, {
-			height: 0,
-			ease: 'ease.out',
-			duration: 1,
-		})
 	}
 
 	/**

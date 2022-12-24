@@ -76,9 +76,12 @@ export default class {
 	}
 
 	onTouchMove({ x, y }) {
-		const distance = x.start - x.end
+		this.bounds = this.elementWrapper.getBoundingClientRect()
+		if (y.start >= this.bounds.top && y.start <= this.bounds.bottom) {
+			const distance = x.start - x.end
 
-		this.scroll.target = this.scroll.start - distance
+			this.scroll.target = this.scroll.start - distance
+		}
 	}
 
 	onTouchUp({ x, y }) {}

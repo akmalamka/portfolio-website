@@ -1,11 +1,8 @@
 import { Camera, Renderer, Transform } from 'ogl'
-import GSAP from 'gsap'
 
 import Blog from './Blog'
 import Home from './Home'
 import Works from './Works'
-
-import Transition from './Transition'
 
 export default class Canvas {
 	constructor({ template }) {
@@ -70,7 +67,6 @@ export default class Canvas {
 			gl: this.gl,
 			scene: this.scene,
 			sizes: this.sizes,
-			transition: this.transition,
 		})
 	}
 
@@ -84,11 +80,21 @@ export default class Canvas {
 	 * Works
 	 */
 	createWorks() {
+		const hash = window.location.hash.substring(1)
+		this.mediasElements = document.querySelectorAll('.works__gallery__media')
+
+		let firstIndex
+		this.mediasElements.forEach((element, index) => {
+			if (element.getAttribute('id') === `first-${hash}`) {
+				firstIndex = index
+			}
+		})
+
 		this.works = new Works({
 			gl: this.gl,
 			scene: this.scene,
 			sizes: this.sizes,
-			transition: this.transition,
+			index: firstIndex,
 		})
 	}
 
@@ -116,41 +122,11 @@ export default class Canvas {
 		if (this.works) {
 			this.works.hide()
 		}
-
-		const routeCheck = (url) => {
-			let newUrl = url.split('/')
-			return newUrl[newUrl.length - 1] === 'works'
-		}
-
-		const checkedRoute = routeCheck(url)
-
-		this.isFromWorksToBlog = this.template === 'works' && !checkedRoute
-		this.isFromBlogToWorks = this.template === 'blog' && checkedRoute
-
-		if (this.isFromWorksToBlog || this.isFromBlogToWorks) {
-			this.transition = new Transition({
-				gl: this.gl,
-				scene: this.scene,
-				sizes: this.sizes,
-				url,
-			})
-		}
-
-		if (this.blog || this.works) {
-			this.transition.setElement(this.blog || this.works)
-		}
 	}
 
 	onChangeEnd(template) {
 		if (template === 'blog') {
 			this.createBlog()
-
-			//TODO: remove if unnecessary
-			// GSAP.delayedCall(0.5, (_) => {
-			// 	if (this.transition) {
-			// 		this.transition.animateBlog(this.blog.imageHeader)
-			// 	}
-			// })
 		} else {
 			this.destroyBlog()
 		}
@@ -164,13 +140,6 @@ export default class Canvas {
 
 		if (template === 'works') {
 			this.createWorks()
-
-			//TODO: remove if unnecessary
-			// GSAP.delayedCall(0.5, (_) => {
-			// 	if (this.transition) {
-			// 		this.transition.animateWorks(this.works)
-			// 	}
-			// })
 		} else {
 			this.destroyWorks()
 		}

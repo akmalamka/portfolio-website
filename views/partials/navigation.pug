@@ -3,13 +3,17 @@ nav.navigation
 		a.navigation__link(href='/')
 			|	Muhammad Akmal 
 
-		.navigation__current__job__wrapper(class=`navigation__current__job__wrapper--${navbar.data.route === 'works' || navbar.data.route === 'blog' ? 'hide' : ''}`)
-			p.navigation__current__job__text=navbar.data.current_job
+		.navigation__current__wrapper(class=`navigation__current__wrapper--${navbar.data.route === 'works' || navbar.data.route === 'blog' ? 'hide' : ''}`)
+			ul.navigation__current__inner__wrapper(data-animation="vertical-slide")
+				li.navigation__current__text=navbar.data.current_job
+				li.navigation__current__text=navbar.data.current_status
+				li.navigation__current__text=navbar.data.current_job
+				
 
 	ul.navigation__list
 		.navigation__list__top__wrapper
 			li.navigation__list__item
-				a.navigation__list__link(href='/works') Works
+				a.navigation__list__link(href='/category') Works
 			li.navigation__list__item
 				a.navigation__list__link(href='/about') About
 		li.navigation__list__item 

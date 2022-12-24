@@ -7,6 +7,7 @@ import Navigation from 'components/Navigation'
 
 import About from 'pages/About'
 import Blog from 'pages/Blog'
+import Category from 'pages/Category'
 import Home from 'pages/Home'
 import Works from 'pages/Works'
 
@@ -18,8 +19,8 @@ class App {
 
 		this.createCanvas()
 		this.createPreloader()
-		this.createNavigation()
 		this.createPages()
+		this.createNavigation()
 
 		this.addEventListeners()
 		this.addLinkListeners()
@@ -50,6 +51,7 @@ class App {
 		this.pages = {
 			about: new About(),
 			blog: new Blog(),
+			category: new Category(),
 			home: new Home(),
 			works: new Works(),
 		}
@@ -196,17 +198,19 @@ class App {
 
 		each(links, (link) => {
 			link.onclick = (event) => {
-				event.preventDefault()
-
 				const { href } = link
+				if (href.includes('localhost:3000')) {
+					//TODO: add prod url here also
+					event.preventDefault()
 
-				this.onChange({ url: href })
+					this.onChange({ url: href })
+				}
 			}
 		})
 
 		each(buttons, (button) => {
 			button.onclick = (event) => {
-				if (button.className === 'works__opening__title') {
+				if (button.className === 'category__title') {
 					event.preventDefault()
 
 					this.onChange({

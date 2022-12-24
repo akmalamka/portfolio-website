@@ -32,4 +32,6 @@ export default class Social extends Animation {
 			autoAlpha: 0,
 		})
 	}
+
+	animateRepeat() {}
 }

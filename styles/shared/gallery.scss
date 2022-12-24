@@ -2,5 +2,50 @@
 	align-items: center;
 	display: flex;
 	position: absolute;
-	transform: translate(-34rem * 0.5, -50%);
+	transform: translate(-34rem * 0.5, -20%);
+	@include media('<phone') {
+		transform: translate(-34rem * 0.5, -50%);
+	}
+}
+
+%media__image__portrait {
+	height: 64rem;
+	width: 36rem;
+
+	@include media('<phone') {
+		height: 32rem;
+		width: 18rem;
+	}
+}
+
+%media__image__landscape, // width: 1440px, height: 1024px
+%media__image__landscape-1 {
+	height: 51.2rem;
+	width: 72rem;
+
+	@include media('<phone') {
+		height: 25.6rem;
+		width: 36rem;
+	}
+}
+
+%media__image__landscape-2 {
+	// width: 1440px, height: 720px
+	height: 36rem;
+	width: 72rem;
+
+	@include media('<phone') {
+		height: 18rem;
+		width: 36rem;
+	}
+}
+
+%media__image__square {
+	height: 51.2rem;
+	width: 51.2rem;
+
+	@include media('<phone') {
+		height: 25.6rem;
+		width: 25.6rem;
+	}
 }

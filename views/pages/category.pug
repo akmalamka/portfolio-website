@@ -1,0 +1,11 @@
+extends ../base.pug
+
+block variables 
+  - var template = 'category'
+
+block content
+  .category
+    .category__wrapper 
+      each category in categories 
+        .category__title__wrapper
+          button.category__title=category.data.type

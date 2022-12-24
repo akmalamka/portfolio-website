@@ -26,4 +26,6 @@ export default class Paragraph extends Animation {
 			autoAlpha: 0,
 		})
 	}
+
+	animateRepeat() {}
 }

@@ -24,3 +24,16 @@
 		width: 100%;
 	}
 }
+
+@mixin marquee__keyframes($percentage) {
+	@keyframes marquee {
+		0% {
+			-webkit-transform: translateX(0);
+			transform: translateX(0);
+		}
+		100% {
+			-webkit-transform: translateX($percentage);
+			transform: translateX($percentage);
+		}
+	}
+}

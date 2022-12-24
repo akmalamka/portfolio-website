@@ -4,6 +4,21 @@
 .blog__paragraph__wrapper {
 	display: flex;
 
+	&--no-image {
+		align-items: center;
+		flex-direction: column;
+	}
+
+	&--top {
+		align-items: center;
+		flex-direction: column-reverse;
+		row-gap: 10rem;
+
+		@include media('<phone') {
+			row-gap: 3rem;
+		}
+	}
+
 	&--bottom {
 		align-items: center;
 		flex-direction: column;
@@ -30,27 +45,41 @@
 		flex-direction: row-reverse;
 
 		@include media('<phone') {
+			align-items: center;
 			flex-direction: column;
+			row-gap: 2rem;
 		}
 	}
 }
 
-.blog__paragraph__media {
-	height: 42.5rem;
-	position: relative;
-	width: 56rem;
-
-	&--bottom {
-		height: 43rem;
-		width: 87.5rem;
-	}
-	&--no-image {
-		display: none;
-	}
+.blog__paragraph__media__wrapper {
+	display: flex;
+	flex-direction: column;
+	row-gap: 2.4rem;
+	align-items: center;
 
 	@include media('<phone') {
-		height: 28rem;
-		width: 19rem;
+		row-gap: 2rem;
+	}
+}
+
+.blog__paragraph__media {
+	position: relative;
+
+	&--portrait {
+		@extend %media__image__portrait;
+	}
+
+	&--landscape {
+		@extend %media__image__landscape;
+	}
+
+	&--square {
+		@extend %media__image__square;
+	}
+
+	&--no-image {
+		display: none;
 	}
 }
 
@@ -60,17 +89,33 @@
 	object-fit: cover;
 }
 
+.blog__paragraph__media__caption {
+	@extend %description-blog-16;
+	width: 100%;
+	&--right,
+	&--left {
+		text-align: start;
+	}
+
+	&--bottom,
+	&--top {
+		text-align: center;
+	}
+
+	@include media('<phone') {
+		padding: 0 3.2rem;
+	}
+}
+
 .blog__paragraph__title__wrapper {
 }
 
 .blog__paragraph__title {
 	@extend %description-blog-20;
 	font-weight: 500;
-	&--right {
-		text-align: end;
-	}
 
-	&--left {
+	&--left,
+	&--right {
 		text-align: start;
 	}
 }
@@ -82,6 +127,7 @@
 	max-width: 54rem;
 
 	&--bottom,
+	&--top,
 	&--no-image {
 		max-width: 105rem;
 	}

@@ -1,3 +1,38 @@
+.works__transition {
+	@extend %page;
+	z-index: 4;
+}
+
+.works__transition__wrapper {
+	@extend %cover;
+	display: flex;
+	flex-direction: row;
+}
+
+.works__transition__title__wrapper {
+	align-items: flex-end;
+	display: flex;
+	height: 100%;
+	justify-content: center;
+	width: 20%;
+
+	&:nth-child(1) {
+		background-color: $color-grenadier;
+	}
+	&:nth-child(2) {
+		background-color: $color-science-blue;
+	}
+	// &:nth-child(3) {
+	// 	background-color: $color-la-palma;
+	// }
+	&:nth-child(3) {
+		background-color: $color-corn;
+	}
+	&:nth-child(4) {
+		background-color: $color-la-palma;
+	}
+}
+
 .works__header {
 }
 
@@ -5,11 +40,8 @@
 	margin-top: 10.2rem;
 }
 
-.works__header__title__wrapper {
-	align-items: center;
-	column-gap: 3.4rem;
-	display: flex;
-	width: max-content;
+.works__header__title__wrapper__outer {
+	@extend %marquee__wrapper__outer;
 	position: absolute;
 	opacity: 0;
 
@@ -17,14 +49,24 @@
 		opacity: 1;
 	}
 }
+
+.works__header__title__wrapper {
+	@extend %marquee__wrapper;
+	@include marquee__animation(40s);
+	display: flex;
+}
+
+.works__header__title__item {
+}
+
+@include marquee__keyframes(-50%);
+
 .works__header__title__title {
-	@extend %title-80;
+	@extend %marquee__title;
 }
 
 .works__header__title__circle {
-	border-radius: 50%;
-	height: 4.6rem;
-	width: 4.6rem;
+	@extend %marquee__circle;
 	&--cook {
 		background: $color-grenadier;
 	}
@@ -33,21 +75,16 @@
 		background: $color-science-blue;
 	}
 
-	&--ui-ux {
-		background: $color-la-palma;
-	}
+	// &--ui-ux {
+	// 	background: $color-la-palma;
+	// }
 
 	&--webdev {
 		background: $color-corn;
 	}
 
 	&--others {
-		background: $color-black;
-	}
-
-	@include media('<phone') {
-		height: 2.4rem;
-		width: 2.4rem;
+		background: $color-la-palma;
 	}
 }
 
@@ -81,14 +118,14 @@
 }
 
 .works__gallery__media {
-	height: 50.5rem;
+	height: 44rem;
 	position: relative;
 	visibility: hidden;
-	width: 34rem;
+	width: 29.6rem;
 
 	@include media('<phone') {
-		height: 27.7rem;
-		width: 18.7rem;
+		height: 36.5rem;
+		width: 24.5rem;
 	}
 }
 
@@ -96,4 +133,10 @@
 	@extend %cover;
 	object-fit: cover;
 	user-select: none;
+	height: 44rem;
+	width: 29.6rem;
+	@include media('<phone') {
+		height: 36.5rem;
+		width: 24.5rem;
+	}
 }

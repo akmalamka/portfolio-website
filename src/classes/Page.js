@@ -3,25 +3,30 @@ import map from 'lodash/map'
 
 import Prefix from 'prefix'
 import GSAP from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 
+import InfiniteMarquee from 'animations/InfiniteMarquee'
 import Label from 'animations/Label'
 import Paragraph from 'animations/Paragraph'
 import Social from 'animations/Social'
 import Title from 'animations/Title'
+import VerticalSlide from 'animations/VerticalSlide'
+
+import { split } from 'utils/text'
 
 import AsyncLoad from 'classes/AsyncLoad'
-import { isHashLocationExist } from 'utils/location'
 
 export default class Page {
 	constructor({ element, elements, id }) {
 		this.selector = element
 		this.selectorChildren = {
 			...elements,
+			animationsInfiniteMarquee: '[data-animation="infinite-marquee"]', //TODO: remove everything animation marquee
 			animationsLabels: '[data-animation="label"]',
 			animationsParagraphs: '[data-animation="paragraph"]',
 			animationsSocials: '[data-animation="social"]',
 			animationsTitles: '[data-animation="title"]',
-
+			animationsVerticalSlides: '[data-animation="vertical-slide"]',
 			preloaders: '[data-src]',
 		}
 
@@ -68,6 +73,19 @@ export default class Page {
 	createAnimations() {
 		this.animations = []
 
+		//Infinite Gallery
+		this.animationsInfiniteMarquee = map(
+			this.elements.animationsInfiniteMarquee,
+			(element) => {
+				return new InfiniteMarquee({
+					element,
+					infiniteLink: this.id === 'blog',
+				})
+			}
+		)
+
+		this.animations.push(...this.animationsInfiniteMarquee)
+
 		//Labels
 		this.animationsLabels = map(this.elements.animationsLabels, (element) => {
 			return new Label({ element })
@@ -97,6 +115,19 @@ export default class Page {
 		})
 
 		this.animations.push(...this.animationsTitles)
+
+		//Vertical Slides
+		this.animationsVerticalSlides = map(
+			this.elements.animationsVerticalSlides,
+			(element) => {
+				return new VerticalSlide({
+					element,
+					elements: { currentText: '.navigation__current__text' },
+				})
+			}
+		)
+
+		this.animations.push(...this.animationsVerticalSlides)
 	}
 
 	createPreloader() {
@@ -115,18 +146,73 @@ export default class Page {
 				this.animationIn = animation
 			} else {
 				this.animationIn = GSAP.timeline()
-				if (isHashLocationExist() && this.id === 'works')
-					this.animationIn.set(this.elements.openingWrapper, {
-						autoAlpha: 0,
+				if (this.id === 'category') {
+					this.animationIn.fromTo(
+						this.element,
+						{ autoAlpha: 0 },
+						{
+							autoAlpha: 1,
+						}
+					)
+					each(this.elements.titleWrapper, (element) => {
+						this.animationIn.fromTo(
+							element,
+							{
+								height: 0,
+							},
+							{
+								height: element.offsetHeight,
+								ease: 'ease.out',
+								duration: 0.5,
+							},
+							`>-0.25`
+						)
 					})
-				this.animationIn.fromTo(
-					this.element,
-					{ autoAlpha: 0 },
-					{
-						autoAlpha: 1,
-						// onComplete: resolve,
-					}
-				)
+					each(this.elements.titles, (element) => {
+						this.animationIn.fromTo(
+							element,
+							{ autoAlpha: 0 },
+							{ autoAlpha: 1, duration: 0.5 },
+							'>-0.25'
+						)
+					})
+				} else if (this.id === 'home') {
+					this.animationIn.fromTo(
+						this.element,
+						{ autoAlpha: 0 },
+						{
+							autoAlpha: 1,
+						}
+					)
+
+					GSAP.config({ trialWarn: false })
+					GSAP.registerPlugin(ScrollTrigger)
+					const splitted = new split({
+						element: this.elements.example,
+						expression: '<br>',
+					})
+					splitted.forEach((target) => {
+						GSAP.to(target, {
+							backgroundPositionX: 0,
+							ease: 'none',
+							scrollTrigger: {
+								trigger: target,
+								markers: true,
+								scrub: 1,
+								start: 'top center',
+								end: 'bottom center',
+							},
+						})
+					})
+				} else {
+					this.animationIn.fromTo(
+						this.element,
+						{ autoAlpha: 0 },
+						{
+							autoAlpha: 1,
+						}
+					)
+				}
 			}
 
 			this.animationIn.call((_) => {
@@ -141,6 +227,23 @@ export default class Page {
 		return new Promise((resolve) => {
 			this.destroy()
 			this.animateOut = GSAP.timeline()
+			//TODO update animations to expected behavior
+			if (this.id === 'category') {
+				each(this.elements.titles, (element) => {
+					this.animateOut.to(element, { autoAlpha: 0, duration: 0.75 }, '-=0.5')
+				})
+				each(this.elements.titleWrapper, (element) => {
+					this.animateOut.to(
+						element,
+						{
+							height: 0,
+							ease: 'ease.out',
+							duration: 0.5,
+						},
+						`>-0.25`
+					)
+				})
+			}
 			this.animateOut.to(this.element, {
 				autoAlpha: 0,
 				onComplete: resolve,

@@ -6,23 +6,24 @@ block variables
 block content
   .works
     .works__wrapper 
-      section.works__opening 
-        .works__opening__wrapper
+      section.works__transition
+        .works__transition__wrapper 
           each category in categories 
-            .works__opening__title__wrapper
-              button.works__opening__title=category.data.type
+            .works__transition__title__wrapper
       section.works__header 
         .works__header__wrapper
           each work, index in works
-            .works__header__title__wrapper(class=`works__header__title__wrapper--${index === 0 ? 'active' : ''}`)
-              each line in [0,1,2,3]
-                .works__header__title__title=work.data.title
-                .works__header__title__circle(class=`works__header__title__circle--${work.data.category.uid.toLowerCase()}`)
+            .works__header__title__wrapper__outer(class=`works__header__title__wrapper__outer--${index === 0 ? 'active' : ''}`)
+              .works__header__title__wrapper
+                each line in [0,1,2,3,4,5,6,7]
+                  span.works__header__title__item
+                    .works__header__title__title=work.data.title
+                    .works__header__title__circle(class=`works__header__title__circle--${work.data.category.uid.toLowerCase()}`)
       section.works__gallery
         .works__gallery__wrapper
           each work, index in works
-            a.works__gallery__link(href=work.data.url.url ? work.data.url.url : `/works/${work.uid}` target=work.data.url.url ? '_blank' : '')
-              figure.works__gallery__media(data-index=work.index)
+            a.works__gallery__link( href=work.data.url.url ? work.data.url.url : `/works/${work.uid}` target=work.data.url.url ? '_blank' : '' rel=work.data.url.url ? 'noopener noreferrer': '')
+              figure.works__gallery__media(id=firstIndexInCategoryMap.includes(index) ? `first-${work.data.category.uid}` : '' data-index=work.index data-list-index=index)
                 img.works__gallery__media__image(alt=work.data.image.alt data-src=work.data.image.url) 
       section.works__category 
         each category, index in categories

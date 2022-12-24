@@ -1,14 +1,15 @@
 import Page from 'classes/Page'
 
-export default class Home extends Page {
+export default class Category extends Page {
 	constructor() {
 		super({
-			id: 'home',
-			element: '.home',
+			id: 'category',
+			element: '.category',
 			elements: {
 				navigation: document.querySelector('.navigation'),
-				wrapper: '.home__wrapper',
-				example: '.home__example__text',
+				wrapper: '.category__wrapper',
+				titleWrapper: '.category__title__wrapper',
+				titles: '.category__title',
 			},
 		})
 	}
