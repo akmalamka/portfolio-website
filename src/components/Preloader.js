@@ -82,8 +82,11 @@ export default class Preloader extends Component {
 			)
 
 			this.animateOut
-				.to(this.elements.firstName, { y: '2000%', duration: 1 }) //desktop 700 TODO: differentiate between mobile and desktop duration mobile: 6, desktop:9 ,
-				.to(this.elements.lastName, { y: '-500%', duration: 1 }, '-=1') //mobile: 5, desktop 7
+				.to(this.elements.firstName, {
+					y: '2000%',
+					duration: 9,
+				}) //desktop 700 TODO: differentiate between mobile and desktop duration mobile: 6, desktop:9 ,
+				.to(this.elements.lastName, { y: '-500%', duration: 3 }, '-=4') //mobile: 5, desktop 7
 
 			// TODO: update animations for numberText if required
 			// this.animateOut.to(
