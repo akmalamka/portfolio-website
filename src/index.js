@@ -193,7 +193,6 @@ class App {
 	}
 
 	addLinkListeners() {
-		//TODO: fix for cors issue probably starts here
 		const links = document.querySelectorAll('a')
 		const buttons = document.querySelectorAll('button')
 
