@@ -196,8 +196,6 @@ class App {
 		const links = document.querySelectorAll('a')
 		const buttons = document.querySelectorAll('button')
 
-		console.log({ links })
-
 		each(links, (link) => {
 			link.onclick = (event) => {
 				const { href } = link

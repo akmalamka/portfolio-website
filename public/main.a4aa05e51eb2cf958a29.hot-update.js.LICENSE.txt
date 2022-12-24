@@ -1,0 +1,11 @@
+/*! gsap */
+
+/*! ogl */
+
+/*! shaders/works-fragment.glsl */
+
+/*! shaders/works-vertex.glsl */
+
+/*!**********************************************!*\
+  !*** ./src/components/Canvas/Works/Media.js ***!
+  \**********************************************/
