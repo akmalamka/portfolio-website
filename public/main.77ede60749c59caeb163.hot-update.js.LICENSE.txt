@@ -1,5 +1,7 @@
 /*! classes/Component */
 
+/*! classes/Detection */
+
 /*! gsap */
 
 /*! ogl */

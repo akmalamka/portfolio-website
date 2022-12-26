@@ -18,26 +18,6 @@
  * @author: Jack Doyle, jack@greensock.com
 */
 
-/*!
- * Observer 3.11.1
- * https://greensock.com
- *
- * @license Copyright 2008-2022, GreenSock. All rights reserved.
- * Subject to the terms at https://greensock.com/standard-license or for
- * Club GreenSock members, the agreement issued with that membership.
- * @author: Jack Doyle, jack@greensock.com
-*/
-
-/*!
- * ScrollTrigger 3.11.1
- * https://greensock.com
- *
- * @license Copyright 2008-2022, GreenSock. All rights reserved.
- * Subject to the terms at https://greensock.com/standard-license or for
- * Club GreenSock members, the agreement issued with that membership.
- * @author: Jack Doyle, jack@greensock.com
-*/
-
 /*! ../core/Geometry.js */
 
 /*! ../math/Euler.js */
@@ -71,8 +51,6 @@
 /*! ./Mat4.js */
 
 /*! ./Media */
-
-/*! ./Observer.js */
 
 /*! ./Transform.js */
 
@@ -404,6 +382,8 @@
 
 /*! classes/Component */
 
+/*! classes/Detection */
+
 /*! classes/Page */
 
 /*! components/Canvas */
@@ -415,8 +395,6 @@
 /*! events */
 
 /*! gsap */
-
-/*! gsap/ScrollTrigger */
 
 /*! html-entities */
 
@@ -454,8 +432,6 @@
 
 /*! utils/location */
 
-/*! utils/text */
-
 /*! webpack/hot/emitter.js */
 
 /*! webpack/hot/log.js */
@@ -465,10 +441,6 @@
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-
-/*!***************************!*\
-  !*** ./src/utils/text.js ***!
-  \***************************/
 
 /*!***************************!*\
   !*** ./styles/index.scss ***!
@@ -516,6 +488,10 @@
 
 /*!**********************************!*\
   !*** ./src/classes/Component.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/classes/Detection.js ***!
   \**********************************/
 
 /*!**********************************!*\
@@ -592,10 +568,6 @@
 
 /*!***************************************!*\
   !*** ./node_modules/events/events.js ***!
-  \***************************************/
-
-/*!***************************************!*\
-  !*** ./node_modules/gsap/Observer.js ***!
   \***************************************/
 
 /*!***************************************!*\
@@ -881,10 +853,6 @@
 /*!********************************************!*\
       !*** ./client-src/modules/logger/index.js ***!
       \********************************************/
-
-/*!********************************************!*\
-  !*** ./node_modules/gsap/ScrollTrigger.js ***!
-  \********************************************/
 
 /*!********************************************!*\
   !*** ./node_modules/lodash/_Uint8Array.js ***!

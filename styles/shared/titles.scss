@@ -117,13 +117,13 @@
 	}
 }
 
-%title-440 {
+%title-340 {
 	font-family: $font-canela;
-	font-size: 44rem;
+	font-size: 34rem;
 	font-style: normal;
 	font-weight: 400;
 
 	@include media('<phone') {
-		font-size: 7.1rem;
+		font-size: 25rem;
 	}
 }
