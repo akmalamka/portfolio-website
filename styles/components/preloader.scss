@@ -2,69 +2,48 @@
 	@extend %cover;
 
 	background: $color-spring-wood;
+	display: flex;
+	flex-direction: column;
 	height: 100%;
+	justify-content: center;
+	row-gap: 4rem;
 	z-index: z('preloader');
 }
 
-.preloader__quote {
-	@extend %description-36;
-
-	max-width: 67rem;
-	// opacity: 0;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-
-	span span {
-		@extend %description-36;
-
-		display: inline-block;
-		transform-origin: center center 0.5em;
-	}
-}
-
 .preloader__title__first__name {
-	@extend %title-440;
+	@extend %title-340;
 
-	margin-left: 22rem;
+	opacity: 0;
 	text-align: center;
 	text-transform: uppercase;
-	transform: rotate(-90deg) translate(500%, -100%);
+	width: fit-content;
 
 	@include media('<phone') {
-		margin-left: 6rem;
-		margin-right: 6rem;
+		margin-left: 3rem;
 	}
 }
 
 .preloader__title__last__name {
-	@extend %title-440;
+	@extend %title-340;
 
-	margin-right: 22rem;
+	align-self: center;
+	display: inherit;
+	opacity: 0;
 	text-align: center;
 	text-transform: uppercase;
-	transform: rotate(90deg) translate(500%, -100%); //desktop: 100
+	width: fit-content;
 
 	@include media('<phone') {
-		margin-left: 6rem;
-		margin-right: 6rem;
+		align-self: flex-start;
 	}
 }
 
 .preloader__number {
 	@extend %description-36;
 
-	bottom: 10.2rem;
-	left: 50%;
-	overflow: hidden;
-	position: absolute;
-	transform: translateX(-50%);
-
-	@include media('<phone') {
-		bottom: 10%;
-		transform: translate(-50%, -50%);
-	}
+	align-items: center;
+	display: flex;
+	justify-content: center;
 }
 
 .preloader__number__text {

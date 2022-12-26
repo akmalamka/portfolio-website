@@ -3,7 +3,6 @@ import map from 'lodash/map'
 
 import Prefix from 'prefix'
 import GSAP from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
 
 import InfiniteMarquee from 'animations/InfiniteMarquee'
 import Label from 'animations/Label'
@@ -11,8 +10,6 @@ import Paragraph from 'animations/Paragraph'
 import Social from 'animations/Social'
 import Title from 'animations/Title'
 import VerticalSlide from 'animations/VerticalSlide'
-
-import { split } from 'utils/text'
 
 import AsyncLoad from 'classes/AsyncLoad'
 
@@ -184,26 +181,6 @@ export default class Page {
 							autoAlpha: 1,
 						}
 					)
-
-					GSAP.config({ trialWarn: false })
-					GSAP.registerPlugin(ScrollTrigger)
-					const splitted = new split({
-						element: this.elements.example,
-						expression: '<br>',
-					})
-					splitted.forEach((target) => {
-						GSAP.to(target, {
-							backgroundPositionX: 0,
-							ease: 'none',
-							scrollTrigger: {
-								trigger: target,
-								markers: true,
-								scrub: 1,
-								start: 'top center',
-								end: 'bottom center',
-							},
-						})
-					})
 				} else {
 					this.animationIn.fromTo(
 						this.element,

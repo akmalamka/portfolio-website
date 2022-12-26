@@ -2,6 +2,7 @@ import { Texture } from 'ogl'
 import GSAP from 'gsap'
 
 import Component from 'classes/Component'
+import Detection from 'classes/Detection'
 
 export default class Preloader extends Component {
 	constructor({ canvas }) {
@@ -12,7 +13,6 @@ export default class Preloader extends Component {
 				lastName: '.preloader__title__last__name',
 				number: '.preloader__number',
 				numberText: '.preloader__number__text',
-				quote: '.preloader__quote',
 			},
 		})
 
@@ -72,35 +72,37 @@ export default class Preloader extends Component {
 				'-=1.4'
 			)
 
-			this.animateOut.to(
-				this.elements.quote,
+			this.animateOut.fromTo(
+				this.elements.firstName,
 				{
 					autoAlpha: 0,
-					duration: 1.5,
 				},
-				'-=1.4'
+				{ autoAlpha: 1, duration: 1 }
 			)
 
-			this.animateOut
-				.to(this.elements.firstName, {
-					y: '2000%',
-					duration: 9,
-				}) //desktop 700 TODO: differentiate between mobile and desktop duration mobile: 6, desktop:9 ,
-				.to(this.elements.lastName, { y: '-500%', duration: 3 }, '-=4') //mobile: 5, desktop 7
+			this.animateOut.fromTo(
+				this.elements.lastName,
+				{
+					autoAlpha: 0,
+				},
+				{ autoAlpha: 1, duration: 1 },
+				'-=1'
+			)
 
-			// TODO: update animations for numberText if required
-			// this.animateOut.to(
-			// 	this.elements.numberText,
-			// 	{
-			// 		duration: 1.5,
-			// 		ease: 'expo.out',
-			// 		y: '100%',
-			// 	},
-			// 	'-=1.4'
-			// )
+			this.animateOut.to(this.elements.firstName, {
+				x: Detection.isPhone() ? '-150%' : '-100%',
+				duration: 2.5,
+			})
+
+			this.animateOut.to(
+				this.elements.lastName,
+				{ x: '150%', duration: 2 },
+				'-=1.5'
+			)
 
 			this.animateOut.to(this.element, {
 				autoAlpha: 0,
+				duration: 1.5,
 			})
 
 			this.animateOut.call((_) => {
