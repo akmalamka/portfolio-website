@@ -64,14 +64,14 @@
 
 .navigation__current__wrapper {
 	overflow: hidden;
-	height: 1.2rem;
+	height: 1.6rem;
 	position: relative;
 	&--hide {
 		display: none;
 	}
 
 	@include media('<phone') {
-		margin-top: 0.8rem;
+		display: none;
 	}
 }
 
@@ -82,14 +82,8 @@
 }
 
 .navigation__current__text {
-	@extend %description-12;
+	@extend %description-16;
 	font-weight: 300;
-	line-height: 12px;
-
-	@include media('<phone') {
-		line-height: 1.4;
-		max-width: 13.3rem;
-	}
 }
 
 .navigation__list {
