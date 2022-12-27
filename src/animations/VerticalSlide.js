@@ -32,7 +32,6 @@ export default class VerticalSlide extends Animation {
 			slides: this.elements.currentText,
 			list: this.element,
 			duration: 1,
-			lineHeight: 12,
 		}
 
 		var vSlide = GSAP.timeline({
@@ -50,7 +49,7 @@ export default class VerticalSlide extends Animation {
 					vSlideOptions.list,
 					{
 						duration: vSlideOptions.duration,
-						y: i * -1 * vSlideOptions.lineHeight,
+						y: i * -1 * slide.offsetHeight,
 					},
 					label
 				)
