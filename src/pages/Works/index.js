@@ -1,6 +1,3 @@
-import each from 'lodash/each'
-import GSAP from 'gsap'
-
 import Page from 'classes/Page'
 
 export default class Works extends Page {

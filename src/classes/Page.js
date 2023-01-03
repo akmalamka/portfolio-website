@@ -12,6 +12,7 @@ import Title from 'animations/Title'
 import VerticalSlide from 'animations/VerticalSlide'
 
 import AsyncLoad from 'classes/AsyncLoad'
+import Detection from 'classes/Detection'
 
 export default class Page {
 	constructor({ element, elements, id }) {
@@ -239,6 +240,30 @@ export default class Page {
 		}
 
 		each(this.animations, (animation) => animation.onResize())
+	}
+
+	onTouchDown(event) {
+		if (!Detection.isPhone()) return
+
+		this.isDown = true
+
+		this.scroll.position = this.scroll.current
+		this.start = event.touches ? event.touches[0].clientY : event.clientY
+	}
+
+	onTouchMove(event) {
+		if (!Detection.isPhone() || !this.isDown) return
+
+		const y = event.touches ? event.touches[0].clientY : event.clientY
+		const distance = (this.start - y) * 3
+
+		this.scroll.target = this.scroll.position + distance
+	}
+
+	onTouchUp(event) {
+		if (!Detection.isPhone()) return
+
+		this.isDown = false
 	}
 
 	onWheel({ pixelY }) {
