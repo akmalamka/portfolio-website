@@ -31,7 +31,7 @@
 }
 
 .blog_gallery_wrapper {
-	@extend %gallery__wrapper;
+	@extend %gallery__wrapper__blog;
 	left: 50%;
 	top: 0%;
 }
