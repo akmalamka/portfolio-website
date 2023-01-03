@@ -1,7 +1,6 @@
 import { Camera, Renderer, Transform } from 'ogl'
 
 import Blog from './Blog'
-import Home from './Home'
 import Works from './Works'
 
 export default class Canvas {
@@ -44,19 +43,6 @@ export default class Canvas {
 
 	createScene() {
 		this.scene = new Transform()
-	}
-
-	/**
-	 * Home
-	 */
-	createHome() {
-		this.home = new Home({ gl: this.gl, scene: this.scene, sizes: this.sizes })
-	}
-
-	destroyHome() {
-		if (!this.home) return
-		this.home.destroy()
-		this.home = null
 	}
 
 	/**
@@ -130,13 +116,6 @@ export default class Canvas {
 		} else {
 			this.destroyBlog()
 		}
-
-		//TODO: remove everything related to home canvas
-		// if (template === 'home') {
-		// 	this.createHome()
-		// } else {
-		// 	this.destroyHome()
-		// }
 
 		if (template === 'works') {
 			this.createWorks()

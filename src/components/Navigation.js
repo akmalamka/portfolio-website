@@ -46,7 +46,7 @@ export default class Navigation extends Component {
 					(template === 'works' || template === 'category') && index === 2
 						? 0
 						: 1,
-				delay: 0.75, //TODO it's for smooth transition in floema because different page has different color, just omit it when unusable
+				delay: 0.75, //it's for smooth transition in floema because different page has different color, just omit it when unusable
 				duration: 0.75,
 			})
 		})

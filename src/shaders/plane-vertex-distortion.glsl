@@ -16,8 +16,7 @@ void main() {
 
   vec4 newPosition = modelViewMatrix * vec4(position, 1.0);
 
-  // TODO: remove if this distortion is unnecessary, and remove related variable
-  // newPosition.z -= sin(newPosition.y / uViewportSizes.y * PI + PI / 2.0) * abs(uSpeed);
+  newPosition.z -= sin(newPosition.x / uViewportSizes.x * PI + PI / 2.0) * abs(uSpeed);
 
   gl_Position = projectionMatrix * newPosition;
 }
