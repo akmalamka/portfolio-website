@@ -21,9 +21,7 @@ export default class Animation extends Component {
 				} else {
 					this.animateOut()
 				}
-				// if (this.isAnimateInCalled) {
 				this.animateRepeat()
-				// }
 			})
 		})
 

@@ -57,7 +57,7 @@ export default class {
 	 */
 
 	onResize(event) {
-		map(this.galleries, (gallery) => gallery.onResize(event)) //TODO: add this.scroll to params
+		map(this.galleries, (gallery) => gallery.onResize(event))
 	}
 
 	onTouchDown(event) {
