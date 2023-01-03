@@ -1,8 +1,8 @@
 import { Mesh, Program } from 'ogl'
 import GSAP from 'gsap'
 
-import fragment from 'shaders/works-fragment.glsl'
-import vertex from 'shaders/works-vertex.glsl'
+import fragment from 'shaders/plane-fragment.glsl'
+import vertex from 'shaders/plane-vertex-distortion.glsl'
 
 export default class {
 	constructor({ element, geometry, index, gl, scene, sizes }) {
@@ -43,8 +43,8 @@ export default class {
 			vertex,
 			uniforms: {
 				uAlpha: { value: 0 },
-				// uSpeed: { value: 0 },
-				// uViewportSizes: { value: [this.sizes.width, this.sizes.height] },
+				uSpeed: { value: 0 },
+				uViewportSizes: { value: [this.sizes.width, this.sizes.height] },
 				tMap: { value: this.texture },
 			},
 		})
@@ -106,13 +106,14 @@ export default class {
 	}
 
 	updateRotation() {
-		this.mesh.rotation.z = GSAP.utils.mapRange(
-			-this.sizes.width / 2,
-			this.sizes.width / 2,
-			Math.PI * 0.1,
-			-Math.PI * 0.1,
-			this.mesh.position.x
-		)
+		// for rotating effect
+		// this.mesh.rotation.z = GSAP.utils.mapRange(
+		// 	-this.sizes.width / 2,
+		// 	this.sizes.width / 2,
+		// 	Math.PI * 0.1,
+		// 	-Math.PI * 0.1,
+		// 	this.mesh.position.x
+		// )
 	}
 
 	updateScale() {
@@ -147,11 +148,11 @@ export default class {
 	 * Loop
 	 */
 	update(scroll, speed, index) {
-		this.updateRotation()
+		// this.updateRotation()
 		this.updateX(scroll)
 		this.updateY()
 
-		// this.program.uniforms.uSpeed.value = speed
+		this.program.uniforms.uSpeed.value = speed
 
 		this.opacity.target = this.index === index ? 1 : 0.4
 		this.opacity.current = GSAP.utils.interpolate(

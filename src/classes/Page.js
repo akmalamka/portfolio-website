@@ -4,7 +4,6 @@ import map from 'lodash/map'
 import Prefix from 'prefix'
 import GSAP from 'gsap'
 
-import InfiniteMarquee from 'animations/InfiniteMarquee'
 import Label from 'animations/Label'
 import Paragraph from 'animations/Paragraph'
 import Social from 'animations/Social'
@@ -19,7 +18,6 @@ export default class Page {
 		this.selector = element
 		this.selectorChildren = {
 			...elements,
-			animationsInfiniteMarquee: '[data-animation="infinite-marquee"]', //TODO: remove everything animation marquee
 			animationsLabels: '[data-animation="label"]',
 			animationsParagraphs: '[data-animation="paragraph"]',
 			animationsSocials: '[data-animation="social"]',
@@ -70,19 +68,6 @@ export default class Page {
 
 	createAnimations() {
 		this.animations = []
-
-		//Infinite Gallery
-		this.animationsInfiniteMarquee = map(
-			this.elements.animationsInfiniteMarquee,
-			(element) => {
-				return new InfiniteMarquee({
-					element,
-					infiniteLink: this.id === 'blog',
-				})
-			}
-		)
-
-		this.animations.push(...this.animationsInfiniteMarquee)
 
 		//Labels
 		this.animationsLabels = map(this.elements.animationsLabels, (element) => {
@@ -205,7 +190,6 @@ export default class Page {
 		return new Promise((resolve) => {
 			this.destroy()
 			this.animateOut = GSAP.timeline()
-			//TODO update animations to expected behavior
 			if (this.id === 'category') {
 				each(this.elements.titles, (element) => {
 					this.animateOut.to(element, { autoAlpha: 0, duration: 0.75 }, '-=0.5')

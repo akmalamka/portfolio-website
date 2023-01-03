@@ -233,7 +233,7 @@ export default class {
 		}
 
 		map(this.medias, (media) => {
-			//TODO :  this is for infinite scrolling
+			// this is for infinite scrolling
 			// const scaleX = media.mesh.scale.x / 2
 
 			// if (this.scroll.direction === 'left') {
