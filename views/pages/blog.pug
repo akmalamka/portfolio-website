@@ -13,10 +13,11 @@ block content
           .blog__header__title__wrapper(class=`blog__header__title__wrapper--${blog.data.work.data.category.uid.toLowerCase()}`)
             h1.blog__header__title(data-animation="title")=blog.data.work.data.title
             .blog__header__description(data-animation="label")=blog.data.description
-            .blog__header__label 
-              .blog__header__label__type(data-animation="label")=blog.data.type
-              .blog__header__label__date(data-animation="label")=parseDate(blog.data.start_date, blog.data.end_date)
-              a.blog__header__label__url(data-animation="label" href=blog.data.url.url class=`blog__header__label__url--${blog.data.url.url ? '' : 'hidden'}`)='Check out the website'
+            .blog__header__label
+              .blog__header__label__left 
+                .blog__header__label__type(data-animation="label")=blog.data.type
+                .blog__header__label__date(data-animation="label")=parseDate(blog.data.start_date, blog.data.end_date)
+              a.blog__header__label__url(data-animation="label" href=blog.data.url.url target=blog.data.url.url ? '_blank' : '' class=`blog__header__label__url--${blog.data.url.url ? '' : 'hidden'}`)='Check out the website'
       section.blog__summary 
         .blog__summary_text!=prismicDOM.RichText.asHtml(blog.data.summary).replace(/<p>/g, '<p data-animation="paragraph">')
         

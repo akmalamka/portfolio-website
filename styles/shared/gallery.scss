@@ -2,9 +2,9 @@
 	align-items: center;
 	display: flex;
 	position: absolute;
-	transform: translate(-34rem * 0.5, -20%);
+	transform: translate(-34rem * 0.5, 0);
 	@include media('<phone') {
-		transform: translate(-34rem * 0.5, -50%);
+		transform: translate(-18rem * 0.5, 0);
 	}
 }
 
