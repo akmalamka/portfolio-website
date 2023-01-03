@@ -28,7 +28,18 @@
 	}
 }
 
-%media__image__landscape, // width: 1440px, height: 1024px
+%media__image__landscape {
+	// ratio: 3/4 from width: 1440px, height: 1024px
+	height: 38.4rem;
+	width: 54rem;
+
+	@include media('<phone') {
+		height: 19.2rem;
+		width: 27rem;
+	}
+}
+
+// width: 1440px, height: 1024px
 %media__image__landscape-1 {
 	height: 51.2rem;
 	width: 72rem;

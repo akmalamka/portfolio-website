@@ -66,6 +66,7 @@
 %description-blog-20 {
 	font-family: $font-graphik;
 	font-size: 2rem;
+	line-height: 1.2;
 
 	@include media('<phone') {
 		font-size: 1.6rem;

@@ -5,12 +5,10 @@
 	display: flex;
 
 	&--no-image {
-		align-items: center;
 		flex-direction: column;
 	}
 
 	&--top {
-		align-items: center;
 		flex-direction: column-reverse;
 		row-gap: 10rem;
 
@@ -20,7 +18,7 @@
 	}
 
 	&--bottom {
-		align-items: center;
+		// align-items: center;
 		flex-direction: column;
 		row-gap: 10rem;
 
@@ -34,7 +32,6 @@
 		flex-direction: row;
 
 		@include media('<phone') {
-			align-items: center;
 			flex-direction: column;
 			row-gap: 2rem;
 		}
@@ -42,10 +39,10 @@
 
 	&--right {
 		column-gap: 10rem;
+		justify-content: start;
 		flex-direction: row-reverse;
 
 		@include media('<phone') {
-			align-items: center;
 			flex-direction: column;
 			row-gap: 2rem;
 		}
@@ -95,6 +92,9 @@
 	&--right,
 	&--left {
 		text-align: start;
+		@include media('<phone') {
+			text-align: center;
+		}
 	}
 
 	&--bottom,
@@ -124,12 +124,9 @@
 	@extend %description-18;
 	font-weight: 300;
 
-	max-width: 54rem;
-
 	&--bottom,
 	&--top,
 	&--no-image {
-		max-width: 105rem;
 	}
 
 	&--no-title {
