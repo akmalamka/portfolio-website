@@ -32,7 +32,7 @@
 	flex-direction: column;
 	height: 72rem;
 	justify-content: center;
-	padding-left: 6rem;
+	padding: 0 6rem;
 	width: 72rem;
 
 	@include media('<phone') {
@@ -90,9 +90,23 @@
 }
 
 .blog__header__label {
+	align-items: flex-end;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 	margin-top: auto;
 	margin-bottom: 2.8rem;
+
+	@include media('<phone') {
+		flex-direction: column;
+		align-items: center;
+		justify-content: none;
+	}
 }
+
+.blog__header__label__left {
+}
+
 .blog__header__label__type {
 	@extend %description-16;
 	font-weight: 500;
@@ -112,16 +126,15 @@
 }
 
 .blog__header__label__url {
-	@extend %description-about-20;
+	@extend %description-14;
 	@extend %link--hidden;
-	font-weight: 400;
-	padding-top: 1.6rem;
 
 	&--hidden {
 		display: none;
 	}
 
 	@include media('<phone') {
+		padding-top: 1.6rem;
 		text-align: center;
 	}
 }
