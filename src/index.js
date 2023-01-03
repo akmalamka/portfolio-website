@@ -211,8 +211,7 @@ class App {
 		each(links, (link) => {
 			link.onclick = (event) => {
 				const { href } = link
-				if (href.includes('localhost:3000')) {
-					//TODO: add prod url here also
+				if (href.includes('localhost:3000') || href.includes('akmal.works')) {
 					event.preventDefault()
 
 					this.onChange({ url: href })
