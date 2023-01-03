@@ -30,10 +30,25 @@
 	}
 }
 
-.blog_gallery_wrapper {
-	@extend %gallery__wrapper__blog;
+.blog__gallery__wrapper {
 	left: 50%;
 	top: 0%;
+
+	&--portrait {
+		@extend %gallery__wrapper__blog--portrait;
+	}
+
+	&--landscape-1 {
+		@extend %gallery__wrapper__blog--landscape-1;
+	}
+
+	&--landscape-2 {
+		@extend %gallery__wrapper__blog--landscape-2;
+	}
+
+	&--square {
+		@extend %gallery__wrapper__blog--square;
+	}
 }
 
 .blog__gallery__media {

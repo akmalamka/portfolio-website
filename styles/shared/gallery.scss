@@ -1,20 +1,39 @@
-%gallery__wrapper__blog {
+%gallery__wrapper {
 	align-items: center;
 	display: flex;
 	position: absolute;
-	transform: translate(-34rem * 0.5, 0);
+}
+
+%gallery__wrapper__blog--portrait {
+	@extend %gallery__wrapper;
+	transform: translate(-36rem * 0.5, 0);
 	@include media('<phone') {
 		transform: translate(-18rem * 0.5, 0);
 	}
 }
 
-%gallery__wrapper__works {
-	align-items: center;
-	display: flex;
-	position: absolute;
-	transform: translate(-34rem * 0.5, -20%);
+%gallery__wrapper__blog--landscape-1,
+%gallery__wrapper__blog--landscape-2 {
+	@extend %gallery__wrapper;
+	transform: translate(-72rem * 0.5, 0);
 	@include media('<phone') {
-		transform: translate(-34rem * 0.5, -35%);
+		transform: translate(-36rem * 0.5, 0);
+	}
+}
+
+%gallery__wrapper__blog--square {
+	@extend %gallery__wrapper;
+	transform: translate(-51.2rem * 0.5, 0);
+	@include media('<phone') {
+		transform: translate(-25.6rem * 0.5, 0);
+	}
+}
+
+%gallery__wrapper__works {
+	@extend %gallery__wrapper;
+	transform: translate(-29.6rem * 0.5, -20%);
+	@include media('<phone') {
+		transform: translate(-24.5rem * 0.5, -35%);
 	}
 }
 

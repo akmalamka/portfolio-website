@@ -47,7 +47,7 @@ block content
           if section.slice_type == 'gallery'
             section.blog__gallery
               .blog__gallery__outer__wrapper(class=`blog__gallery__outer__wrapper--${section.primary.section_image_orientation.toLowerCase()}`)
-                .blog_gallery_wrapper(style={transform: `translate(-${section.primary.section_image_width/20}rem, 0%)`}) 
+                .blog__gallery__wrapper(class=`blog__gallery__wrapper--${section.primary.section_image_orientation.toLowerCase()}`)
                   each media, mediaIndex in section.items
                     figure.blog__gallery__media(class=`blog__gallery__media--${section.primary.section_image_orientation.toLowerCase()}`) 
                       img.blog__gallery__media__image(alt=media.gallery_image.alt data-src=media.gallery_image.url)

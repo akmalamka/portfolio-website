@@ -8,7 +8,7 @@ import Media from './Media'
 export default class {
 	constructor({ element, geometry, index, gl, scene, sizes }) {
 		this.element = element
-		this.elementWrapper = element.querySelector('.blog_gallery_wrapper')
+		this.elementWrapper = element.querySelector('.blog__gallery__wrapper')
 		this.geometry = geometry
 		this.index = index
 		this.gl = gl
