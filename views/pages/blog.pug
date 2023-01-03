@@ -18,44 +18,45 @@ block content
                 .blog__header__label__type(data-animation="label")=blog.data.type
                 .blog__header__label__date(data-animation="label")=parseDate(blog.data.start_date, blog.data.end_date)
               a.blog__header__label__url(data-animation="label" href=blog.data.url.url target=blog.data.url.url ? '_blank' : '' class=`blog__header__label__url--${blog.data.url.url ? '' : 'hidden'}`)='Check out the website'
-      section.blog__summary 
-        .blog__summary_text!=prismicDOM.RichText.asHtml(blog.data.summary).replace(/<p>/g, '<p data-animation="paragraph">')
-        
-      each section, index in blog.data.body
-        if section.slice_type == 'text_section'
-          section.blog__paragraph 
-            .blog__paragraph__wrapper(class=`blog__paragraph__wrapper--${isEmpty(section.primary.section_image) ? 'no-image' : section.primary.section_alignment.toLowerCase()}`)
-              .blog__paragraph__media__wrapper
-                figure.blog__paragraph__media(class=`blog__paragraph__media--${isEmpty(section.primary.section_image) ? 'no-image' : ''} blog__paragraph__media--${section.primary.section_alignment.toLowerCase()} blog__paragraph__media--${section.primary.section_image_orientation.toLowerCase()}`)
-                  img.blog__paragraph__media__image(alt=section.primary.section_image.alt data-src=section.primary.section_image.url)
-                .blog__paragraph__media__caption(class=`blog__paragraph__media__caption--${section.primary.section_alignment.toLowerCase()}`)=section.primary.section_caption
-              .blog__paragraph__title__wrapper
-                .blog__paragraph__title(class=`blog__paragraph__title--${section.primary.section_alignment.toLowerCase()}`)=section.primary.section_title
-                .blog__paragraph__text(class=`blog__paragraph__text--${section.primary.section_alignment.toLowerCase()} 
-                blog__paragraph__text--${section.primary.section_title === null ? 'no-title' : 'with-title'}
-                blog__paragraph__text--${isEmpty(section.primary.section_image) ? 'no-image' : ''}`)!=prismicDOM.RichText.asHtml(section.primary.section_paragraph).replace(/<p>/g, '<p data-animation="paragraph">')
-        
-        if section.slice_type == 'image'
-          section.blog__paragraph 
-            .blog__paragraph__wrapper(class=`blog__paragraph__wrapper--bottom`)
-              .blog__paragraph__media__wrapper
-                figure.blog__paragraph__media(class=`blog__paragraph__media--bottom blog__paragraph__media--${section.primary.section_image_orientation.toLowerCase()}`)
-                  img.blog__paragraph__media__image(alt=section.primary.section_image.alt data-src=section.primary.section_image.url)
-                .blog__paragraph__media__caption(class=`blog__paragraph__media__caption--bottom`)=section.primary.section_caption
-        
-        if section.slice_type == 'gallery'
-          section.blog__gallery
-            .blog__gallery__outer__wrapper(class=`blog__gallery__outer__wrapper--${section.primary.section_image_orientation.toLowerCase()}`)
-              .blog_gallery_wrapper(style={transform: `translate(-${section.primary.section_image_width/20}rem, 0%)`}) 
-                each media, mediaIndex in section.items
-                  figure.blog__gallery__media(class=`blog__gallery__media--${section.primary.section_image_orientation.toLowerCase()}`) 
-                    img.blog__gallery__media__image(alt=media.gallery_image.alt data-src=media.gallery_image.url)
-            .blog__gallery__media__caption=section.primary.section_caption
+      .blog__content__wrapper
+        section.blog__summary 
+          .blog__summary_text!=prismicDOM.RichText.asHtml(blog.data.summary).replace(/<p>/g, '<p data-animation="paragraph">')
+          
+        each section, index in blog.data.body
+          if section.slice_type == 'text_section'
+            section.blog__paragraph 
+              .blog__paragraph__wrapper(class=`blog__paragraph__wrapper--${isEmpty(section.primary.section_image) ? 'no-image' : section.primary.section_alignment.toLowerCase()}`)
+                .blog__paragraph__media__wrapper
+                  figure.blog__paragraph__media(class=`blog__paragraph__media--${isEmpty(section.primary.section_image) ? 'no-image' : ''} blog__paragraph__media--${section.primary.section_alignment.toLowerCase()} blog__paragraph__media--${section.primary.section_image_orientation.toLowerCase()}`)
+                    img.blog__paragraph__media__image(alt=section.primary.section_image.alt data-src=section.primary.section_image.url)
+                  .blog__paragraph__media__caption(class=`blog__paragraph__media__caption--${section.primary.section_alignment.toLowerCase()}`)=section.primary.section_caption
+                .blog__paragraph__title__wrapper
+                  .blog__paragraph__title(class=`blog__paragraph__title--${section.primary.section_alignment.toLowerCase()}`)=section.primary.section_title
+                  .blog__paragraph__text(class=`blog__paragraph__text--${section.primary.section_alignment.toLowerCase()} 
+                  blog__paragraph__text--${section.primary.section_title === null ? 'no-title' : 'with-title'}
+                  blog__paragraph__text--${isEmpty(section.primary.section_image) ? 'no-image' : ''}`)!=prismicDOM.RichText.asHtml(section.primary.section_paragraph).replace(/<p>/g, '<p data-animation="paragraph">')
+          
+          if section.slice_type == 'image'
+            section.blog__paragraph 
+              .blog__paragraph__wrapper(class=`blog__paragraph__wrapper--bottom`)
+                .blog__paragraph__media__wrapper
+                  figure.blog__paragraph__media(class=`blog__paragraph__media--bottom blog__paragraph__media--${section.primary.section_image_orientation.toLowerCase()}`)
+                    img.blog__paragraph__media__image(alt=section.primary.section_image.alt data-src=section.primary.section_image.url)
+                  .blog__paragraph__media__caption(class=`blog__paragraph__media__caption--bottom`)=section.primary.section_caption
+          
+          if section.slice_type == 'gallery'
+            section.blog__gallery
+              .blog__gallery__outer__wrapper(class=`blog__gallery__outer__wrapper--${section.primary.section_image_orientation.toLowerCase()}`)
+                .blog_gallery_wrapper(style={transform: `translate(-${section.primary.section_image_width/20}rem, 0%)`}) 
+                  each media, mediaIndex in section.items
+                    figure.blog__gallery__media(class=`blog__gallery__media--${section.primary.section_image_orientation.toLowerCase()}`) 
+                      img.blog__gallery__media__image(alt=media.gallery_image.alt data-src=media.gallery_image.url)
+              .blog__gallery__media__caption=section.primary.section_caption
 
-        if section.slice_type == 'quotes'
-          section.blog__quotes 
-            .blog__quotes__wrapper 
-              h3.blog__quotes__text!=prismicDOM.RichText.asHtml(section.primary.quotes_quote).replace(/<p>/g, '<p data-animation="paragraph">')
+          if section.slice_type == 'quotes'
+            section.blog__quotes 
+              .blog__quotes__wrapper 
+                h3.blog__quotes__text!=prismicDOM.RichText.asHtml(section.primary.quotes_quote).replace(/<p>/g, '<p data-animation="paragraph">')
       section.blog__next 
           .blog__next__wrapper
             .blog__next__header='Next'

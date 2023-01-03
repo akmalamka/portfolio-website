@@ -3,12 +3,18 @@
 }
 
 .blog__wrapper {
-	align-items: center;
+	display: flex;
+	flex-direction: column;
+}
+
+.blog__content__wrapper {
 	display: flex;
 	flex-direction: column;
 	row-gap: 12rem;
+	padding: 12rem 18rem 18rem 12rem;
 
 	@include media('<phone') {
 		row-gap: 6rem;
+		padding: 4rem;
 	}
 }
