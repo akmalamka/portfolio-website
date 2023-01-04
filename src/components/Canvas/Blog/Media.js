@@ -119,13 +119,13 @@ export default class {
 		// 	Math.abs(this.mesh.position.x)
 		// )
 
-		const scale = GSAP.utils.mapRange(
-			0,
-			this.sizes.width / 2,
-			0,
-			Math.PI / 2,
-			Math.abs(this.mesh.position.x)
-		)
+		// const scale = GSAP.utils.mapRange(
+		// 	0,
+		// 	this.sizes.width / 2,
+		// 	0,
+		// 	Math.PI / 2,
+		// 	Math.abs(this.mesh.position.x)
+		// )
 
 		// this.mesh.scale.x += Math.cos(scale)
 		// this.mesh.scale.y += Math.cos(scale)
