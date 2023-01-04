@@ -5,6 +5,8 @@ import Prefix from 'prefix'
 
 import Media from './Media'
 
+import Detection from 'classes/Detection'
+
 export default class {
 	constructor({ gl, scene, sizes, index = 0 }) {
 		this.id = 'works'
@@ -139,6 +141,7 @@ export default class {
 	}
 
 	onTouchMove({ x, y }) {
+		if (!Detection.isPhone()) return
 		this.hasMoved = true
 		const distance = x.start - x.end
 		this.scroll.target = this.scroll.last - distance
