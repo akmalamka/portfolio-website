@@ -83,18 +83,6 @@ export default class {
 	 * Events
 	 */
 
-	updateRatio() {
-		// const scale = GSAP.utils.mapRange(
-		// 	0,
-		// 	this.sizes.width / 2,
-		// 	-Math.PI / 2,
-		// 	Math.PI / 2,
-		// 	this.mesh.position.x
-		// )
-		// this.mesh.scale.x = Math.abs(Math.cos(scale)) * this.originScaleX
-		// this.mesh.scale.y = Math.abs(Math.cos(scale)) * this.originScaleY
-	}
-
 	onResize(sizes, scroll) {
 		this.extra = 0
 
@@ -104,42 +92,16 @@ export default class {
 	}
 
 	updateScale() {
-		//TODO make sure the scale animations right
 		this.height = this.bounds.height / window.innerHeight
 		this.width = this.bounds.width / window.innerWidth
 
 		this.mesh.scale.x = this.sizes.width * this.width
 		this.mesh.scale.y = this.sizes.height * this.height
-
-		// const scale = GSAP.utils.mapRange(
-		// 	0,
-		// 	this.sizes.width / 2,
-		// 	1,
-		// 	0,
-		// 	Math.abs(this.mesh.position.x)
-		// )
-
-		// const scale = GSAP.utils.mapRange(
-		// 	0,
-		// 	this.sizes.width / 2,
-		// 	0,
-		// 	Math.PI / 2,
-		// 	Math.abs(this.mesh.position.x)
-		// )
-
-		// this.mesh.scale.x += Math.cos(scale)
-		// this.mesh.scale.y += Math.cos(scale)
-
-		// if (!this.originScaleX && !this.originScaleY) {
-		// 	this.originScaleX = this.mesh.scale.x
-		// 	this.originScaleY = this.mesh.scale.y
-		// }
 	}
 
 	updateX(x = 0) {
 		this.x = (this.bounds.left + x) / window.innerWidth
 
-		// TODO: update the position x to be better :)
 		this.mesh.position.x =
 			-this.sizes.width / 2 +
 			this.mesh.scale.x / 2 +
@@ -152,16 +114,12 @@ export default class {
 
 		this.mesh.position.y =
 			this.sizes.height / 2 - this.mesh.scale.y / 2 - this.y * this.sizes.height
-		// this.mesh.position.y -= Math.abs(
-		// 	Math.sin((this.mesh.position.x / this.sizes.width) * Math.PI)
-		// )
 	}
 
 	/**
 	 * Loop
 	 */
 	update(scroll) {
-		// this.updateRatio(this.mesh.scale)
 		this.updateScale()
 		this.updateX(scroll)
 		this.updateY(0)
