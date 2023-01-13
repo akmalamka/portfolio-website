@@ -63,16 +63,12 @@
 .blog__paragraph__media {
 	position: relative;
 
-	&--portrait {
-		@extend %media__image__portrait;
-	}
+	height: var(--height);
+	width: var(--width);
 
-	&--landscape {
-		@extend %media__image__landscape;
-	}
-
-	&--square {
-		@extend %media__image__square;
+	@include media('<phone') {
+		height: calc(var(--height) / 2);
+		width: calc(var(--width) / 2);
 	}
 
 	&--no-image {
@@ -138,6 +134,24 @@
 
 		@include media('<phone') {
 			margin-top: 1.6rem;
+		}
+
+		strong {
+			font-weight: 500;
+		}
+
+		ol,
+		ul {
+			padding-left: 2rem;
+			@include media('<phone') {
+				padding-left: 1.5rem;
+			}
+		}
+		p:not(:first-child) {
+			padding-top: 2rem;
+			@include media('<phone') {
+				padding-top: 1.5rem;
+			}
 		}
 	}
 

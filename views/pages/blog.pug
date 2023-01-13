@@ -17,7 +17,7 @@ block content
               .blog__header__label__left 
                 .blog__header__label__type(data-animation="label")=blog.data.type
                 .blog__header__label__date(data-animation="label")=parseDate(blog.data.start_date, blog.data.end_date)
-              a.blog__header__label__url(data-animation="label" href=blog.data.url.url target=blog.data.url.url ? '_blank' : '' class=`blog__header__label__url--${blog.data.url.url ? '' : 'hidden'}`)='Check out the website'
+              a.blog__header__label__url(data-animation="label" href=blog.data.url.url target=blog.data.url.url ? '_blank' : '' class=`blog__header__label__url--${blog.data.url.url ? '' : 'hidden'}`)=blog.data.url_text
       .blog__content__wrapper
         section.blog__summary 
           .blog__summary_text!=prismicDOM.RichText.asHtml(blog.data.summary).replace(/<p>/g, '<p data-animation="paragraph">')
@@ -27,7 +27,7 @@ block content
             section.blog__paragraph 
               .blog__paragraph__wrapper(class=`blog__paragraph__wrapper--${isEmpty(section.primary.section_image) ? 'no-image' : section.primary.section_alignment.toLowerCase()}`)
                 .blog__paragraph__media__wrapper
-                  figure.blog__paragraph__media(class=`blog__paragraph__media--${isEmpty(section.primary.section_image) ? 'no-image' : ''} blog__paragraph__media--${section.primary.section_alignment.toLowerCase()} blog__paragraph__media--${section.primary.section_image_orientation.toLowerCase()}`)
+                  figure.blog__paragraph__media(class=`blog__paragraph__media--${isEmpty(section.primary.section_image) ? 'no-image' : ''} blog__paragraph__media--${section.primary.section_alignment.toLowerCase()} blog__paragraph__media--${section.primary.section_image_orientation.toLowerCase()}` style=`--height: ${section.primary.section_image.dimensions ? section.primary.section_image.dimensions.height/10 : 0}rem; --width: ${section.primary.section_image.dimensions ? section.primary.section_image.dimensions.width/10 : 0}rem`)
                     img.blog__paragraph__media__image(alt=section.primary.section_image.alt data-src=section.primary.section_image.url)
                   .blog__paragraph__media__caption(class=`blog__paragraph__media__caption--${section.primary.section_alignment.toLowerCase()}`)=section.primary.section_caption
                 .blog__paragraph__title__wrapper
