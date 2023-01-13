@@ -142,11 +142,16 @@
 
 		ol,
 		ul {
-			padding-left: 2rem;
-			@include media('<phone') {
-				padding-left: 1.5rem;
-			}
+			list-style-position: inside;
 		}
+		ol {
+			list-style-type: decimal;
+		}
+
+		ul {
+			list-style-type: disc;
+		}
+
 		p:not(:first-child) {
 			padding-top: 2rem;
 			@include media('<phone') {
